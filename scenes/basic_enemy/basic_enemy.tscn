@@ -10,7 +10,9 @@ radius = 12.0
 radius = 7.0
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_ycfmh")
 
 [node name="HitArea" type="Area2D" parent="."]

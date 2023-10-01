@@ -9,6 +9,7 @@ radius = 7.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_56v20")
 
 [node name="Abilities" type="Node" parent="."]

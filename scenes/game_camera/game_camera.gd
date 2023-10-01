@@ -1,7 +1,7 @@
 extends Camera2D
 
-
 var target_position: Vector2 = Vector2.ZERO
+var camera_smoothing: int = 20
 
 
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 
 func _process(delta):
 	acquire_target()
-	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 10)) #https://www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/
+	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * camera_smoothing)) #https://www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/
 	
 
 func acquire_target():
