@@ -29,6 +29,8 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
+		
+	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
 
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
