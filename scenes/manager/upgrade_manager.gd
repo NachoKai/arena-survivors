@@ -5,6 +5,7 @@ extends Node
 @export var upgrade_screen_scene: PackedScene
 var current_upgrades = {}
 
+
 func _ready():
 	experience_manager.level_up.connect(on_levep_up)
 	
@@ -16,6 +17,8 @@ func on_levep_up(_current_level: int):
 	add_child(upgrade_scene_instance)
 	var chosen_upgrade_array = [chosen_upgrade] as Array[AbilityUpgrade]
 	upgrade_scene_instance.set_ability_upgrade(chosen_upgrade_array)
+	upgrade_scene_instance.upgrade_selected.connect(on_upgrade_selected)
+	
 
 func apply_upgrade(upgrade: AbilityUpgrade):
 	var has_upgrade = current_upgrades.has(upgrade.id)
@@ -26,3 +29,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
+
+
+func on_upgrade_selected(upgrade: AbilityUpgrade):
+	apply_upgrade(upgrade)
