@@ -36,7 +36,7 @@ func get_closest_enemy(player: Node2D, enemies: Array) -> Node2D:
 	return enemies[0]
 
 
-func use_sword_ability(player: Node2D, target_enemy: Node2D):
+func use_sword_ability(_player: Node2D, target_enemy: Node2D):
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
