@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var label = %Label
 
 
-func _process(delta):
+func _process(_delta):
 	if arena_time_manager == null: return
 	var time_elapsed = arena_time_manager.get_time_elapsed()
 	label.text = format_seconds_to_string(time_elapsed)
