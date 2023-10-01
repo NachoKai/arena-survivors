@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const MAX_SPEED: int = 125
-const ACCELERATION_SMOOTHING : int = 25
+const ACCELERATION_SMOOTHING: int = 25
 
 
 func _process(delta):
