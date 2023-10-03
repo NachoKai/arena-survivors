@@ -26,7 +26,8 @@ func _process(delta):
 
 
 func check_deal_damage():
-	if colliding_bodies_quantity == 0 || damage_interval_timer.is_stopped(): return
+	var isDamageTimerActive = ! damage_interval_timer.is_stopped()
+	if colliding_bodies_quantity == 0 || isDamageTimerActive: return
 	health_component.damage(1)
 	damage_interval_timer.start()
 
