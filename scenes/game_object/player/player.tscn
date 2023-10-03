@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ff082s2cpd0g"]
+[gd_scene load_steps=10 format=3 uid="uid://ff082s2cpd0g"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
 [ext_resource type="Texture2D" uid="uid://cswu8tolryu6h" path="res://scenes/game_object/player/player.png" id="1_xn5b6"]
@@ -13,6 +13,18 @@ radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2muc3"]
 radius = 52.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrf1p"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpyye"]
+bg_color = Color(0.909804, 0.270588, 0.215686, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
@@ -50,6 +62,19 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_xn5b6")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(26, 4)
+offset_left = -13.0
+offset_top = -22.0
+offset_right = 13.0
+offset_bottom = -18.0
+pivot_offset = Vector2(13, 2)
+theme_override_styles/background = SubResource("StyleBoxFlat_wrf1p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xpyye")
+max_value = 1.0
+value = 0.5
+show_percentage = false
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
