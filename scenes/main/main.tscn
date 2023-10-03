@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://rmg0g834qxnl"]
+[gd_scene load_steps=14 format=3 uid="uid://rmg0g834qxnl"]
 
 [ext_resource type="PackedScene" uid="uid://ff082s2cpd0g" path="res://scenes/game_object/player/player.tscn" id="1_b1865"]
 [ext_resource type="Texture2D" uid="uid://d3qv6apvkyxul" path="res://assets/environment/tilemap_packed.png" id="1_da4bu"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_wyw77"]
 [ext_resource type="PackedScene" uid="uid://bq3dr5flb4jss" path="res://scenes/manager/enemy_manager.tscn" id="2_7tkxc"]
 [ext_resource type="PackedScene" uid="uid://bj4we7s6acmop" path="res://scenes/manager/experience_manager.tscn" id="2_ohoyu"]
+[ext_resource type="PackedScene" uid="uid://dgor7xhdd0aay" path="res://scenes/ui/end_screen.tscn" id="2_regfd"]
 [ext_resource type="PackedScene" uid="uid://nuerv6kkbohs" path="res://scenes/ui/experience_bar.tscn" id="2_y6ja5"]
 [ext_resource type="PackedScene" uid="uid://c386ccqei70wc" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_gmisb"]
 [ext_resource type="PackedScene" uid="uid://bveqm7wtm4ktt" path="res://scenes/ui/arena_time_ui.tscn" id="5_mmyrb"]
@@ -184,6 +186,8 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_5vepa")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_wyw77")
+end_screen_scene = ExtResource("2_regfd")
 
 [node name="UI" type="Node" parent="."]
 
@@ -215,5 +219,6 @@ layer_0/tile_data = PackedInt32Array(65533, 0, 4, 65534, 0, 4, 65535, 65536, 4, 
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_b1865")]
+unique_name_in_owner = true
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
