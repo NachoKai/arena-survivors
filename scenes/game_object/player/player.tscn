@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="2_xotrb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0a14d"]
-radius = 7.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cc0k"]
 radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2muc3"]
-radius = 52.0
+radius = 39.0512
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrf1p"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -50,18 +50,13 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_3cc0k")
 
 [node name="PlayerPickupArea" type="Area2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(0, -2)
 collision_layer = 16
 collision_mask = 0
 
 [node name="PlayerPickupShape" type="CollisionShape2D" parent="PlayerPickupArea"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2muc3")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_xn5b6")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(26, 4)
@@ -79,3 +74,7 @@ show_percentage = false
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_xn5b6")

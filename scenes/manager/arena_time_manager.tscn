@@ -8,6 +8,6 @@ script = ExtResource("1_qhtns")
 end_screen_scene = ExtResource("2_qetik")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 60.2
+wait_time = 300.2
 one_shot = true
 autostart = true
