@@ -38,8 +38,8 @@ func get_closest_enemy(player: Node2D, enemies: Array) -> Node2D:
 
 func use_sword_ability(_player: Node2D, target_enemy: Node2D):
 	var sword_instance = sword_ability.instantiate() as SwordAbility
-	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
-	foreground_layer.add_child(sword_instance)
+	var foreground = get_tree().get_first_node_in_group("foreground")
+	foreground.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 	sword_instance.global_position = target_enemy.global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4  # TAU: 2 times PI, a full rotation

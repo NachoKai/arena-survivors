@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_wyw77"]
 [ext_resource type="PackedScene" uid="uid://bq3dr5flb4jss" path="res://scenes/manager/enemy_manager.tscn" id="2_7tkxc"]
 [ext_resource type="PackedScene" uid="uid://bj4we7s6acmop" path="res://scenes/manager/experience_manager.tscn" id="2_ohoyu"]
-[ext_resource type="PackedScene" path="res://scenes/ui/end_screen.tscn" id="2_regfd"]
+[ext_resource type="PackedScene" uid="uid://dgor7xhdd0aay" path="res://scenes/ui/end_screen.tscn" id="2_regfd"]
 [ext_resource type="PackedScene" uid="uid://nuerv6kkbohs" path="res://scenes/ui/experience_bar.tscn" id="2_y6ja5"]
 [ext_resource type="PackedScene" uid="uid://c386ccqei70wc" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_gmisb"]
 [ext_resource type="PackedScene" uid="uid://bveqm7wtm4ktt" path="res://scenes/ui/arena_time_ui.tscn" id="5_mmyrb"]
@@ -548,4 +548,4 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(0, 25)
 
-[node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
+[node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
