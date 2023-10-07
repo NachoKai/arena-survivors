@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l8i2nv13n4sk"
-path="res://.godot/imported/tile_0014.png-8fe0268525ee6c4b5ac01a70a6bf150c.ctex"
+uid="uid://fg4sgtgg5y4l"
+path="res://.godot/imported/wizard_enemy.png-ea4dcbc1cd21f78193df73188d66741a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/tile_0014.png"
-dest_files=["res://.godot/imported/tile_0014.png-8fe0268525ee6c4b5ac01a70a6bf150c.ctex"]
+source_file="res://scenes/game_object/wizard_enemy/wizard_enemy.png"
+dest_files=["res://.godot/imported/wizard_enemy.png-ea4dcbc1cd21f78193df73188d66741a.ctex"]
 
 [params]
 
