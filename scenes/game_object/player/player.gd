@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var collision_area: Area2D = $CollisionArea
 @onready var abilities = $Abilities
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var visuals : Node2D = $Visuals
 
 const MAX_SPEED: int = 125
 const ACCELERATION_SMOOTHING: int = 25
@@ -25,6 +27,10 @@ func _process(delta):
 	var target_velocity = direction * MAX_SPEED
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
+	if direction.x !=0 || direction.y !=0: animation_player.play("walk")
+	else: animation_player.play("idle")
+	if direction.x < 0: visuals.scale.x = -1
+	elif direction.x > 0: visuals.scale.x = 1
 
 
 func check_deal_damage():

@@ -1,10 +1,96 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh1ggbnudq04s"]
+[gd_scene load_steps=11 format=3 uid="uid://dh1ggbnudq04s"]
 
 [ext_resource type="Texture2D" uid="uid://dk10khfbrxgku" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_d1652"]
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_ycfmh"]
 [ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="2_mtfpe"]
 [ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="3_opf5w"]
 [ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="4_d4ucc"]
+
+[sub_resource type="Animation" id="Animation_g2qfk"]
+resource_name = "walk"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/BasicEnemyImage:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/BasicEnemyImage:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.133573, 0.106887]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/BasicEnemyImage:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_c4cfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/BasicEnemyImage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/BasicEnemyImage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/BasicEnemyImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_di2uf"]
+_data = {
+"RESET": SubResource("Animation_c4cfy"),
+"walk": SubResource("Animation_g2qfk")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gys3"]
 radius = 12.0
@@ -17,6 +103,12 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_ycfmh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_di2uf")
+}
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_mtfpe")]
 
@@ -34,6 +126,8 @@ shape = SubResource("CircleShape2D_5gys3")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_s1owq")
 
-[node name="BasicEnemyImage" type="Sprite2D" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BasicEnemyImage" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -4)
 texture = ExtResource("1_d1652")
