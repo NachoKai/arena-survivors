@@ -9,8 +9,8 @@ extends Node2D
 func _ready():
 	particles.texture = sprite.texture
 	healt_component.died.connect(on_died)
-	
-	
+
+
 func on_died():
 	if owner == null || not owner is Node2D: return
 	var spawn_position = owner.global_position
@@ -19,4 +19,4 @@ func on_died():
 	entities.add_child(self)
 	global_position = spawn_position
 	animation_player.play("default")
-	
+

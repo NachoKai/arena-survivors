@@ -10,12 +10,12 @@ height = 22.0
 [node name="ExperienceVial" type="Node2D"]
 script = ExtResource("1_qh0rq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ExperienceVialArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="ExperienceVialAreaShape" type="CollisionShape2D" parent="ExperienceVialArea"]
 shape = SubResource("CapsuleShape2D_b1esu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ExperienceVialImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_oir5b")
