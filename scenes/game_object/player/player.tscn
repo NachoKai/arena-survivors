@@ -190,12 +190,12 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2muc3")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(26, 4)
-offset_left = -13.0
-offset_top = -22.0
-offset_right = 13.0
-offset_bottom = -18.0
-pivot_offset = Vector2(13, 2)
+custom_minimum_size = Vector2(20, 4)
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 10.0
+offset_bottom = -20.0
+pivot_offset = Vector2(10, 2)
 theme_override_styles/background = SubResource("StyleBoxFlat_wrf1p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xpyye")
 max_value = 1.0
