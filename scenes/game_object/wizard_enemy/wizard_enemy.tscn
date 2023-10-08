@@ -12,7 +12,6 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vo8en"]
-radius = 8.0
 
 [node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -21,11 +20,11 @@ script = ExtResource("1_fwwew")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_6kp81")]
-health_component = NodePath("../HealthComponent")
-
 [node name="HealthComponent" parent="." instance=ExtResource("1_nd08n")]
 max_health = 30.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_6kp81")]
+health_component = NodePath("../HealthComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("2_1r1ir")]
 healt_component = NodePath("../HealthComponent")
@@ -35,7 +34,7 @@ sprite = NodePath("../Visuals/WizardEnemyImage")
 max_speed = 80
 acceleration = 2.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WizardEnemyArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_3yu7c")
 
