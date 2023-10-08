@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var experience_vial_area: Area2D = $ExperienceVialArea
 @onready var experience_vial_area_shape: CollisionShape2D = $ExperienceVialArea/ExperienceVialAreaShape
-@onready var experience_vial_image = $ExperienceVialImage
+@onready var experience_vial_image: Sprite2D = $ExperienceVialImage
 
 
 func _ready():
