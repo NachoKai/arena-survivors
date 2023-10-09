@@ -3,6 +3,7 @@ extends Node2D
 @onready var experience_vial_area: Area2D = $ExperienceVialArea
 @onready var experience_vial_area_shape: CollisionShape2D = $ExperienceVialArea/ExperienceVialAreaShape
 @onready var experience_vial_image: Sprite2D = $ExperienceVialImage
+@export var experience_quantity_per_vial: float = 1.5
 
 
 func _ready():
@@ -19,7 +20,7 @@ func tween_collect(percent: float, start_position: Vector2):
 
 
 func collect():
-	GameEvents.emit_experience_vial_collected(1)
+	GameEvents.emit_experience_vial_collected(experience_quantity_per_vial)
 	queue_free()
 
 

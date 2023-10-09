@@ -19,4 +19,4 @@ func on_area_entered(other_area: Area2D):
 	if floating_text == null: return
 	get_tree().get_first_node_in_group("foreground").add_child(floating_text)
 	floating_text.global_position = global_position + (Vector2.UP * 8)
-	floating_text.start(str(damage))
+	floating_text.start(str(round(damage)))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://conpo2kcu5b24"]
+[gd_scene load_steps=4 format=3 uid="uid://conpo2kcu5b24"]
 
 [ext_resource type="Texture2D" uid="uid://bu7t87i6678l3" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_oir5b"]
 [ext_resource type="Script" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_qh0rq"]
@@ -6,132 +6,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1esu"]
 radius = 9.0
 height = 22.0
-
-[sub_resource type="Animation" id="Animation_ao8i3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/PlayerImage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.34053e-11, -7.99736)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/PlayerImage:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0268653]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/PlayerImage:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mwqmi"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/PlayerImage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.002602, 0.0030008, 0.501318),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2.34053e-11, -7.99736), Vector2(2.34053e-11, -7.99736), Vector2(-1.88061e-11, -6.99736)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/PlayerImage:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00463481, 0.502639, 0.998679),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/PlayerImage:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00301594, 0.999771),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.000919245, 0.000919245]
-}
-
-[sub_resource type="Animation" id="Animation_6n1tv"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/PlayerImage:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.000906408, 0.1, 0.2, 0.411, 0.496006, 0.6, 0.7, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -8), Vector2(0, -10), Vector2(-6.90532e-09, -11), Vector2(-2.09916e-08, -7.4079), Vector2(-1.46279e-08, -7), Vector2(8.76064e-09, -9), Vector2(6.37372e-09, -9.75057), Vector2(5.13812e-09, -9.4112)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/PlayerImage:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.000906408, 0.1, 0.2, 0.242543, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.000919245, 0.0, -0.150939, -0.150939, -0.021522, 0.153268, 0.153268, -0.150782, -0.149525, 0.0268653, 0.102336]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/PlayerImage:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.210735, 0.570542, 0.864622),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_phns2"]
-_data = {
-"RESET": SubResource("Animation_ao8i3"),
-"idle": SubResource("Animation_mwqmi"),
-"walk": SubResource("Animation_6n1tv")
-}
 
 [node name="ExperienceVial" type="Node2D"]
 script = ExtResource("1_qh0rq")
@@ -145,8 +19,3 @@ shape = SubResource("CapsuleShape2D_b1esu")
 
 [node name="ExperienceVialImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_oir5b")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ExperienceVialImage"]
-libraries = {
-"": SubResource("AnimationLibrary_phns2")
-}
