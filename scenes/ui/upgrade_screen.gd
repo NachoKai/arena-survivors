@@ -3,6 +3,7 @@ extends CanvasLayer
 signal upgrade_selected(upgrade: AbilityUpgrade)
 
 @export var upgrade_card_scene: PackedScene
+@onready var animation_player = $AnimationPlayer
 @onready var card_container: HBoxContainer = %CardContainer
 
 
@@ -23,5 +24,7 @@ func set_ability_upgrade(upgrades: Array[AbilityUpgrade]):
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
+	animation_player.play("out")
+	await animation_player.animation_finished
 	get_tree().paused = false
 	queue_free()
