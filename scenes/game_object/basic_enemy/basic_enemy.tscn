@@ -108,7 +108,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c7ik"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmu0n"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -133,7 +133,6 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_mtfpe")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_opf5w")]
-drop_percent = 0.35
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_sgxvt")]
@@ -141,7 +140,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BasicEnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_7c7ik")
+hit_flash_material = SubResource("ShaderMaterial_wmu0n")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")
