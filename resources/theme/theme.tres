@@ -1,7 +1,15 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bstrb5k8iv2gy"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bstrb5k8iv2gy"]
 
 [ext_resource type="FontFile" uid="uid://drmg4rmwbidie" path="res://resources/theme/Rockboxcond12.ttf" id="1_8lc53"]
 [ext_resource type="Texture2D" uid="uid://cgnxsewjp8ycv" path="res://assets/ui/ui.png" id="1_bgt01"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nsdm"]
+texture = ExtResource("1_bgt01")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(18, 2, 12, 12)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5au74"]
 texture = ExtResource("1_bgt01")
@@ -14,4 +22,6 @@ region_rect = Rect2(0, 0, 16, 16)
 [resource]
 default_font = ExtResource("1_8lc53")
 default_font_size = 16
+AlternatePanelContainer/base_type = &"PanelContainer"
+AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_4nsdm")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_5au74")
