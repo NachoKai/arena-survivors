@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bstrb5k8iv2gy"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bstrb5k8iv2gy"]
 
 [ext_resource type="FontFile" uid="uid://drmg4rmwbidie" path="res://resources/theme/Rockboxcond12.ttf" id="1_8lc53"]
 [ext_resource type="Texture2D" uid="uid://cgnxsewjp8ycv" path="res://assets/ui/ui.png" id="1_bgt01"]
@@ -10,6 +10,30 @@ texture_margin_top = 1.0
 texture_margin_right = 1.0
 texture_margin_bottom = 1.0
 region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vpov4"]
+texture = ExtResource("1_bgt01")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1kh1"]
+texture = ExtResource("1_bgt01")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xsng"]
+texture = ExtResource("1_bgt01")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(4, 20, 8, 8)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5au74"]
 texture = ExtResource("1_bgt01")
@@ -24,4 +48,14 @@ default_font = ExtResource("1_8lc53")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_4nsdm")
+Button/colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
+Button/colors/font_focus_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_hover_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_hover_pressed_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_pressed_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/fonts/font = ExtResource("1_8lc53")
+Button/styles/focus = SubResource("StyleBoxTexture_vpov4")
+Button/styles/hover = SubResource("StyleBoxTexture_f1kh1")
+Button/styles/normal = SubResource("StyleBoxTexture_7xsng")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_5au74")
