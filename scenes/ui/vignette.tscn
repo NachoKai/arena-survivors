@@ -3,6 +3,33 @@
 [ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="1_7uv4v"]
 [ext_resource type="Shader" path="res://scenes/ui/vignette.gdshader" id="1_nqemf"]
 
+[sub_resource type="Animation" id="Animation_kif7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.682]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.247059, 0.14902, 0.192157, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_trkt8"]
 resource_name = "hit"
 length = 0.5
@@ -32,33 +59,6 @@ tracks/1/keys = {
 "values": [Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_kif7i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.682]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.247059, 0.14902, 0.192157, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2t6j"]
 _data = {
 "RESET": SubResource("Animation_kif7i"),
@@ -68,7 +68,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seyqt"]
 shader = ExtResource("1_nqemf")
 shader_parameter/vignette_intensity = 0.682
-shader_parameter/vignette_opacity = 0.115
+shader_parameter/vignette_opacity = 0.1
 shader_parameter/vignette_rgb = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Vignette" type="CanvasLayer"]
