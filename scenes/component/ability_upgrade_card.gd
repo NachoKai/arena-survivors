@@ -13,17 +13,17 @@ func _ready():
 	gui_input.connect(on_gui_input)
 	mouse_entered.connect(on_mouse_entered)
 	mouse_exited.connect(on_mouse_exited)
-	
-	
+
+
 func play_in(delay: float = 0):
 	modulate = Color.TRANSPARENT
 	await get_tree().create_timer(delay).timeout
 	animation_player.play("in")
-	
-	
+
+
 func play_discard():
 	animation_player.play("discard")
-	
+
 
 func set_ability_upgrade(upgrade: AbilityUpgrade):
 	name_label.text = upgrade.name
@@ -34,11 +34,11 @@ func select_card():
 	disabled = true
 	animation_player.play("selected")
 	var other_cards = get_tree().get_nodes_in_group("upgrade_card")
-	
+
 	for card in other_cards:
 		if card == self: continue
 		card.play_discard()
-	
+
 	await animation_player.animation_finished
 	selected.emit()
 

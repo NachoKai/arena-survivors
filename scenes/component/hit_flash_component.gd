@@ -17,4 +17,4 @@ func on_health_changed():
 	sprite_material.set_shader_parameter("lerp_percent", 1.0)
 	hit_flash_tween = create_tween()
 	hit_flash_tween.tween_property(sprite_material, "shader_parameter/lerp_percent", 0.0, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	
+
