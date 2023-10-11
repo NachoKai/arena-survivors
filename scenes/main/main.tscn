@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rmg0g834qxnl"]
+[gd_scene load_steps=17 format=3 uid="uid://rmg0g834qxnl"]
 
 [ext_resource type="PackedScene" uid="uid://ff082s2cpd0g" path="res://scenes/game_object/player/player.tscn" id="1_b1865"]
 [ext_resource type="Texture2D" uid="uid://d3qv6apvkyxul" path="res://assets/environment/tilemap_packed.png" id="1_da4bu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cvcudmlg8r54d" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="7_prn87"]
 [ext_resource type="PackedScene" uid="uid://dh1ggbnudq04s" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="7_v0j64"]
 [ext_resource type="PackedScene" uid="uid://bos10tm8mi6d4" path="res://scenes/manager/upgrade_manager.tscn" id="9_omo6q"]
+[ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_nu1a0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vepa"]
 texture = ExtResource("1_da4bu")
@@ -516,6 +517,8 @@ script = ExtResource("1_wyw77")
 end_screen_scene = ExtResource("2_regfd")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_gmisb")]
+
+[node name="Vignette" parent="." instance=ExtResource("14_nu1a0")]
 
 [node name="UI" type="Node" parent="."]
 
