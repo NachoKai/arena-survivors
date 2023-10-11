@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: Node2D = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
+@onready var hit_random_stream_player = $HitRandomStreamPlayer
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0
@@ -60,6 +61,7 @@ func on_damage_interval_timer_timeout():
 func on_health_changed():
 	GameEvents.emit_player_damaged()
 	update_health_display()
+	hit_random_stream_player.play_random()
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):

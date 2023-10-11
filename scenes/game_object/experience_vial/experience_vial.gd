@@ -4,6 +4,7 @@ extends Node2D
 @onready var experience_vial_area_shape: CollisionShape2D = $ExperienceVialArea/ExperienceVialAreaShape
 @onready var experience_vial_image: Sprite2D = $ExperienceVialImage
 @export var experience_quantity_per_vial: float = 1.5
+@onready var random_stream_player_component: AudioStreamPlayer2D = $RandomStreamPlayerComponent
 
 
 func _ready():
@@ -36,3 +37,4 @@ func on_area_entered(_other_area: Area2D):
 	tween.tween_property(experience_vial_image, "scale", Vector2.ZERO, 0.10).set_delay(0.40)
 	tween.chain()
 	tween.tween_callback(collect)
+	random_stream_player_component.play_random()
