@@ -9,6 +9,7 @@
 [node name="SoundButton" type="Button"]
 offset_right = 6.0
 offset_bottom = 6.0
+mouse_default_cursor_shape = 2
 text = "Sound Button"
 script = ExtResource("1_ry7ps")
 
