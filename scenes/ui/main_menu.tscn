@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://w5f6bfxtucui"]
+[gd_scene load_steps=7 format=3 uid="uid://w5f6bfxtucui"]
 
 [ext_resource type="Texture2D" uid="uid://d3qv6apvkyxul" path="res://assets/environment/tilemap_packed.png" id="1_dgtg0"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_jntjk"]
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="2_qa513"]
+[ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="3_xtdm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vepa"]
 texture = ExtResource("1_dgtg0")
@@ -535,6 +536,7 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -561,3 +563,6 @@ text = "Options"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="Vignette" parent="." instance=ExtResource("3_xtdm1")]
+layer = 2

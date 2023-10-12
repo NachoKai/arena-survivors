@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhi65mie6cuk5"]
+[gd_scene load_steps=7 format=3 uid="uid://bhi65mie6cuk5"]
 
 [ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_p5c7x"]
 [ext_resource type="Texture2D" uid="uid://d3qv6apvkyxul" path="res://assets/environment/tilemap_packed.png" id="2_wa568"]
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="3_017jq"]
+[ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="3_hhn77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vepa"]
 texture = ExtResource("2_wa568")
@@ -559,21 +560,37 @@ theme_override_constants/separation = 8
 
 [node name="SfxVolumeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
 text = "SFX Volume"
+vertical_alignment = 1
 
 [node name="SfxVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-value = 100.0
+value = 50.0
 
 [node name="MusicVolumeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
 text = "Music Volume"
+vertical_alignment = 1
 
 [node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-value = 100.0
+value = 50.0
 
 [node name="WindowModeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 25)
@@ -581,10 +598,15 @@ layout_mode = 2
 theme_override_constants/separation = 66
 
 [node name="WindowModeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/WindowModeContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 25)
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
 text = "Window Mode"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/WindowModeContainer" instance=ExtResource("3_017jq")]
@@ -600,3 +622,5 @@ custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="Vignette" parent="." instance=ExtResource("3_hhn77")]
