@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgor7xhdd0aay"]
+[gd_scene load_steps=7 format=3 uid="uid://dgor7xhdd0aay"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_0aaec"]
+[ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="2_od4l7"]
 
 [sub_resource type="Animation" id="Animation_gdj2x"]
 length = 0.001
@@ -137,14 +138,14 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2

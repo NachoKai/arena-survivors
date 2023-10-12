@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="2_mtfpe"]
 [ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="3_opf5w"]
 [ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="4_d4ucc"]
-[ext_resource type="AudioStream" uid="uid://lujlmj0je3go" path="res://sounds/footstep_carpet_001.ogg" id="4_qsk7c"]
+[ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_qsk7c"]
 [ext_resource type="PackedScene" uid="uid://dbhugqcc7h2mu" path="res://scenes/component/death_component.tscn" id="4_qyjui"]
 [ext_resource type="PackedScene" uid="uid://ddjafc8cq5hf0" path="res://scenes/component/hit_flash_component.tscn" id="5_1fb0c"]
-[ext_resource type="AudioStream" uid="uid://bierk71xg4awj" path="res://sounds/footstep_carpet_002.ogg" id="5_heaq7"]
+[ext_resource type="AudioStream" uid="uid://dffeo42bajgge" path="res://sounds/footstep_carpet_002.ogg" id="5_heaq7"]
 [ext_resource type="PackedScene" uid="uid://o1entvj4ufi4" path="res://scenes/component/velocity_component.tscn" id="5_sgxvt"]
-[ext_resource type="AudioStream" uid="uid://du0fetckh0g3h" path="res://sounds/footstep_carpet_003.ogg" id="6_bv5gc"]
-[ext_resource type="AudioStream" uid="uid://certn2xxt5bao" path="res://sounds/footstep_carpet_004.ogg" id="7_4t6an"]
-[ext_resource type="AudioStream" uid="uid://c3k2dju51mcep" path="res://sounds/footstep_carpet_000.ogg" id="9_jbflw"]
+[ext_resource type="AudioStream" uid="uid://csppv05u2idya" path="res://sounds/footstep_carpet_003.ogg" id="6_bv5gc"]
+[ext_resource type="AudioStream" uid="uid://dwniqoborrmvi" path="res://sounds/footstep_carpet_004.ogg" id="7_4t6an"]
+[ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="9_jbflw"]
 
 [sub_resource type="Animation" id="Animation_c4cfy"]
 length = 0.001
@@ -115,7 +115,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n6dh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qphdy"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -138,8 +138,7 @@ libraries = {
 }
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_5u0pl")]
-max_distance = 300.0
-streams = Array[AudioStream]([ExtResource("9_jbflw"), ExtResource("4_qsk7c"), ExtResource("5_heaq7"), ExtResource("6_bv5gc"), ExtResource("7_4t6an"), ExtResource("9_jbflw"), ExtResource("4_qsk7c"), ExtResource("5_heaq7"), ExtResource("6_bv5gc"), ExtResource("7_4t6an")])
+streams = Array[AudioStream]([ExtResource("9_jbflw"), ExtResource("4_qsk7c"), ExtResource("5_heaq7"), ExtResource("6_bv5gc"), ExtResource("7_4t6an")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_mtfpe")]
 
@@ -151,7 +150,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BasicEnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_1n6dh")
+hit_flash_material = SubResource("ShaderMaterial_qphdy")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")
