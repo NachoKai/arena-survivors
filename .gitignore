@@ -365,5 +365,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
 scenes/.DS_Store
-scenes/.DS_Store
+assets/.DS_Store
+.DS_Store
