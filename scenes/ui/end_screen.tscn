@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgor7xhdd0aay"]
+[gd_scene load_steps=10 format=3 uid="uid://dgor7xhdd0aay"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_0aaec"]
+[ext_resource type="PackedScene" uid="uid://berykcpudlkdw" path="res://scenes/component/random_audio_stream_player_component.tscn" id="2_el873"]
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="2_od4l7"]
+[ext_resource type="AudioStream" uid="uid://cjq71aqv5kkfl" path="res://sounds/victory_sound.ogg" id="3_db8ln"]
+[ext_resource type="AudioStream" uid="uid://cytyq82noobt1" path="res://sounds/defeat_sound.ogg" id="4_msjbt"]
 
 [sub_resource type="Animation" id="Animation_gdj2x"]
 length = 0.001
@@ -68,6 +71,14 @@ autoplay = "in"
 libraries = {
 "": SubResource("AnimationLibrary_fwwij")
 }
+
+[node name="VictoryStreamPlayerComponent" parent="." instance=ExtResource("2_el873")]
+stream = ExtResource("3_db8ln")
+volume_db = -5.0
+
+[node name="DefeatStreamPlayerComponent" parent="." instance=ExtResource("2_el873")]
+stream = ExtResource("4_msjbt")
+volume_db = -5.0
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
