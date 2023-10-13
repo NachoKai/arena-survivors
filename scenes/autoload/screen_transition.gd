@@ -11,9 +11,8 @@ func transition():
 	skip_emit = true
 	animation_player.play_backwards("default")
 
-
 func emit_transition_halfway():
 	if skip_emit:
 		skip_emit = false
 		return
-	else: transition_halfway.emit()
+	transition_halfway.emit()
