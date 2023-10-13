@@ -80,9 +80,10 @@ _data = {
 
 [node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
 custom_minimum_size = Vector2(170, 2.08165e-12)
-offset_right = 120.0
-offset_bottom = 160.0
+offset_right = 180.0
+offset_bottom = 165.0
 pivot_offset = Vector2(60, 80)
+size_flags_vertical = 0
 script = ExtResource("1_mbqxd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -123,7 +124,7 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 4
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "Test Title"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -146,12 +147,17 @@ text = "Test Description"
 autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 24)
+custom_minimum_size = Vector2(2.08165e-12, 30)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = 2
 
-[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -161,7 +167,24 @@ theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 14
 text = "0/123"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 14
+text = "x0"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -183,9 +206,9 @@ mouse_filter = 2
 [node name="VialImage" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/VialImageControl"]
 layout_mode = 2
 offset_left = -5.81893
-offset_top = -12.0
+offset_top = -15.0
 offset_right = 10.1811
-offset_bottom = 4.0
+offset_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource("13_rkune")
 stretch_mode = 4

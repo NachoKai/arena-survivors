@@ -6,8 +6,8 @@ extends PanelContainer
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var learn_button: Button = %LearnButton
 @onready var progress_label: Label = %ProgressLabel
+@onready var count_label: Label = %CountLabel
 var meta_upgrade: MetaUpgrade
-
 
 
 func _ready():
@@ -22,11 +22,17 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 
 func update_progress():
+	var quantity = 0
+	if MetaProgression.save_data["meta_upgrades"].has(meta_upgrade.id):
+		quantity = MetaProgression.save_data["meta_upgrades"][meta_upgrade.id]["quantity"]
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	var percent = min((currency / meta_upgrade.experience_cost), 1)
+	var is_max_quantity = quantity >= meta_upgrade.max_quantity
 	progress_bar.value = percent
-	learn_button.disabled = percent < 1
+	learn_button.disabled = percent < 1 || is_max_quantity
+	if is_max_quantity: learn_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(meta_upgrade.experience_cost)
+	count_label.text = "x%d" % quantity  # Format string: x0
 
 
 func on_learn_button_pressed():

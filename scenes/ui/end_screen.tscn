@@ -149,11 +149,17 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
+[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
-text = "Restart"
+text = "Continue"
+
+[node name="MenuButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+text = "Menu"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("2_od4l7")]
 unique_name_in_owner = true
