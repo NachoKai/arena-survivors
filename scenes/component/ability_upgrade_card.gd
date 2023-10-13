@@ -26,6 +26,7 @@ func play_discard():
 
 
 func set_ability_upgrade(upgrade: AbilityUpgrade):
+	if not upgrade: return
 	name_label.text = upgrade.name
 	description_label.text = upgrade.description
 
@@ -34,6 +35,7 @@ func select_card():
 	disabled = true
 	animation_player.play("selected")
 	var other_cards = get_tree().get_nodes_in_group("upgrade_card")
+	if not other_cards: return
 
 	for card in other_cards:
 		if card == self: continue

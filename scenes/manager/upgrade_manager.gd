@@ -4,7 +4,6 @@ extends Node
 @export var upgrade_screen_scene: PackedScene
 var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
-
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_axe = preload("res://resources/upgrades/axe.tres")
@@ -22,7 +21,7 @@ func _ready():
 
 func apply_upgrade(upgrade: AbilityUpgrade):
 	var has_upgrade = current_upgrades.has(upgrade.id)
-	if ! has_upgrade:
+	if not has_upgrade:
 		current_upgrades[upgrade.id] = {
 			"resource": upgrade,
 			"quantity": 1
@@ -38,7 +37,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
-	if chosen_upgrade == null: return
+	if not chosen_upgrade: return
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage, 10)
 
@@ -57,12 +56,13 @@ func pick_upgrades():
 
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
-	if upgrade == null: return
+	if not upgrade: return
 	apply_upgrade(upgrade)
 
 
 func on_levep_up(_current_level: int):
 	var upgrade_scene_instance = upgrade_screen_scene.instantiate()
+	if not upgrade_scene_instance: return
 	add_child(upgrade_scene_instance)
 	var chosen_upgrades = pick_upgrades()
 	upgrade_scene_instance.set_ability_upgrade(chosen_upgrades as Array[AbilityUpgrade])

@@ -5,7 +5,7 @@ extends CanvasLayer
 
 
 func _process(_delta):
-	if arena_time_manager == null: return
+	if not arena_time_manager: return
 	var time_elapsed = arena_time_manager.get_time_elapsed()
 	label.text = format_seconds_to_string(time_elapsed)
 

@@ -13,7 +13,7 @@ func _ready():
 
 func tween_collect(percent: float, start_position: Vector2):
 	var player = get_tree().get_first_node_in_group("player") as Node2D
-	if player == null: return
+	if not player: return
 	global_position = start_position.lerp(player.global_position, percent)
 	var direction_from_start = player.global_position - start_position
 	var target_rotation = direction_from_start.angle() + deg_to_rad(90)

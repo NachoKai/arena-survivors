@@ -14,10 +14,11 @@ func _ready():
 
 func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
-	if player == null: return
+	if not player: return
 	var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
-	if foreground == null: return
+	if not foreground: return
 	var axe_instance = axe_ability_scene.instantiate() as Node2D
+	if not axe_instance: return
 	foreground.add_child(axe_instance)
 	axe_instance.global_position = player.global_position
 	axe_instance.hitbox_component.damage = base_damage * additional_damage_percent

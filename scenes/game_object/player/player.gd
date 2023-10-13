@@ -65,6 +65,7 @@ func on_health_changed():
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	if not ability_upgrade: return
 	if ability_upgrade is Ability:
 		var ability = ability_upgrade as Ability
 		abilities.add_child(ability.ability_controller_scene.instantiate())

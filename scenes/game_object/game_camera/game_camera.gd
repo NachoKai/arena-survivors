@@ -5,7 +5,7 @@ var camera_smoothing: int = 20
 
 
 func _ready():
-	make_current()
+	make_current()  # Forces this Camera2D to become the current active one
 
 
 func _process(delta):
@@ -15,7 +15,7 @@ func _process(delta):
 
 func acquire_target():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
-	if player == null: return Vector2.ZERO
+	if not player: return Vector2.ZERO
 	else: target_position = player.global_position
 
 

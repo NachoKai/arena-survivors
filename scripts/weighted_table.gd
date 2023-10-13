@@ -18,6 +18,7 @@ func remove_item(item_to_remove):
 func pick_item(exclude: Array = []):
 	var adjusted_items: Array[Dictionary] = items
 	var adjusted_weight_sum = weight_sum
+
 	if exclude.size() > 0:
 		adjusted_items = []
 		adjusted_weight_sum = 0
@@ -28,6 +29,7 @@ func pick_item(exclude: Array = []):
 
 	var chosen_weight = randi_range(1, adjusted_weight_sum)
 	var iteration_sum = 0
+
 	for item in adjusted_items:
 		iteration_sum += item["weight"]
 		if chosen_weight <= iteration_sum:

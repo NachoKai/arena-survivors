@@ -26,14 +26,14 @@ func update_display():
 
 
 func get_bus_volume_percent(bus_name: String):
-	if bus_name == null: return
+	if not bus_name: return
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	var volume_db = AudioServer.get_bus_volume_db(bus_index)
 	return db_to_linear(volume_db)
 
 
 func set_bus_volume_percent(bus_name: String, percent: float):
-	if bus_name == null || percent == null: return
+	if not bus_name || not percent: return
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	var volume_db = linear_to_db(percent)
 	AudioServer.set_bus_volume_db(bus_index, volume_db)
@@ -49,7 +49,7 @@ func on_window_button_pressed():
 
 
 func on_audio_slider_changed(value: float, bus_name: String):
-	if value == null || bus_name == null: return
+	if not value || not bus_name: return
 	set_bus_volume_percent(bus_name, value)
 
 

@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -10,5 +9,4 @@ func _ready():
 
 func on_player_damaged():
 	animation_player.play("hit")
-
 

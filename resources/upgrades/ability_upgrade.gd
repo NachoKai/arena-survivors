@@ -1,4 +1,5 @@
 extends Resource
+
 class_name AbilityUpgrade
 
 @export var id: String

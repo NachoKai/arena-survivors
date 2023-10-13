@@ -1,4 +1,5 @@
 extends Area2D
+
 class_name HurtboxComponent
 
 signal hit
@@ -13,12 +14,12 @@ func _ready():
 
 func on_area_entered(other_area: Area2D):
 	if not other_area is HitboxComponent: return
-	if health_component == null: return
+	if not health_component: return
 	var hitbox_component = other_area as HitboxComponent
 	var damage = hitbox_component.damage
 	health_component.damage(damage)
 	var floating_text = floating_text_scene.instantiate() as Node2D
-	if floating_text == null: return
+	if not floating_text: return
 	get_tree().get_first_node_in_group("foreground").add_child(floating_text)
 	floating_text.global_position = global_position + (Vector2.UP * 8)
 	floating_text.start(str(round(damage)))

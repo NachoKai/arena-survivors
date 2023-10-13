@@ -17,5 +17,6 @@ func _unhandled_input(event):
 
 func on_player_died():
 	var end_screen_instance = end_screen_scene.instantiate()
+	if not end_screen_instance: return
 	add_child(end_screen_instance)
 	end_screen_instance.set_defeat()
