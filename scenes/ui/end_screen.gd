@@ -23,7 +23,7 @@ func set_defeat():
 	title_label.text = "Defeat"
 	description_label.text = "You lost!"
 	play_jingle(true)
-	
+
 
 func play_jingle(is_defeat: bool = false):
 	if is_defeat: defeat_stream_player_component.play()
@@ -31,6 +31,8 @@ func play_jingle(is_defeat: bool = false):
 
 
 func on_restart_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 
