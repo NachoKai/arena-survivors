@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bstrb5k8iv2gy"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bstrb5k8iv2gy"]
 
 [ext_resource type="FontFile" uid="uid://drmg4rmwbidie" path="res://resources/theme/Rockboxcond12.ttf" id="1_8lc53"]
 [ext_resource type="Texture2D" uid="uid://cgnxsewjp8ycv" path="res://assets/ui/ui.png" id="1_bgt01"]
@@ -77,6 +77,22 @@ texture_margin_right = 3.81893
 texture_margin_bottom = 10.0
 region_rect = Rect2(0, 0, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pchfa"]
+bg_color = Color(0.14902, 0.168627, 0.266667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14902, 0.168627, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npr6x"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14902, 0.168627, 0.266667, 1)
+
 [resource]
 default_font = ExtResource("1_8lc53")
 default_font_size = 16
@@ -92,6 +108,7 @@ BlueOutlineLabel/constants/shadow_offset_y = 0
 BlueOutlineLabel/constants/shadow_outline_size = 0
 BlueOutlineLabel/font_sizes/font_size = 16
 Button/colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
+Button/colors/font_disabled_color = Color(0.14902, 0.168627, 0.266667, 1)
 Button/colors/font_focus_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_hover_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_hover_pressed_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -107,3 +124,5 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_urmi6")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_doa7j")
 HSlider/styles/slider = SubResource("StyleBoxFlat_j8qh8")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_5au74")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_pchfa")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_npr6x")
