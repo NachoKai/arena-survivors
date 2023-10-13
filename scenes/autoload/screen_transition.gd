@@ -16,4 +16,4 @@ func emit_transition_halfway():
 	if skip_emit:
 		skip_emit = false
 		return
-	transition_halfway.emit()
+	else: transition_halfway.emit()

@@ -502,6 +502,7 @@ terrain_set_0/terrain_0/color = Color(0, 0.921569, 0.776471, 1)
 sources/0 = SubResource("TileSetAtlasSource_5vepa")
 
 [node name="OptionsMenu" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_p5c7x")
 
 [node name="TileMap" type="TileMap" parent="."]
