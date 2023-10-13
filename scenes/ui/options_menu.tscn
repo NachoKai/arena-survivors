@@ -506,15 +506,6 @@ sources/0 = SubResource("TileSetAtlasSource_5vepa")
 layer = 2
 script = ExtResource("1_p5c7x")
 
-[node name="Background" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.607843, 0.298039, 0.639216, 0.392157)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6bc6b")
 format = 2
@@ -583,7 +574,9 @@ vertical_alignment = 1
 [node name="SfxVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-value = 50.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="MusicVolumeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 layout_mode = 2
@@ -600,7 +593,9 @@ vertical_alignment = 1
 [node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-value = 50.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="WindowModeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 25)
