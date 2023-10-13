@@ -29,3 +29,4 @@ func on_timer_timeout():
 	if not end_screen_instance: return
 	add_child(end_screen_instance)
 	end_screen_instance.play_jingle()
+	MetaProgression.save_file()
