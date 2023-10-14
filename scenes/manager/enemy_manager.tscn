@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_kd0vx"]
 [ext_resource type="PackedScene" uid="uid://cvcudmlg8r54d" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="2_28o1q"]
-[ext_resource type="PackedScene" uid="uid://dh1ggbnudq04s" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="2_jqgmb"]
+[ext_resource type="PackedScene" uid="uid://dh1ggbnudq04s" path="res://scenes/game_object/rat_enemy/rat_enemy.tscn" id="2_78yml"]
 [ext_resource type="PackedScene" uid="uid://bqfo8bewbbiek" path="res://scenes/game_object/bat_enemy/bat_enemy.tscn" id="3_5x6ai"]
 [ext_resource type="PackedScene" uid="uid://5wbcte1km2fa" path="res://scenes/game_object/ghost_enemy/ghost_enemy.tscn" id="5_j3emq"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_kd0vx")
-basic_enemy_scene = ExtResource("2_jqgmb")
+rat_enemy_scene = ExtResource("2_78yml")
 wizard_enemy_scene = ExtResource("2_28o1q")
 bat_enemy_scene = ExtResource("3_5x6ai")
 ghost_enemy_scene = ExtResource("5_j3emq")
