@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cui85jbe1kgwr"]
+
+[ext_resource type="Script" path="res://scenes/ability/hammer_ability/hammer_ability_controller.gd" id="1_f42rh"]
+[ext_resource type="PackedScene" uid="uid://dc3tj3v4x30f6" path="res://scenes/ability/hammer_ability/hammer_ability.tscn" id="2_jmyv2"]
+
+[node name="HammerAbilityController" type="Node"]
+script = ExtResource("1_f42rh")
+hammer_ability_scene = ExtResource("2_jmyv2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

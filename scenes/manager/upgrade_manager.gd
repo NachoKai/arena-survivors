@@ -9,12 +9,14 @@ var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_axe = preload("res://resources/upgrades/axe.tres")
 var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
+var upgrade_hammer = preload("res://resources/upgrades/hammer.tres")
 
 
 func _ready():
 	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_hammer, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
-	upgrade_pool.add_item(upgrade_sword_damage, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 8)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	experience_manager.level_up.connect(on_levep_up)
 
@@ -39,7 +41,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if not chosen_upgrade: return
 	if chosen_upgrade.id == upgrade_axe.id:
-		upgrade_pool.add_item(upgrade_axe_damage, 10)
+		upgrade_pool.add_item(upgrade_axe_damage, 8)
 
 
 func pick_upgrades():

@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://dc3tj3v4x30f6"]
+
+[ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="1_iqcid"]
+[ext_resource type="Texture2D" uid="uid://dlxx27m78mpjp" path="res://scenes/ability/hammer_ability/hammer.png" id="1_kck7r"]
+[ext_resource type="Script" path="res://scenes/ability/hammer_ability/hammer_ability.gd" id="1_tc5sm"]
+
+[sub_resource type="Animation" id="Animation_7erkc"]
+resource_name = "default"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 13.9288, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -100), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 5.65685),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6),
+"transitions": PackedFloat32Array(0.125, 1, 9.18958),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3ndgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5hg5x"]
+_data = {
+"RESET": SubResource("Animation_3ndgx"),
+"default": SubResource("Animation_7erkc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_finwh"]
+radius = 32.0
+
+[node name="HammerAbility" type="Node2D"]
+script = ExtResource("1_tc5sm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_5hg5x")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kck7r")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_iqcid")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_finwh")
+disabled = true
