@@ -20,7 +20,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/BasicEnemyImage:position")
+tracks/0/path = NodePath("Visuals/EnemyImage:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/BasicEnemyImage:rotation")
+tracks/1/path = NodePath("Visuals/EnemyImage:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/BasicEnemyImage:scale")
+tracks/2/path = NodePath("Visuals/EnemyImage:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -62,7 +62,7 @@ step = 0.005
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/BasicEnemyImage:position")
+tracks/0/path = NodePath("Visuals/EnemyImage:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +74,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/BasicEnemyImage:rotation")
+tracks/1/path = NodePath("Visuals/EnemyImage:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,7 +86,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/BasicEnemyImage:scale")
+tracks/2/path = NodePath("Visuals/EnemyImage:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -149,14 +149,14 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
-sprite = NodePath("../Visuals/BasicEnemyImage")
+sprite = NodePath("../Visuals/EnemyImage")
 hit_flash_material = SubResource("ShaderMaterial_gas6x")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")
-sprite = NodePath("../Visuals/BasicEnemyImage")
+sprite = NodePath("../Visuals/EnemyImage")
 
-[node name="BasicEnemyArea" type="CollisionShape2D" parent="."]
+[node name="EnemyArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_s1owq")
 
@@ -169,6 +169,6 @@ shape = SubResource("CircleShape2D_5gys3")
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="BasicEnemyImage" type="Sprite2D" parent="Visuals"]
+[node name="EnemyImage" type="Sprite2D" parent="Visuals"]
 position = Vector2(2.08165e-12, -4)
 texture = ExtResource("1_d1652")

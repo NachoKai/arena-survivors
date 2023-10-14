@@ -539,9 +539,9 @@ arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 [node name="ArenaTimeManager" parent="Managers" instance=ExtResource("6_ohtgj")]
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_7tkxc")]
+arena_time_manager = NodePath("../ArenaTimeManager")
 basic_enemy_scene = ExtResource("7_v0j64")
 wizard_enemy_scene = ExtResource("7_prn87")
-arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("2_ohoyu")]
 

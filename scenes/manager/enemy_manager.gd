@@ -1,10 +1,11 @@
 extends Node
 
 @onready var timer: Timer = $Timer
+@export var arena_time_manager: Node
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
 @export var bat_enemy_scene: PackedScene
-@export var arena_time_manager: Node
+@export var ghost_enemy_scene: PackedScene
 
 const SPAWN_RADIUS: int = 375
 var base_spawn_time: float = 0
@@ -55,6 +56,6 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 		enemy_table.add_item(bat_enemy_scene, 12)
 	elif arena_difficulty == 12:
 		enemy_table.add_item(wizard_enemy_scene, 8)
-#	elif arena_difficulty == 18:
-#		enemy_table.add_item(some_other_enemy_scene, 20)
+	elif arena_difficulty == 18:
+		enemy_table.add_item(ghost_enemy_scene, 10)
 
