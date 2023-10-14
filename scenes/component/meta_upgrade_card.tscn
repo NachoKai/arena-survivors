@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqwsbbv6kkdsy"]
+[gd_scene load_steps=15 format=3 uid="uid://cqwsbbv6kkdsy"]
 
 [ext_resource type="Script" path="res://scenes/component/meta_upgrade_card.gd" id="1_mbqxd"]
 [ext_resource type="PackedScene" uid="uid://berykcpudlkdw" path="res://scenes/component/random_audio_stream_player_component.tscn" id="2_0dvh4"]
@@ -15,69 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bu7t87i6678l3" path="res://scenes/game_object/experience_vial/experience_vial.png" id="13_rkune"]
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="13_srxni"]
 
-[sub_resource type="Animation" id="Animation_45jv1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_e4ham"]
-resource_name = "selected"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(2.08165e-12, 2.08165e-12)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ClickPlayerComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_random"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5ku6"]
-_data = {
-"RESET": SubResource("Animation_45jv1"),
-"selected": SubResource("Animation_e4ham")
-}
-
 [node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
 custom_minimum_size = Vector2(170, 2.08165e-12)
 offset_right = 180.0
@@ -85,11 +22,6 @@ offset_bottom = 165.0
 pivot_offset = Vector2(60, 80)
 size_flags_vertical = 0
 script = ExtResource("1_mbqxd")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r5ku6")
-}
 
 [node name="ClickPlayerComponent" parent="." instance=ExtResource("2_0dvh4")]
 streams = Array[AudioStream]([ExtResource("3_3cbax"), ExtResource("4_0y2g8"), ExtResource("5_a3nws"), ExtResource("6_ygagn"), ExtResource("7_xmevb"), ExtResource("8_lm2ly"), ExtResource("9_cg68r"), ExtResource("10_ah3og"), ExtResource("11_0wt8y"), ExtResource("12_pmevt")])

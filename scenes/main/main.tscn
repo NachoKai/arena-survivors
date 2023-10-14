@@ -547,8 +547,9 @@ experience_manager = NodePath("../ExperienceManager")
 [node name="Entities" type="Node2D" parent="." groups=["entities"]]
 y_sort_enabled = true
 
-[node name="Player" parent="Entities" instance=ExtResource("1_b1865")]
+[node name="Player" parent="Entities" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_b1865")]
 unique_name_in_owner = true
 position = Vector2(0, 25)
+arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
