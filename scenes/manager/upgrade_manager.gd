@@ -15,9 +15,9 @@ var upgrade_hammer_count = preload("res://resources/upgrades/hammer_count.tres")
 
 func _ready():
 	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_hammer, 10)
-	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword_rate, 8)
 	upgrade_pool.add_item(upgrade_sword_damage, 8)
+	upgrade_pool.add_item(upgrade_hammer, 6)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	experience_manager.level_up.connect(on_levep_up)
 

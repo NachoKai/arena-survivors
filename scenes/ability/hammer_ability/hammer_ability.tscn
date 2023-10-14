@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc3tj3v4x30f6"]
+[gd_scene load_steps=14 format=3 uid="uid://dc3tj3v4x30f6"]
 
 [ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="1_iqcid"]
 [ext_resource type="Texture2D" uid="uid://dlxx27m78mpjp" path="res://scenes/ability/hammer_ability/hammer.png" id="1_kck7r"]
 [ext_resource type="Script" path="res://scenes/ability/hammer_ability/hammer_ability.gd" id="1_tc5sm"]
+[ext_resource type="Texture2D" uid="uid://j4jg25wokan6" path="res://assets/particle.png" id="3_dn1hh"]
 
 [sub_resource type="Animation" id="Animation_7erkc"]
 resource_name = "default"
-length = 0.6
+length = 1.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,7 +40,7 @@ tracks/2/path = NodePath("Sprite2D:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.6),
+"times": PackedFloat32Array(0, 0.45, 1.15),
 "transitions": PackedFloat32Array(0.125, 1, 9.18958),
 "update": 0,
 "values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12)]
@@ -51,7 +52,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -69,6 +70,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.25, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_3ndgx"]
@@ -121,6 +134,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5hg5x"]
 _data = {
@@ -131,6 +156,40 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_finwh"]
 radius = 32.0
 
+[sub_resource type="Gradient" id="Gradient_xr5ao"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.186508, 0.388889, 0.690476)
+colors = PackedColorArray(0.359069, 0.359069, 0.359069, 1, 0.473976, 0.473976, 0.473975, 1, 0.74768, 0.74768, 0.74768, 1, 0.815389, 0.815389, 0.815389, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xk0id"]
+gradient = SubResource("Gradient_xr5ao")
+
+[sub_resource type="Curve" id="Curve_4k1dm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.276284, 1), 0.0, 0.0, 0, 0, Vector2(0.944236, 0.791165), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_l6vo8"]
+curve = SubResource("Curve_4k1dm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_21udq"]
+lifetime_randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 6.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 750.0
+damping_max = 850.0
+angle_max = 360.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_l6vo8")
+color_ramp = SubResource("GradientTexture1D_xk0id")
+
 [node name="HammerAbility" type="Node2D"]
 script = ExtResource("1_tc5sm")
 
@@ -140,11 +199,21 @@ libraries = {
 "": SubResource("AnimationLibrary_5hg5x")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kck7r")
-
 [node name="HitboxComponent" parent="." instance=ExtResource("1_iqcid")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_finwh")
 disabled = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_21udq")
+texture = ExtResource("3_dn1hh")
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 0
+interpolate = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kck7r")
