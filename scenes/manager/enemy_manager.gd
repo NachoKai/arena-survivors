@@ -3,6 +3,7 @@ extends Node
 @onready var timer: Timer = $Timer
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
+@export var bat_enemy_scene: PackedScene
 @export var arena_time_manager: Node
 
 const SPAWN_RADIUS: int = 375
@@ -49,8 +50,11 @@ func on_timer_timeout():
 func on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = min((0.1 / 60 / 5) * arena_difficulty, 0.7)
 	timer.wait_time = base_spawn_time - time_off
+
 	if arena_difficulty == 6:
-		enemy_table.add_item(wizard_enemy_scene, 20)
-#	elif arena_difficulty == 12:
-#		enemy_table.add_item(some_other_enemy_scene, 40)
+		enemy_table.add_item(bat_enemy_scene, 12)
+	elif arena_difficulty == 12:
+		enemy_table.add_item(wizard_enemy_scene, 8)
+#	elif arena_difficulty == 18:
+#		enemy_table.add_item(some_other_enemy_scene, 20)
 
