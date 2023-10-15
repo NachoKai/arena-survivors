@@ -41,10 +41,10 @@ tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 7.99999),
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 7.99999),
 "update": 0,
-"values": [3.5, 0.682]
+"values": [2.08165e-12, 5.0, 0.682]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -53,10 +53,10 @@ tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 12.1257),
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 12.1257),
 "update": 0,
-"values": [Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 1)]
+"values": [Color(0.909804, 0.270588, 0.215686, 0), Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2t6j"]

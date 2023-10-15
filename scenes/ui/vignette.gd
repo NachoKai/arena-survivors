@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var color_rect: ColorRect = $ColorRect
 
 
 func _ready():
@@ -8,5 +9,8 @@ func _ready():
 
 
 func on_player_damaged():
+	color_rect.visible = true
 	animation_player.play("hit")
+	await animation_player.animation_finished
+	color_rect.visible = false
 
