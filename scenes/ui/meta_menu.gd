@@ -7,7 +7,7 @@ var meta_upgrade_card_scene = preload("res://scenes/component/meta_upgrade_card.
 
 
 func _ready():
-	back_button.pressed.connect(on_back_pressed)
+	back_button.pressed.connect(on_back_button_pressed)
 	for upgrade in upgrades:
 		var meta_upgrade_card_instance = meta_upgrade_card_scene.instantiate()
 		grid_container.add_child(meta_upgrade_card_instance)
@@ -15,12 +15,6 @@ func _ready():
 
 
 func on_back_button_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
-
-
-func on_back_pressed():
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

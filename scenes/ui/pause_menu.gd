@@ -59,6 +59,6 @@ func on_menu_pressed():
 
 
 func on_options_back_pressed(options_menu: Node):
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	options_menu.queue_free()

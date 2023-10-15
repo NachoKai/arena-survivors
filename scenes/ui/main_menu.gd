@@ -36,6 +36,8 @@ func on_options_pressed():
 
 
 func on_options_closed(options_instance: Node):
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	options_instance.queue_free()
 
 
