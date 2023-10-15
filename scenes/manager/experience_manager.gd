@@ -20,10 +20,10 @@ func increment_experience(number: float):
 	if current_experience >= target_experience:
 		current_level += 1
 		current_experience -= target_experience
-		target_experience *= EXPERIENCE_GROWTH_FACTOR
+		target_experience += EXPERIENCE_GROWTH_FACTOR
 		experience_updated.emit(current_experience, target_experience, current_level)
 		level_up.emit(current_level)
-	
+
 	experience_updated.emit(min(current_experience, target_experience), target_experience, current_level)
 
 func on_experience_vial_collected(number: float):
