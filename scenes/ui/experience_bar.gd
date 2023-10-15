@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var experience_manager: Node
+@export var experience_manager: ExperienceManager
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var level_label = %LevelLabel
 
