@@ -12,5 +12,5 @@ bus = &"music"
 script = ExtResource("2_sbuo8")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 50.0
-one_shot = true
+wait_time = 66.0
+autostart = true
