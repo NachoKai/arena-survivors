@@ -30,6 +30,10 @@ MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=640

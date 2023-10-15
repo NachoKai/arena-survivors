@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://box0fwsdbta33"]
+
+[ext_resource type="Texture2D" uid="uid://cvjju165wh564" path="res://assets/up.png" id="1_ufwr6"]
+[ext_resource type="Texture2D" uid="uid://bgik38tgplwpx" path="res://assets/right.png" id="2_pvxr7"]
+[ext_resource type="Texture2D" uid="uid://bqbfc4w14wfb" path="res://assets/down.png" id="3_2b5vs"]
+[ext_resource type="Texture2D" uid="uid://bo2hh3bsynx6c" path="res://assets/left.png" id="4_qbehm"]
+[ext_resource type="Texture2D" uid="uid://c2y3xknsst6g4" path="res://assets/pause.png" id="5_3wa2s"]
+
+[node name="MobileControls" type="CanvasLayer"]
+metadata/_edit_horizontal_guides_ = [1315.0]
+metadata/_edit_vertical_guides_ = [286.0, 111.0]
+
+[node name="Up" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(70, 225)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_ufwr6")
+passby_press = true
+action = "move_up"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(128, 276)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("2_pvxr7")
+passby_press = true
+action = "move_right"
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(70, 276)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("3_2b5vs")
+passby_press = true
+action = "move_down"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(14, 277)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("4_qbehm")
+passby_press = true
+action = "move_left"
+visibility_mode = 1
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(208, 277)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("5_3wa2s")
+passby_press = true
+action = "pause"
+visibility_mode = 1
