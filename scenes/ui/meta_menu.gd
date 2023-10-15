@@ -15,12 +15,12 @@ func _ready():
 
 
 func on_back_button_pressed():
-#	ScreenTransition.transition()
-#	await ScreenTransition.transition_halfway
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 
 func on_back_pressed():
-#	ScreenTransition.transition()
-#	await ScreenTransition.transition_halfway
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
