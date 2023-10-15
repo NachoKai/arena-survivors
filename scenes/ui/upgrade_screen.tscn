@@ -94,3 +94,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+alignment = 1
