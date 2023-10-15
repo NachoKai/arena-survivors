@@ -40,8 +40,6 @@ func close():
 
 
 func on_resume_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
 	close()
 
 

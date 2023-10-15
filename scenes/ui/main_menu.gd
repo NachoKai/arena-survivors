@@ -2,10 +2,10 @@ extends CanvasLayer
 
 var options_scene = preload("res://scenes/ui/options_menu.tscn")
 var upgrades_scene = preload("res://scenes/ui/meta_menu.tscn")
-@onready var play_button = %PlayButton
-@onready var options_button = %OptionsButton
-@onready var quit_button = %QuitButton
-@onready var upgrades_button = %UpgradesButton
+@onready var play_button: Button = %PlayButton
+@onready var options_button: Button = %OptionsButton
+@onready var quit_button: Button = %QuitButton
+@onready var upgrades_button: Button = %UpgradesButton
 
 
 func _ready():
