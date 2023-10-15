@@ -18,7 +18,7 @@ func damage(damage_amount: float = 0):
 	current_health = clamp(current_health - damage_amount, 0, max_health)
 	health_changed.emit()
 	if damage_amount > 0: health_decreased.emit()
-	Callable(check_death).call_deferred()
+	check_death.call_deferred()
 
 
 func heal(heal_amount: int):

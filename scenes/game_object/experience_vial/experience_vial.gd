@@ -30,7 +30,7 @@ func disable_collision():
 
 
 func on_area_entered(_other_area: Area2D):
-	Callable(disable_collision).call_deferred()
+	disable_collision.call_deferred()
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, 0.5).set_ease(Tween.EASE_IN).set_trans(tween.TRANS_BACK)
