@@ -45,7 +45,6 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.add_item(upgrade_axe_damage, 8)
 	elif chosen_upgrade.id == upgrade_hammer.id:
 		upgrade_pool.add_item(upgrade_hammer_count, 5)
-		
 
 
 func pick_upgrades():

@@ -42,7 +42,7 @@ func on_timer_timeout():
 	timer.start()
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return
-	
+
 	for i in enemies_to_spawn:
 		var enemy_scene = enemy_table.pick_item()
 		var enemy = enemy_scene.instantiate() as Node2D
@@ -64,7 +64,7 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 		enemy_table.add_item(ghost_enemy_scene, 10)
 	elif arena_difficulty == 24:
 		enemy_table.add_item(cyclops_enemy_scene, 5)
-		
-	if (arena_difficulty % 6) == 0: # 30 seconds interval
+
+	if (arena_difficulty % 6) == 0:  # 30 seconds interval
 		enemies_to_spawn += 1
 

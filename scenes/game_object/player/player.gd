@@ -16,6 +16,7 @@ var base_speed = 0
 
 
 func _ready():
+	if not arena_time_manager: return
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
 	collision_area.body_entered.connect(on_body_entered)
@@ -82,6 +83,6 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 func on_arena_difficulty_increased(difficulty: int):
 	var health_regeneration_quantity = MetaProgression.get_upgrade_count("health_regeneration")
 	if health_regeneration_quantity > 0:
-		var is_thirty_second_interval = (difficulty % 6) == 0 # 30 seconds interval
+		var is_thirty_second_interval = (difficulty % 6) == 0  # 30 seconds interval
 		if is_thirty_second_interval:
 			health_component.heal(health_regeneration_quantity)
