@@ -22,9 +22,9 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 func update_progress():
 	var quantity = 0
-	if MetaProgression.save_data["meta_upgrades"].has(meta_upgrade.id):
-		quantity = MetaProgression.save_data["meta_upgrades"][meta_upgrade.id]["quantity"]
-	var currency = MetaProgression.save_data["meta_upgrade_currency"]
+	if MetaProgression.save_data.meta_upgrades.has(meta_upgrade.id):
+		quantity = MetaProgression.save_data.meta_upgrades[meta_upgrade.id].quantity
+	var currency = MetaProgression.save_data.meta_upgrade_currency
 	var percent = min((currency / meta_upgrade.experience_cost), 1)
 	var is_max_quantity = quantity >= meta_upgrade.max_quantity
 	progress_bar.value = percent
@@ -37,6 +37,6 @@ func update_progress():
 func on_learn_button_pressed():
 	if not meta_upgrade: return
 	MetaProgression.add_meta_upgrade(meta_upgrade)
-	MetaProgression.save_data["meta_upgrade_currency"] -= meta_upgrade.experience_cost
+	MetaProgression.save_data.meta_upgrade_currency -= meta_upgrade.experience_cost
 	MetaProgression.save_file()
 	get_tree().call_group("meta_upgrade_card", "update_progress")

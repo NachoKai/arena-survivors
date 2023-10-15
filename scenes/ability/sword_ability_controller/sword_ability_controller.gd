@@ -57,8 +57,8 @@ func use_sword_ability(_player: Node2D, target_enemy: Node2D):
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "sword_rate":
-		var percent_reduction = current_upgrades["sword_rate"]["quantity"] * 0.1
+		var percent_reduction = current_upgrades.sword_rate.quantity * 0.1
 		timer.wait_time = default_wait_time * (1 - percent_reduction)
 		timer.start()
 	elif upgrade.id == "sword_damage":
-		additional_damage_percent = 1 + (current_upgrades["sword_damage"]["quantity"] * 0.15)
+		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)

@@ -24,7 +24,7 @@ func on_timer_timeout():
 		var spawn_position = player.global_position + (adjusted_direction * hammer_distance)
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
-		if not result.is_empty(): spawn_position = result["position"]
+		if not result.is_empty(): spawn_position = result.position
 		var hammer_ability = hammer_ability_scene.instantiate() as Node2D
 		get_tree().get_first_node_in_group("foreground").add_child(hammer_ability)
 		hammer_ability.global_position = spawn_position
@@ -34,4 +34,4 @@ func on_timer_timeout():
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "hammer_count":
-		hammer_count = current_upgrades["hammer_count"]["quantity"]
+		hammer_count = current_upgrades.hammer_count.quantity

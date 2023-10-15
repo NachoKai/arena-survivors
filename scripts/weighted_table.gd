@@ -10,9 +10,9 @@ func add_item(item, weight: int):
 
 
 func remove_item(item_to_remove):
-	items = items.filter(func(item): return item["item"] != item_to_remove)
+	items = items.filter(func(item): return item.item != item_to_remove)
 	weight_sum = 0
-	for item in items: weight_sum += item["weight"]
+	for item in items: weight_sum += item.weight
 
 
 func pick_item(exclude: Array = []):
@@ -23,14 +23,14 @@ func pick_item(exclude: Array = []):
 		adjusted_items = []
 		adjusted_weight_sum = 0
 		for item in items:
-			if item["item"] in exclude: continue
+			if item.item in exclude: continue
 			adjusted_items.append(item)
-			adjusted_weight_sum += item["weight"]
+			adjusted_weight_sum += item.weight
 
 	var chosen_weight = randi_range(1, adjusted_weight_sum)
 	var iteration_sum = 0
 
 	for item in adjusted_items:
-		iteration_sum += item["weight"]
+		iteration_sum += item.weight
 		if chosen_weight <= iteration_sum:
-			return item["item"]
+			return item.item
