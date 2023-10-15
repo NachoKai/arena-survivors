@@ -82,25 +82,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="Control"]
-position = Vector2(212, 108)
+position = Vector2(218, 80)
 rotation = -0.785397
 scale = Vector2(2, 2)
 texture = ExtResource("5_scroa")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Control"]
-position = Vector2(429, 108)
+position = Vector2(420, 76)
 rotation = 0.523598
 scale = Vector2(2, 2)
 texture = ExtResource("6_s2vga")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Control"]
-position = Vector2(421, 111)
+position = Vector2(409, 79)
 rotation = -0.523598
 scale = Vector2(2, 2)
 texture = ExtResource("7_h3tja")
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
-position = Vector2(223, 112)
+position = Vector2(233, 76)
 rotation = 0.523598
 scale = Vector2(2, 2)
 texture = ExtResource("4_ole3j")
