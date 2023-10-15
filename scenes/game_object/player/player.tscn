@@ -138,11 +138,11 @@ _data = {
 "walk": SubResource("Animation_6n1tv")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0a14d"]
-radius = 8.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cc0k"]
 radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0a14d"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2muc3"]
 radius = 39.0512
@@ -182,10 +182,6 @@ acceleration = 25.0
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_14gh0")]
 
-[node name="PlayerShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_0a14d")
-
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -193,6 +189,11 @@ collision_mask = 8
 [node name="CollisionAreaShape" type="CollisionShape2D" parent="CollisionArea"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_3cc0k")
+
+[node name="PlayerShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_0a14d")
+metadata/_edit_lock_ = true
 
 [node name="PickupArea" type="Area2D" parent="."]
 position = Vector2(0, -2)
@@ -202,6 +203,7 @@ collision_mask = 0
 [node name="PickupAreaShape" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2muc3")
+metadata/_edit_lock_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)

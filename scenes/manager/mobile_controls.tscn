@@ -8,7 +8,6 @@
 
 [node name="MobileControls" type="CanvasLayer"]
 metadata/_edit_horizontal_guides_ = [1315.0]
-metadata/_edit_vertical_guides_ = [286.0, 111.0]
 
 [node name="Up" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
