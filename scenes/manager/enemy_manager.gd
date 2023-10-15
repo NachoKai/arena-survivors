@@ -1,7 +1,7 @@
 extends Node
 
 @onready var timer: Timer = $Timer
-@export var arena_time_manager: Node
+@export var arena_time_manager: ArenaTimeManager
 @export var rat_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
 @export var bat_enemy_scene: PackedScene

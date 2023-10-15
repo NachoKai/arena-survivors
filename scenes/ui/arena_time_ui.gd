@@ -1,16 +1,18 @@
 extends CanvasLayer
 
-@export var arena_time_manager: Node
-@onready var label = %Label
+@export var arena_time_manager: ArenaTimeManager
+@onready var label: Label = %Label
 
 
-func _process(_delta):
+func _process(delta):
 	if not arena_time_manager: return
 	var time_elapsed = arena_time_manager.get_time_elapsed()
-	label.text = format_seconds_to_string(time_elapsed)
+	var time_elapsed_formatted = format_seconds_to_string(time_elapsed)
+	label.text = time_elapsed_formatted
 
 
-func format_seconds_to_string(seconds: float) -> String:
-	var minutes = floor(seconds / 60)
-	var remaining_seconds = floor(seconds - (minutes * 60))
-	return ("%02d" % minutes) + ":" + ("%02d" % remaining_seconds)  # %02d adds a leading zero, so 0:0 becomes 00:00
+func format_seconds_to_string(value: int) -> String:
+	var seconds = value %60
+	var minutes = (value / 60)%60
+
+	return "%02d:%02d" % [minutes, seconds]

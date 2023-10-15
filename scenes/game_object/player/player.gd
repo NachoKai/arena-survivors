@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var arena_time_manager: Node
+@export var arena_time_manager: ArenaTimeManager
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
@@ -28,7 +28,7 @@ func _ready():
 	update_health_display()
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
