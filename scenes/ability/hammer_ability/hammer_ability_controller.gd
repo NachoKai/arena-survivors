@@ -19,8 +19,8 @@ func on_timer_timeout():
 	var additional_rotation_degrees = 360.0 / (hammer_count + 1)
 	var hammer_distance = randf_range(0, BASE_RANGE)
 
-	for hammer in hammer_count + 1:
-		var adjusted_direction = direction.rotated(deg_to_rad(hammer * additional_rotation_degrees))
+	for i in range(hammer_count + 1):
+		var adjusted_direction = direction.rotated(deg_to_rad(i * additional_rotation_degrees))
 		var spawn_position = player.global_position + (adjusted_direction * hammer_distance)
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)

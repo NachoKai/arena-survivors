@@ -19,7 +19,7 @@ func on_timer_timeout():
 	var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
 	if not foreground: return
 
-	for i in axe_count + 1:
+	for i in range(axe_count + 1):
 		var axe_instance = axe_ability_scene.instantiate() as Node2D
 		if not axe_instance: return
 		foreground.add_child(axe_instance)
