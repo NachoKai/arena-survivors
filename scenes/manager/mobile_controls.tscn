@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://box0fwsdbta33"]
+[gd_scene load_steps=3 format=3 uid="uid://box0fwsdbta33"]
 
+[ext_resource type="Texture2D" uid="uid://c2y3xknsst6g4" path="res://assets/pause.png" id="1_opini"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="6_bsvns"]
 
 [node name="MobileControls" type="CanvasLayer"]
 metadata/_edit_horizontal_guides_ = [1315.0]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(586, 8)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_opini")
+action = "pause"
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("6_bsvns")]
 modulate = Color(1, 1, 1, 0.392157)
