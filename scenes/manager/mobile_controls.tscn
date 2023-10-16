@@ -12,6 +12,7 @@ position = Vector2(586, 8)
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("1_opini")
 action = "pause"
+visibility_mode = 1
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("6_bsvns")]
 modulate = Color(1, 1, 1, 0.392157)

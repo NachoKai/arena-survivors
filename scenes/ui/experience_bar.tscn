@@ -46,7 +46,7 @@ theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 16
-text = "Level: 1"
+text = "Level 1"
 vertical_alignment = 2
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]

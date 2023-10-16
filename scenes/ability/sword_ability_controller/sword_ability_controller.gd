@@ -1,5 +1,6 @@
 extends Node
 
+@onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
 @export var sword_ability: PackedScene
 @export var base_damage = 5
@@ -15,7 +16,6 @@ func _ready():
 
 
 func on_timer_timeout():
-	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return
 	var enemies = get_enemies_in_range(player)
 	if not enemies || enemies.size() == 0: return

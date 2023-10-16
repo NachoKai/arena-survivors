@@ -1,5 +1,6 @@
 extends Node
 
+@onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
 @export var hammer_ability_scene: PackedScene
 @export var base_damage: int = 15
@@ -13,7 +14,6 @@ func _ready():
 
 
 func on_timer_timeout():
-	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return
 	var direction = Vector2.RIGHT.rotated(randf_range(0, TAU))  # TAU: 2 times PI, a full rotation
 	var additional_rotation_degrees = 360.0 / (hammer_count + 1)

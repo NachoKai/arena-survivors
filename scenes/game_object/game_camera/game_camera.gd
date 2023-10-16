@@ -1,5 +1,7 @@
 extends Camera2D
 
+@onready var player = get_tree().get_first_node_in_group("player") as Node2D
+
 var target_position: Vector2 = Vector2.ZERO
 var camera_smoothing: int = 20
 
@@ -14,7 +16,6 @@ func _process(delta):
 
 
 func acquire_target():
-	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return Vector2.ZERO
 	else: target_position = player.global_position
 

@@ -1,5 +1,6 @@
 extends Node
 
+@onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
 @export var axe_ability_scene: PackedScene
 @export var base_damage = 10
@@ -13,7 +14,6 @@ func _ready():
 
 
 func on_timer_timeout():
-	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return
 	var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
 	if not foreground: return

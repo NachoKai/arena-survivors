@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var experience_manager: ExperienceManager
 @onready var progress_bar: ProgressBar = %ProgressBar
-@onready var level_label = %LevelLabel
+@onready var level_label: Label = %LevelLabel
 
 
 func _ready():
@@ -15,4 +15,4 @@ func on_experience_updated(current_experience: float, target_experience: float, 
 	var percent = current_experience / target_experience
 	progress_bar.value = percent
 	var level = str(current_level)
-	level_label.text = "Level: " + level
+	level_label.text = "Level " + level

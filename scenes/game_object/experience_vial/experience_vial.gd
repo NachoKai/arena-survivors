@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var experience_vial_area: Area2D = $ExperienceVialArea
 @onready var experience_vial_area_shape: CollisionShape2D = $ExperienceVialArea/ExperienceVialAreaShape
 @onready var experience_vial_image: Sprite2D = $ExperienceVialImage
@@ -12,7 +13,6 @@ func _ready():
 
 
 func tween_collect(percent: float, start_position: Vector2):
-	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if not player: return
 	global_position = start_position.lerp(player.global_position, percent)
 	var direction_from_start = player.global_position - start_position
