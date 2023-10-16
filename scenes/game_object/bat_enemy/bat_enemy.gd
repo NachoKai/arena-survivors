@@ -11,7 +11,7 @@ func _ready():
 	hurtbox_component.hit.connect(on_hit)
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	velocity_component.accelerate_to_player()
 	velocity_component.move(self)
 	var move_sign = sign(velocity.x)
