@@ -6,6 +6,7 @@ var upgrades_scene = preload("res://scenes/ui/meta_menu.tscn")
 @onready var options_button: Button = %OptionsButton
 @onready var quit_button: Button = %QuitButton
 @onready var upgrades_button: Button = %UpgradesButton
+@onready var version_label: Label = $VersionLabel
 
 
 func _ready():
@@ -13,6 +14,11 @@ func _ready():
 	options_button.pressed.connect(on_options_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
 	upgrades_button.pressed.connect(on_upgrades_pressed)
+	
+	var preset = ConfigFile.new()
+	preset.load("res://export_presets.cfg")
+	var game_version = preset.get_value("preset.0.options", "application/version", "")
+	version_label.text = "v. " + game_version
 
 
 func on_play_pressed():
