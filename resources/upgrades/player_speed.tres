@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_dsnby")
 id = "player_speed"
-max_quantity = 3
+max_quantity = 5
 name = "Move Speed"
 description = "Increases player movement speed by 10%."

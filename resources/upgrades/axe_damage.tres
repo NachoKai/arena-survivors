@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_ijcaj")
 id = "axe_damage"
-max_quantity = 0
+max_quantity = 5
 name = "Axe Damage"
 description = "Increases axe damage by 10%."
