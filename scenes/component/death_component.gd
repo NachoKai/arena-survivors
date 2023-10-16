@@ -1,14 +1,15 @@
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var particles: GPUParticles2D = $GPUParticles2D
+@onready var step_back_particle: GPUParticles2D = $StepBackParticle
+@onready var blood_particles: GPUParticles2D = $BloodParticles
 @export var healt_component: Node
 @export var sprite: Sprite2D
 @onready var hit_random_audio_player_component = $HitRandomAudioPlayerComponent
 
 
 func _ready():
-	particles.texture = sprite.texture
+	step_back_particle.texture = sprite.texture
 	healt_component.died.connect(on_died)
 
 
