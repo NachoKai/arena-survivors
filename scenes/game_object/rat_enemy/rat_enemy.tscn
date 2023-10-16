@@ -115,7 +115,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mut2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs6m2"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -129,6 +129,7 @@ radius = 7.0
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ycfmh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -151,7 +152,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_7mut2")
+hit_flash_material = SubResource("ShaderMaterial_fs6m2")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")
