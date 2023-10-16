@@ -2,7 +2,7 @@ extends Node
 
 @onready var timer: Timer = $Timer
 @export var axe_ability_scene: PackedScene
-var base_damage = 10
+@export var base_damage = 10
 var additional_damage_percent = 1
 var default_wait_time
 

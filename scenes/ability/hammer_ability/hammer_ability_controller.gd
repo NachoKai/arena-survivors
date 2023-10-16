@@ -2,8 +2,8 @@ extends Node
 
 @onready var timer: Timer = $Timer
 @export var hammer_ability_scene: PackedScene
+@export var base_damage: int = 15
 const BASE_RANGE: int = 100
-const BASE_DAMAGE: int = 15
 var hammer_count: int = 0
 
 
@@ -28,7 +28,7 @@ func on_timer_timeout():
 		var hammer_ability = hammer_ability_scene.instantiate() as Node2D
 		get_tree().get_first_node_in_group("foreground").add_child(hammer_ability)
 		hammer_ability.global_position = spawn_position
-		hammer_ability.hitbox_component.damage = BASE_DAMAGE
+		hammer_ability.hitbox_component.damage = base_damage
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

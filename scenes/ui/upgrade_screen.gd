@@ -3,7 +3,7 @@ extends CanvasLayer
 signal upgrade_selected(upgrade: AbilityUpgrade)
 
 @export var upgrade_card_scene: PackedScene
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var card_container: HBoxContainer = %CardContainer
 
 

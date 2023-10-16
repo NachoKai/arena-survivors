@@ -2,8 +2,8 @@ extends Node
 
 @onready var timer: Timer = $Timer
 @export var sword_ability: PackedScene
+@export var base_damage = 5
 const MAX_RANGE: int = 150
-var base_damage = 5
 var additional_damage_percent = 1
 var default_wait_time
 
