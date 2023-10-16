@@ -10,6 +10,7 @@ var upgrade_axe = preload("res://resources/upgrades/axe.tres")
 var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
 var upgrade_hammer = preload("res://resources/upgrades/hammer.tres")
+var upgrade_axe_count = preload("res://resources/upgrades/axe_count.tres")
 var upgrade_hammer_count = preload("res://resources/upgrades/hammer_count.tres")
 
 
@@ -43,6 +44,7 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if not chosen_upgrade: return
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage, 8)
+		upgrade_pool.add_item(upgrade_axe_count, 5)
 	elif chosen_upgrade.id == upgrade_hammer.id:
 		upgrade_pool.add_item(upgrade_hammer_count, 5)
 
