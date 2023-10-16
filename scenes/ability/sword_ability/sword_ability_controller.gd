@@ -23,25 +23,25 @@ func on_timer_timeout():
 	use_sword_ability(player, closest_enemy)
 
 
-func get_enemies_in_range(player: Node2D) -> Array:
+func get_enemies_in_range(player_node: Node2D) -> Array:
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	if not enemies: return []
 	return enemies.filter(func(enemy: Node2D):
-		return enemy.global_position.distance_squared_to(player.global_position) < pow(MAX_RANGE, 2)
+		return enemy.global_position.distance_squared_to(player_node.global_position) < pow(MAX_RANGE, 2)
 	)
 
 
-func get_closest_enemy(player: Node2D, enemies: Array) -> Node2D:
+func get_closest_enemy(player_node: Node2D, enemies: Array) -> Node2D:
 	if not enemies || enemies.size() == 0: return null
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
-		var a_distance = a.global_position.distance_squared_to(player.global_position)
-		var b_distance = b.global_position.distance_squared_to(player.global_position)
+		var a_distance = a.global_position.distance_squared_to(player_node.global_position)
+		var b_distance = b.global_position.distance_squared_to(player_node.global_position)
 		return a_distance < b_distance
 	)
 	return enemies[0]
 
 
-func use_sword_ability(_player: Node2D, target_enemy: Node2D):
+func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	if not sword_instance: return
 	var foreground = get_tree().get_first_node_in_group("foreground")
