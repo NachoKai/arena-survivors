@@ -2,6 +2,7 @@ extends Node
 
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
+@export var enemies_cap: int = 500
 @export var arena_time_manager: ArenaTimeManager
 @export var rat_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
@@ -47,9 +48,12 @@ func on_timer_timeout():
 		var enemy_scene = enemy_table.pick_item()
 		var enemy = enemy_scene.instantiate() as Node2D
 		var entities = get_tree().get_first_node_in_group("entities")
-		entities.add_child(enemy)
-		var spawn_position = get_spawn_position()
-		enemy.global_position = spawn_position
+		var children_quantity = entities.get_children().size()
+		print(children_quantity)
+		if children_quantity <= enemies_cap:
+			entities.add_child(enemy)
+			var spawn_position = get_spawn_position()
+			enemy.global_position = spawn_position
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
