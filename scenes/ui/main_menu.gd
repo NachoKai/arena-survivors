@@ -14,11 +14,12 @@ func _ready():
 	options_button.pressed.connect(on_options_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
 	upgrades_button.pressed.connect(on_upgrades_pressed)
-	
+
 	var preset = ConfigFile.new()
 	preset.load("res://export_presets.cfg")
-	var game_version = preset.get_value("preset.0.options", "application/version", "")
-	version_label.text = "v. " + game_version
+	var file_version = preset.get_value("preset.0.options", "application/version", "")
+	if file_version: version_label.text = "v. " + str(file_version)
+	else: version_label.text = "v. " + str(GameEvents.game_version)
 
 
 func on_play_pressed():
