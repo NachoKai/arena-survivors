@@ -1,5 +1,4 @@
 extends Node
-class_name EnemyManager
 
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
