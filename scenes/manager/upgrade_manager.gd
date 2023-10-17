@@ -21,7 +21,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_sword_damage, 8)
 	upgrade_pool.add_item(upgrade_hammer, 6)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
-	upgrade_pool.add_item(upgrade_pickup_area, 5000)
+	upgrade_pool.add_item(upgrade_pickup_area, 5)
 	experience_manager.level_up.connect(on_levep_up)
 
 
