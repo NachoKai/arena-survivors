@@ -115,7 +115,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkkpq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1ayf"]
 resource_local_to_scene = true
 shader = SubResource("Shader_hwlkt")
 shader_parameter/lerp_percent = 0.0
@@ -154,7 +154,7 @@ acceleration = 15.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_jlc6l")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_qkkpq")
+hit_flash_material = SubResource("ShaderMaterial_u1ayf")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("2_1r1ir")]
 healt_component = NodePath("../HealthComponent")
@@ -167,7 +167,7 @@ shape = SubResource("CircleShape2D_3yu7c")
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_vtjf5")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_vo8en")
 
@@ -176,3 +176,7 @@ shape = SubResource("CircleShape2D_vo8en")
 [node name="EnemyImage" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -8)
 texture = ExtResource("1_tfcpq")
+
+[node name="HideEnemyTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true

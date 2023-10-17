@@ -115,15 +115,15 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8lhk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vjl6"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5gys3"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1owq"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gys3"]
 
 [node name="SpiderEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -154,25 +154,29 @@ acceleration = 0.3
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_8w40r")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_m8lhk")
+hit_flash_material = SubResource("ShaderMaterial_1vjl6")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("12_82cwv")]
 healt_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_k36xj")]
-health_component = NodePath("../HealthComponent")
-
-[node name="HurtboxComponentShape" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_5gys3")
-
 [node name="EnemyArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_s1owq")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_k36xj")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_5gys3")
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="EnemyImage" type="Sprite2D" parent="Visuals"]
 position = Vector2(2.08165e-12, -4)
 texture = ExtResource("14_ty3q2")
+
+[node name="HideEnemyTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
