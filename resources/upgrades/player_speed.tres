@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dsnby")
-id = "player_speed"
+id = "pickup_area"
 max_quantity = 5
-name = "Move Speed"
-description = "Increases player movement speed by 10%."
+name = "Pickup Area"
+description = "Increases player pickup area by 10%."

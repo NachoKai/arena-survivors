@@ -9,10 +9,12 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: Node2D = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
-@onready var hit_random_stream_player = $HitRandomStreamPlayer
+@onready var hit_random_stream_player: AudioStreamPlayer2D = $HitRandomStreamPlayer
+@onready var pickup_area_shape: CollisionShape2D = $PickupArea/PickupAreaShape
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0
+var base_pickup_area = 30
 
 
 func _ready():
@@ -78,6 +80,9 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 		abilities.add_child(ability.ability_controller_scene.instantiate())
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades.player_speed.quantity * 0.1)
+	elif ability_upgrade.id == "pickup_area":
+		print("current_upgrades.pickup_area.quantity: ", current_upgrades.pickup_area.quantity)
+		pickup_area_shape.shape.radius = base_pickup_area + (current_upgrades.pickup_area.quantity * 6)
 
 
 func on_arena_difficulty_increased(difficulty: int):

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
 [ext_resource type="Texture2D" uid="uid://cswu8tolryu6h" path="res://scenes/game_object/player/player.png" id="1_xn5b6"]
-[ext_resource type="PackedScene" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="2_14gh0"]
+[ext_resource type="PackedScene" uid="uid://6a38sh7pfjp3" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="2_14gh0"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_tumac"]
 [ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="2_xotrb"]
 [ext_resource type="AudioStream" uid="uid://bett3opsvbbw0" path="res://sounds/impactMining_000.ogg" id="3_b577q"]
@@ -145,7 +145,7 @@ radius = 8.06226
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2muc3"]
-radius = 39.0512
+radius = 30.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrf1p"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -203,7 +203,6 @@ collision_mask = 0
 [node name="PickupAreaShape" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2muc3")
-metadata/_edit_lock_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)
