@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rmg0g834qxnl"]
+[gd_scene load_steps=17 format=3 uid="uid://rmg0g834qxnl"]
 
 [ext_resource type="PackedScene" uid="uid://ff082s2cpd0g" path="res://scenes/game_object/player/player.tscn" id="1_b1865"]
 [ext_resource type="Texture2D" uid="uid://d3qv6apvkyxul" path="res://assets/environment/tilemap_packed.png" id="1_da4bu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bos10tm8mi6d4" path="res://scenes/manager/upgrade_manager.tscn" id="9_omo6q"]
 [ext_resource type="PackedScene" uid="uid://box0fwsdbta33" path="res://scenes/manager/mobile_controls.tscn" id="12_08wk4"]
 [ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_nu1a0"]
+[ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="14_ow7mi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vepa"]
 texture = ExtResource("1_da4bu")
@@ -589,3 +590,5 @@ arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 metadata/_edit_vertical_guides_ = [286.0]
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
+
+[node name="CrtFilter" parent="." instance=ExtResource("14_ow7mi")]
