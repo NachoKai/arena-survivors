@@ -8,3 +8,4 @@ id = "sword_rate"
 max_quantity = 5
 name = "Sword Quickness"
 description = "Increases sword attack rate by 10%."
+image_path = "res://scenes/ability/sword_ability/sword.png"

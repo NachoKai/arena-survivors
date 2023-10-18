@@ -8,3 +8,4 @@ id = "sword_damage"
 max_quantity = 5
 name = "Sword Damage"
 description = "Increases sword damage by 15%."
+image_path = "res://scenes/ability/sword_ability/sword.png"
