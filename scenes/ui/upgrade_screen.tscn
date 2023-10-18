@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://leusya3giqx"]
+[gd_scene load_steps=8 format=3 uid="uid://leusya3giqx"]
 
 [ext_resource type="PackedScene" uid="uid://rif160syjhs3" path="res://scenes/component/ability_upgrade_card.tscn" id="1_lpepc"]
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_qswar"]
+[ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="3_fekns"]
 
 [sub_resource type="Animation" id="Animation_gdj2x"]
 length = 0.001
@@ -95,3 +96,5 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 alignment = 1
+
+[node name="CrtFilter" parent="." instance=ExtResource("3_fekns")]
