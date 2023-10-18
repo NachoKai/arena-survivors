@@ -144,7 +144,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/path = NodePath("OuterNightLight:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -152,6 +152,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InnerNightLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiddleNightLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_l307i"]
@@ -162,7 +186,7 @@ step = 50.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/path = NodePath("OuterNightLight:energy")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -170,6 +194,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InnerNightLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 200, 300),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiddleNightLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 200, 300),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.8, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ppnf"]
@@ -252,11 +300,25 @@ collision_mask = 0
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2muc3")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="OuterNightLight" type="PointLight2D" parent="."]
+position = Vector2(2.08165e-12, -7)
 color = Color(0.968627, 0.968627, 0, 1)
 energy = 0.2
 texture = ExtResource("11_8pr5u")
-texture_scale = 0.4
+texture_scale = 0.5
+
+[node name="MiddleNightLight" type="PointLight2D" parent="."]
+position = Vector2(2.08165e-12, -7)
+color = Color(0.968627, 0.968627, 0, 1)
+texture = ExtResource("11_8pr5u")
+texture_scale = 0.25
+
+[node name="InnerNightLight" type="PointLight2D" parent="."]
+position = Vector2(2.08165e-12, -7)
+color = Color(0.968627, 0.968627, 0, 1)
+energy = 0.0
+texture = ExtResource("11_8pr5u")
+texture_scale = 0.04
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)
