@@ -9,4 +9,5 @@ ability_controller_scene = ExtResource("1_jjm6y")
 id = "hammer"
 max_quantity = 1
 name = "Hammer"
+image_path = "res://scenes/ability/hammer_ability/hammer.png"
 description = "Drops hammers randomly from the sky."

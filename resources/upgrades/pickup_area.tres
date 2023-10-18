@@ -8,3 +8,4 @@ id = "player_speed"
 max_quantity = 5
 name = "Move Speed"
 description = "Increases player movement speed by 10%."
+image_path = "res://assets/abilities/player.png"

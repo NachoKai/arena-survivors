@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rif160syjhs3"]
+[gd_scene load_steps=22 format=3 uid="uid://rif160syjhs3"]
 
 [ext_resource type="Script" path="res://scenes/component/ability_upgrade_card.gd" id="1_hedcm"]
 [ext_resource type="PackedScene" uid="uid://berykcpudlkdw" path="res://scenes/component/random_audio_stream_player_component.tscn" id="2_ekil8"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bpfarkuqxb5ll" path="res://sounds/switch8.ogg" id="10_gbr53"]
 [ext_resource type="AudioStream" uid="uid://b50puob23ic7y" path="res://sounds/switch9.ogg" id="11_tkgtx"]
 [ext_resource type="AudioStream" uid="uid://0bn0s0f1amj8" path="res://sounds/switch10.ogg" id="12_ldqmt"]
+[ext_resource type="Texture2D" uid="uid://cg8xs3f4fg34r" path="res://scenes/ability/sword_ability/sword.png" id="13_bua8b"]
 
 [sub_resource type="Animation" id="Animation_45jv1"]
 length = 0.001
@@ -204,9 +205,9 @@ streams = Array[AudioStream]([ExtResource("3_oftpx"), ExtResource("4_1fadt"), Ex
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -239,6 +240,7 @@ autowrap_mode = 2
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -250,4 +252,12 @@ theme_override_constants/line_spacing = 4
 theme_override_font_sizes/font_size = 16
 text = "Test Description"
 vertical_alignment = 2
-autowrap_mode = 2
+autowrap_mode = 3
+
+[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("13_bua8b")
+stretch_mode = 3

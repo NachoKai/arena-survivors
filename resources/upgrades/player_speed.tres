@@ -8,3 +8,4 @@ id = "pickup_area"
 max_quantity = 5
 name = "Pickup Area"
 description = "Increases player pickup area by 10%."
+image_path = "res://assets/abilities/player.png"

@@ -6,6 +6,7 @@ signal selected
 @onready var description_label: Label = %DescriptionLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hover_animation_player: AnimationPlayer = $HoverAnimationPlayer
+@onready var upgrade_image: TextureRect = %UpgradeImage
 var disabled: bool = false
 
 
@@ -29,7 +30,8 @@ func set_ability_upgrade(upgrade: AbilityUpgrade):
 	if not upgrade: return
 	name_label.text = upgrade.name
 	description_label.text = upgrade.description
-
+	if upgrade.image_path: upgrade_image.texture = load(upgrade.image_path)
+	else: upgrade_image.visible = false
 
 func select_card():
 	disabled = true

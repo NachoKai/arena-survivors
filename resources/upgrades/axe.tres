@@ -9,4 +9,5 @@ ability_controller_scene = ExtResource("1_y1uxq")
 id = "axe"
 max_quantity = 1
 name = "Axe"
+image_path = "res://scenes/ability/axe_ability/axe.png"
 description = "Periodically sends out a spinning axe."
