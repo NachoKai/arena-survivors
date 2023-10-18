@@ -29,6 +29,7 @@ func on_hit():
 
 
 func on_timer_timeout():
+	if not player || not global_position: return
 	var location_diff = global_position - player.global_position
 	if abs(location_diff.x) > (screen_size.x / 2) * 1.4 || abs(location_diff.y) > (screen_size.y / 2) * 1.4:
 		visible = false

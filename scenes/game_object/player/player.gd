@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var velocity_component: Node = $VelocityComponent
 @onready var hit_random_stream_player: AudioStreamPlayer2D = $HitRandomStreamPlayer
 @onready var pickup_area_shape: CollisionShape2D = $PickupArea/PickupAreaShape
+@onready var night_light_animation = $NightLightAnimation
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0
@@ -19,6 +20,7 @@ var base_pickup_area = 30
 
 func _ready():
 	if not arena_time_manager: return
+	night_light_animation.play("default")
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
 	collision_area.body_entered.connect(on_body_entered)

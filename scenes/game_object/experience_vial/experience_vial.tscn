@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://conpo2kcu5b24"]
+[gd_scene load_steps=14 format=3 uid="uid://conpo2kcu5b24"]
 
 [ext_resource type="Texture2D" uid="uid://bu7t87i6678l3" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_oir5b"]
 [ext_resource type="Script" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_qh0rq"]
@@ -8,6 +8,46 @@
 [ext_resource type="AudioStream" uid="uid://bi356d2bic0t7" path="res://sounds/impactGeneric_light_002.ogg" id="5_h8g0i"]
 [ext_resource type="AudioStream" uid="uid://75expcrd2ct5" path="res://sounds/impactGeneric_light_003.ogg" id="6_hv4al"]
 [ext_resource type="AudioStream" uid="uid://c5qyp7c71cn6n" path="res://sounds/impactGeneric_light_004.ogg" id="7_7pcof"]
+[ext_resource type="Texture2D" uid="uid://cjaor0sh8iqpb" path="res://assets/light.png" id="9_3bslp"]
+
+[sub_resource type="Animation" id="Animation_xvccg"]
+resource_name = "default"
+length = 300.0
+loop_mode = 1
+step = 50.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 200, 300),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_82unq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayacp"]
+_data = {
+"RESET": SubResource("Animation_82unq"),
+"default": SubResource("Animation_xvccg")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1esu"]
 radius = 9.0
@@ -15,6 +55,11 @@ height = 22.0
 
 [node name="ExperienceVial" type="Node2D"]
 script = ExtResource("1_qh0rq")
+
+[node name="NightLightAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ayacp")
+}
 
 [node name="RandomStreamPlayerComponent" parent="." instance=ExtResource("2_t1c86")]
 streams = Array[AudioStream]([ExtResource("3_0mp2n"), ExtResource("4_im4ku"), ExtResource("5_h8g0i"), ExtResource("6_hv4al"), ExtResource("7_7pcof")])
@@ -25,6 +70,12 @@ collision_mask = 16
 
 [node name="ExperienceVialAreaShape" type="CollisionShape2D" parent="ExperienceVialArea"]
 shape = SubResource("CapsuleShape2D_b1esu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.176471, 1)
+energy = 0.2
+texture = ExtResource("9_3bslp")
+texture_scale = 0.1
 
 [node name="ExperienceVialImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_oir5b")
