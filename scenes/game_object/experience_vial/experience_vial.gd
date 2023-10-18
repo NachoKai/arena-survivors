@@ -6,12 +6,12 @@ extends Node2D
 @onready var experience_vial_area_shape: CollisionShape2D = $ExperienceVialArea/ExperienceVialAreaShape
 @onready var experience_vial_image: Sprite2D = $ExperienceVialImage
 @onready var random_stream_player_component: AudioStreamPlayer2D = $RandomStreamPlayerComponent
-@onready var night_light_animation: AnimationPlayer = $NightLightAnimation
+#@onready var night_light_animation: AnimationPlayer = $NightLightAnimation
 
 
 func _ready():
 	experience_vial_area.area_entered.connect(on_area_entered)
-	night_light_animation.play("default")
+#	night_light_animation.play("default") This needs to be handled differently, energy depends on global timer
 
 
 func tween_collect(percent: float, start_position: Vector2):
