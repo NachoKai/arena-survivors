@@ -7,7 +7,7 @@ var camera_smoothing: int = 20
 
 
 func _ready():
-	make_current()  # Forces this Camera2D to become the current active one
+	make_current()
 
 
 func _process(delta):

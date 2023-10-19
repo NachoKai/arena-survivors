@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@export var arena_time_manager: ArenaTimeManager
 @onready var label: Label = %Label
+@export var arena_time_manager: ArenaTimeManager
 
 
 func _process(_delta):

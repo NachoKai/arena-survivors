@@ -5,4 +5,4 @@ extends CanvasModulate
 
 func _ready():
 	animation_player.play("default")
-	
+

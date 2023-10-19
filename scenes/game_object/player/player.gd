@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var arena_time_manager: ArenaTimeManager
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
@@ -12,6 +11,7 @@ extends CharacterBody2D
 @onready var hit_random_stream_player: AudioStreamPlayer2D = $HitRandomStreamPlayer
 @onready var pickup_area_shape: CollisionShape2D = $PickupArea/PickupAreaShape
 @onready var night_light_animation = $NightLightAnimation
+@export var arena_time_manager: ArenaTimeManager
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0

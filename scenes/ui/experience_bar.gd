@@ -1,11 +1,12 @@
 extends CanvasLayer
 
-@export var experience_manager: ExperienceManager
-@onready var progress_bar: ProgressBar = %ProgressBar
 @onready var level_label: Label = %LevelLabel
+@onready var progress_bar: ProgressBar = %ProgressBar
+@export var experience_manager: ExperienceManager
 
 
 func _ready():
+	if not progress_bar: return
 	progress_bar.value = 0
 	experience_manager.experience_updated.connect(on_experience_updated)
 

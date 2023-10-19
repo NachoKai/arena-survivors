@@ -13,4 +13,3 @@ func on_player_damaged():
 	animation_player.play("hit")
 	await animation_player.animation_finished
 	color_rect.visible = false
-

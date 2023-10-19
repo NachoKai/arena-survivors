@@ -3,8 +3,8 @@ class_name ArenaTimeManager
 
 signal arena_difficulty_increased(arena_difficulty: int)
 
-@export var end_screen_scene: PackedScene
 @onready var timer: Timer = $Timer
+@export var end_screen_scene: PackedScene
 
 const DIFFICULTY_INTERVAL: int = 5
 var arena_difficulty: int = 0
@@ -15,6 +15,7 @@ func _ready():
 
 
 func _process(_delta):
+	if not timer: return
 	var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
 	if timer.time_left <= next_time_target:
 		arena_difficulty += 1
@@ -22,6 +23,7 @@ func _process(_delta):
 
 
 func get_time_elapsed():
+	if not timer: return
 	return timer.wait_time - timer.time_left
 
 

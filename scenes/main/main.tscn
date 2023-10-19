@@ -72,10 +72,10 @@ arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
 
+[node name="DayNightCycleManager" parent="." instance=ExtResource("15_0whv5")]
+
 [node name="Vignette" parent="." instance=ExtResource("14_nu1a0")]
 layer = 2
-
-[node name="DayNightCycleManager" parent="." instance=ExtResource("15_0whv5")]
 
 [node name="MobileControls" parent="." instance=ExtResource("12_08wk4")]
 metadata/_edit_vertical_guides_ = [286.0]

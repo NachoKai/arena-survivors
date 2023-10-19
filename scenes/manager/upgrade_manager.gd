@@ -2,6 +2,7 @@ extends Node
 
 @export var experience_manager: ExperienceManager
 @export var upgrade_screen_scene: PackedScene
+
 var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
