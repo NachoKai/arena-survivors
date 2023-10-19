@@ -10,6 +10,12 @@ extends Node
 @export var ghost_enemy_scene: PackedScene
 @export var spider_enemy_scene: PackedScene
 @export var cyclops_enemy_scene: PackedScene
+@export var vampire_rat_enemy_scene: PackedScene
+@export var vampire_wizard_enemy_scene: PackedScene
+@export var vampire_bat_enemy_scene: PackedScene
+@export var vampire_ghost_enemy_scene: PackedScene
+@export var vampire_spider_enemy_scene: PackedScene
+@export var vampire_cyclops_enemy_scene: PackedScene
 
 const SPAWN_RADIUS: int = 375
 var base_spawn_time: float = 0
