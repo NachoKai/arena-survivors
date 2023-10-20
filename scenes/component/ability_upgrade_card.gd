@@ -33,8 +33,10 @@ func set_ability_upgrade(upgrade: AbilityUpgrade):
 	description_label.text = upgrade.description
 #	quantity_label.text = "Level " + str(0)
 	quantity_label.text = ""
-	if upgrade.image_path: upgrade_image.texture = load(upgrade.image_path)
-	else: upgrade_image.visible = false
+	if upgrade.image_path:
+		upgrade_image.texture = load(upgrade.image_path)
+	else:
+		upgrade_image.visible = false
 
 func select_card():
 	disabled = true
@@ -52,7 +54,8 @@ func select_card():
 
 func on_gui_input(event: InputEvent):
 	if disabled: return
-	if event.is_action_pressed("left_click"): select_card()
+	if event.is_action_pressed("left_click"):
+		select_card()
 
 
 func on_mouse_entered():

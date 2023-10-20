@@ -29,7 +29,8 @@ func update_progress():
 	var is_max_quantity = quantity >= meta_upgrade.max_quantity
 	progress_bar.value = percent
 	learn_button.disabled = percent < 1 || is_max_quantity
-	if is_max_quantity: learn_button.text = "Max"
+	if is_max_quantity:
+		learn_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(meta_upgrade.experience_cost)
 	count_label.text = "x%d" % quantity  # Format string: x0
 

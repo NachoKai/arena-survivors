@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player: CharacterBody2D = %Player
+@onready var crt_filter: CanvasLayer = $CrtFilter
 @export var end_screen_scene: PackedScene
 var pause_menu_scene = preload("res://scenes/ui/pause_menu.tscn")
 

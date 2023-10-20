@@ -20,6 +20,5 @@ func on_died():
 	get_parent().remove_child(self)
 	entities.add_child(self)
 	global_position = spawn_position
-	animation_player.play("default")
 	hit_random_audio_player_component.play_random()
-
+	animation_player.play("default")

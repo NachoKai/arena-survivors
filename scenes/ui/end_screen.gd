@@ -29,8 +29,10 @@ func set_defeat():
 
 
 func play_jingle(is_defeat: bool = false):
-	if is_defeat: defeat_stream_player_component.play()
-	else: victory_stream_player_component.play()
+	if is_defeat:
+		defeat_stream_player_component.play()
+	else:
+		victory_stream_player_component.play()
 
 
 func on_continue_button_pressed():

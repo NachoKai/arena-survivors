@@ -1,6 +1,5 @@
-extends Node
-
 class_name HealthComponent
+extends Node
 
 signal died
 signal health_changed
@@ -17,7 +16,8 @@ func _ready():
 func damage(damage_amount: float = 0):
 	current_health = clamp(current_health - damage_amount, 0, max_health)
 	health_changed.emit()
-	if damage_amount > 0: health_decreased.emit()
+	if damage_amount > 0:
+		health_decreased.emit()
 	check_death.call_deferred()
 
 

@@ -1,8 +1,8 @@
 extends Node
 
+@export var enemies_cap: int = 600
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
-@export var enemies_cap: int = 650
 @export var arena_time_manager: ArenaTimeManager
 @export var rat_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene

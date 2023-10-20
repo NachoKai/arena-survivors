@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
+@onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
 @onready var timer: Timer = $Timer
 @export var sword_ability: PackedScene
 @export var base_damage = 5
@@ -43,9 +44,7 @@ func get_closest_enemy(player_node: Node2D, enemies: Array) -> Node2D:
 
 func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
 	var sword_instance = sword_ability.instantiate() as SwordAbility
-	if not sword_instance: return
-	var foreground = get_tree().get_first_node_in_group("foreground")
-	if not foreground: return
+	if not sword_instance or not foreground: return
 	foreground.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
 	sword_instance.global_position = target_enemy.global_position

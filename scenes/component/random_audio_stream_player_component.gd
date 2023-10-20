@@ -8,7 +8,9 @@ extends AudioStreamPlayer
 
 func play_random():
 	if streams == null || streams.size() == 0: return
-	if randomize_pitch: pitch_scale = randf_range(min_pitch, max_pitch)
-	else: pitch_scale = 1
+	if randomize_pitch:
+		pitch_scale = randf_range(min_pitch, max_pitch)
+	else:
+		pitch_scale = 1
 	stream = streams.pick_random()
 	play()

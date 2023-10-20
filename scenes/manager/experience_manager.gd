@@ -1,5 +1,5 @@
-extends Node
 class_name ExperienceManager
+extends Node
 
 signal experience_updated(current_experience: float, target_experience: float, current_level: float)
 signal level_up(new_level: int)

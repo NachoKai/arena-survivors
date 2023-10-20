@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://rmg0g834qxnl"]
+[gd_scene load_steps=16 format=3 uid="uid://rmg0g834qxnl"]
 
 [ext_resource type="PackedScene" uid="uid://ff082s2cpd0g" path="res://scenes/game_object/player/player.tscn" id="1_b1865"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_wyw77"]
@@ -10,14 +10,8 @@
 [ext_resource type="TileSet" uid="uid://qvub8xkcwyps" path="res://resources/new_tile_set.tres" id="4_3e18s"]
 [ext_resource type="PackedScene" uid="uid://bveqm7wtm4ktt" path="res://scenes/ui/arena_time_ui.tscn" id="5_mmyrb"]
 [ext_resource type="PackedScene" uid="uid://dk8v3eijdfds3" path="res://scenes/manager/arena_time_manager.tscn" id="6_ohtgj"]
-[ext_resource type="PackedScene" uid="uid://1sda07gcjv4x" path="res://scenes/game_object/vampire_rat_enemy/vampire_rat_enemy.tscn" id="9_bxbyp"]
 [ext_resource type="PackedScene" uid="uid://bos10tm8mi6d4" path="res://scenes/manager/upgrade_manager.tscn" id="9_omo6q"]
-[ext_resource type="PackedScene" uid="uid://c68svnpwy5lsm" path="res://scenes/game_object/vampire_wizard_enemy/vampire_wizard_enemy.tscn" id="10_synif"]
-[ext_resource type="PackedScene" uid="uid://cpbu7k5eh88bw" path="res://scenes/game_object/vampire_bat_enemy/vampire_bat_enemy.tscn" id="11_uwmrb"]
 [ext_resource type="PackedScene" uid="uid://box0fwsdbta33" path="res://scenes/manager/mobile_controls.tscn" id="12_08wk4"]
-[ext_resource type="PackedScene" uid="uid://bv7o0t2cfx0jb" path="res://scenes/game_object/vampire_ghost_enemy/vampire_ghost_enemy.tscn" id="12_h55ip"]
-[ext_resource type="PackedScene" uid="uid://bc82pmjwqi3fq" path="res://scenes/game_object/vampire_spider_enemy/vampire_spider_enemy.tscn" id="13_nqsr4"]
-[ext_resource type="PackedScene" uid="uid://bm5cfhjc5jiu4" path="res://scenes/game_object/vampire_cyclops_enemy/vampire_cyclops_enemy.tscn" id="14_87hsk"]
 [ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_nu1a0"]
 [ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="14_ow7mi"]
 [ext_resource type="PackedScene" uid="uid://cs0qhyyc3usk3" path="res://scenes/manager/day_night_cycle_manager.tscn" id="15_0whv5"]
@@ -62,12 +56,6 @@ arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_7tkxc")]
 arena_time_manager = NodePath("../ArenaTimeManager")
-vampire_rat_enemy_scene = ExtResource("9_bxbyp")
-vampire_wizard_enemy_scene = ExtResource("10_synif")
-vampire_bat_enemy_scene = ExtResource("11_uwmrb")
-vampire_ghost_enemy_scene = ExtResource("12_h55ip")
-vampire_spider_enemy_scene = ExtResource("13_nqsr4")
-vampire_cyclops_enemy_scene = ExtResource("14_87hsk")
 
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("2_ohoyu")]
 

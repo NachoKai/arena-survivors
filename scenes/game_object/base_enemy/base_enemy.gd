@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name BaseEnemy
+extends CharacterBody2D
 
 @onready var visuals: Node2D = $Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -22,7 +22,8 @@ func _physics_process(_delta):
 	velocity_component.accelerate_to_player()
 	velocity_component.move(self)
 	var move_sign = sign(velocity.x)
-	if move_sign != 0: visuals.scale = Vector2(move_sign, 1)
+	if move_sign != 0:
+		visuals.scale = Vector2(move_sign, 1)
 
 
 func on_hit():
@@ -43,4 +44,4 @@ func frame_save(amount: int = 20):
 	if rand_disable < amount:
 		enemy_area.call_deferred("set", "disabled", true)
 		animation_player.stop()
-		
+

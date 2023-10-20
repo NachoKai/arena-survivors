@@ -1,9 +1,7 @@
 class_name VirtualJoystick
-
 extends Control
 
 @export var pressed_color := Color.GRAY
-
 @export_range(0, 200, 1) var deadzone_size: float = 10
 @export_range(0, 500, 1) var clampzone_size: float = 75
 

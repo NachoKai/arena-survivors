@@ -1,6 +1,5 @@
-extends Resource
-
 class_name AbilityUpgrade
+extends Resource
 
 @export var id: String
 @export var max_quantity: int

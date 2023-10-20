@@ -12,7 +12,8 @@ func _ready():
 
 
 func on_health_decreased():
-	if hit_flash_tween != null && hit_flash_tween.is_valid(): hit_flash_tween.kill()
+	if hit_flash_tween != null && hit_flash_tween.is_valid():
+		hit_flash_tween.kill()
 	var sprite_material = sprite.material as ShaderMaterial
 	sprite_material.set_shader_parameter("lerp_percent", 1.0)
 	hit_flash_tween = create_tween()

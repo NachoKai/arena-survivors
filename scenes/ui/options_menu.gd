@@ -1,11 +1,14 @@
 extends CanvasLayer
 
 signal back_pressed
+signal crt_filter_checked
 
 @onready var sfx_volume_slider: HSlider = %SfxVolumeSlider
 @onready var music_volume_slider: HSlider = %MusicVolumeSlider
 @onready var window_mode_button: Button = %WindowModeButton
 @onready var back_button: Button = %BackButton
+@onready var language_selector: OptionButton = %LanguageSelector
+@onready var filter_check_box: CheckBox = %FilterCheckBox
 
 
 func _ready():
@@ -13,6 +16,7 @@ func _ready():
 	sfx_volume_slider.value_changed.connect(on_audio_slider_changed.bind("sfx"))
 	music_volume_slider.value_changed.connect(on_audio_slider_changed.bind("music"))
 	back_button.pressed.connect(on_back_button_pressed)
+	filter_check_box.pressed.connect(on_filter_checkbox_pressed)
 	update_display()
 
 
@@ -20,7 +24,8 @@ func update_display():
 	window_mode_button.text = "Windowed"
 	var window_mode = DisplayServer.window_get_mode()
 	var is_fullscreen = window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN
-	if is_fullscreen: window_mode_button.text = "Fullscreen"
+	if is_fullscreen:
+		window_mode_button.text = "Fullscreen"
 	sfx_volume_slider.value = get_bus_volume_percent("sfx")
 	music_volume_slider.value = get_bus_volume_percent("music")
 
@@ -58,3 +63,7 @@ func on_back_button_pressed():
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	back_pressed.emit()
+
+
+func on_filter_checkbox_pressed():
+	crt_filter_checked.emit()

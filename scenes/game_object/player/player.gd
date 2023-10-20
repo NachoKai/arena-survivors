@@ -36,10 +36,16 @@ func _physics_process(_delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
-	if direction.x != 0 || direction.y != 0: animation_player.play("walk")
-	else: animation_player.play("idle")
-	if direction.x < 0: visuals.scale.x = -1
-	elif direction.x > 0: visuals.scale.x = 1
+
+	if direction.x != 0 || direction.y != 0:
+		animation_player.play("walk")
+	else:
+		animation_player.play("idle")
+
+	if direction.x < 0:
+		visuals.scale.x = -1
+	elif direction.x > 0:
+		visuals.scale.x = 1
 
 
 func check_deal_damage():
@@ -83,7 +89,6 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades.player_speed.quantity * 0.1)
 	elif ability_upgrade.id == "pickup_area":
-		print("current_upgrades.pickup_area.quantity: ", current_upgrades.pickup_area.quantity)
 		pickup_area_shape.shape.radius = base_pickup_area + (current_upgrades.pickup_area.quantity * 6)
 
 

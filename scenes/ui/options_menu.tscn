@@ -41,7 +41,7 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 0
-theme_override_constants/line_spacing = 16
+theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 32
 text = "Options"
 horizontal_alignment = 1
@@ -49,7 +49,7 @@ horizontal_alignment = 1
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
 [node name="VolumeContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
 layout_mode = 2
@@ -65,7 +65,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 18
 text = "SFX Volume"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="SfxVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
@@ -84,7 +84,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 18
 text = "Music Volume"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
@@ -94,7 +94,7 @@ step = 0.01
 value = 0.5
 
 [node name="WindowModeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 25)
+custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
 theme_override_constants/separation = 66
 
@@ -108,7 +108,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 18
 text = "Window Mode"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/WindowModeContainer" instance=ExtResource("3_017jq")]
 unique_name_in_owner = true
@@ -116,6 +116,58 @@ custom_minimum_size = Vector2(65, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Windowed"
+
+[node name="LanguageContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="LanguageLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/LanguageContainer"]
+layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
+text = "Language"
+vertical_alignment = 2
+
+[node name="LanguageSelector" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/LanguageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+item_count = 1
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+
+[node name="FilterContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 128
+
+[node name="FilterLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/FilterContainer"]
+layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
+text = "CRT Filter"
+vertical_alignment = 2
+
+[node name="FilterCheckBox" type="CheckBox" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/FilterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+disabled = true
+button_pressed = true
 
 [node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer" instance=ExtResource("3_017jq")]
 unique_name_in_owner = true
