@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4laaxpwcmpkf"]
+
+[ext_resource type="Script" path="res://FrameSaverComponent.gd" id="1_isdp4"]
+
+[node name="FrameSaverComponent" type="Node"]
+script = ExtResource("1_isdp4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

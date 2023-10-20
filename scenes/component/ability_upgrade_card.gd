@@ -31,7 +31,8 @@ func set_ability_upgrade(upgrade: AbilityUpgrade):
 	if not upgrade: return
 	name_label.text = upgrade.name
 	description_label.text = upgrade.description
-	quantity_label.text = "Level " + str(0)
+#	quantity_label.text = "Level " + str(0)
+	quantity_label.text = ""
 	if upgrade.image_path: upgrade_image.texture = load(upgrade.image_path)
 	else: upgrade_image.visible = false
 

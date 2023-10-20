@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bv7o0t2cfx0jb"]
+[gd_scene load_steps=23 format=3 uid="uid://bv7o0t2cfx0jb"]
 
 [ext_resource type="Script" path="res://scenes/game_object/ghost_enemy/ghost_enemy.gd" id="1_igunp"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_npynp"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://o1entvj4ufi4" path="res://scenes/component/velocity_component.tscn" id="10_2uc3o"]
 [ext_resource type="PackedScene" uid="uid://ddjafc8cq5hf0" path="res://scenes/component/hit_flash_component.tscn" id="11_dvgfl"]
 [ext_resource type="PackedScene" uid="uid://dbhugqcc7h2mu" path="res://scenes/component/death_component.tscn" id="12_fnwev"]
+[ext_resource type="PackedScene" uid="uid://c4laaxpwcmpkf" path="res://scenes/component/frame_saver_component.tscn" id="12_perkt"]
 [ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="13_s5fm4"]
 [ext_resource type="Texture2D" uid="uid://b7ox2mdwi5i0k" path="res://scenes/game_object/vampire_ghost_enemy/vampire_ghost.png" id="14_t25sw"]
 
@@ -115,7 +116,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewahc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2xtm"]
 resource_local_to_scene = true
 shader = SubResource("Shader_hwlkt")
 shader_parameter/lerp_percent = 0.0
@@ -154,7 +155,9 @@ acceleration = 3.5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_dvgfl")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_ewahc")
+hit_flash_material = SubResource("ShaderMaterial_d2xtm")
+
+[node name="FrameSaverComponent" parent="." instance=ExtResource("12_perkt")]
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("12_fnwev")]
 healt_component = NodePath("../HealthComponent")
@@ -178,5 +181,5 @@ position = Vector2(0, -8)
 texture = ExtResource("14_t25sw")
 
 [node name="HideEnemyTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true

@@ -8,6 +8,7 @@ class_name BaseEnemy
 @onready var hit_random_stream_player_component: AudioStreamPlayer2D = $HitRandomAudioPlayerComponent
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var hide_enemy_timer: Timer = $HideEnemyTimer
+@onready var enemy_area: CollisionShape2D = $EnemyArea
 var screen_size
 
 
@@ -35,3 +36,11 @@ func on_timer_timeout():
 		visible = false
 	else:
 		visible = true
+
+
+func frame_save(amount: int = 20):
+	var rand_disable = randi() % 100
+	if rand_disable < amount:
+		enemy_area.call_deferred("set", "disabled", true)
+		animation_player.stop()
+		

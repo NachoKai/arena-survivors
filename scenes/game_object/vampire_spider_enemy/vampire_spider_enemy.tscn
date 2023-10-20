@@ -178,5 +178,5 @@ position = Vector2(2.08165e-12, -4)
 texture = ExtResource("14_wvpty")
 
 [node name="HideEnemyTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true

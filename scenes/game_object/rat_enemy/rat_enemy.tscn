@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dh1ggbnudq04s"]
+[gd_scene load_steps=23 format=3 uid="uid://dh1ggbnudq04s"]
 
 [ext_resource type="Script" path="res://scenes/game_object/rat_enemy/rat_enemy.gd" id="1_ycfmh"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_5u0pl"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://csppv05u2idya" path="res://sounds/footstep_carpet_003.ogg" id="6_bv5gc"]
 [ext_resource type="AudioStream" uid="uid://dwniqoborrmvi" path="res://sounds/footstep_carpet_004.ogg" id="7_4t6an"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="9_jbflw"]
+[ext_resource type="PackedScene" uid="uid://c4laaxpwcmpkf" path="res://scenes/component/frame_saver_component.tscn" id="12_2ho7b"]
 [ext_resource type="Texture2D" uid="uid://cv88fn2c6wlhc" path="res://scenes/game_object/rat_enemy/rat_enemy.png" id="14_522nd"]
 
 [sub_resource type="Animation" id="Animation_c4cfy"]
@@ -115,7 +116,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qki2b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyxih"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -152,7 +153,9 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_qki2b")
+hit_flash_material = SubResource("ShaderMaterial_cyxih")
+
+[node name="FrameSaverComponent" parent="." instance=ExtResource("12_2ho7b")]
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")
@@ -176,5 +179,5 @@ position = Vector2(2.08165e-12, -4)
 texture = ExtResource("14_522nd")
 
 [node name="HideEnemyTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
