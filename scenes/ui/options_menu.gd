@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 signal back_pressed
-signal crt_filter_checked
 
 @onready var sfx_volume_slider: HSlider = %SfxVolumeSlider
 @onready var music_volume_slider: HSlider = %MusicVolumeSlider
@@ -17,6 +16,7 @@ func _ready():
 	music_volume_slider.value_changed.connect(on_audio_slider_changed.bind("music"))
 	back_button.pressed.connect(on_back_button_pressed)
 	filter_check_box.pressed.connect(on_filter_checkbox_pressed)
+	filter_check_box.button_pressed = GameOptions.is_crt_filter_active
 	update_display()
 
 
@@ -66,4 +66,6 @@ func on_back_button_pressed():
 
 
 func on_filter_checkbox_pressed():
-	crt_filter_checked.emit()
+	GameOptions.change_crt_filter_active()
+	filter_check_box.button_pressed = GameOptions.is_crt_filter_active
+		

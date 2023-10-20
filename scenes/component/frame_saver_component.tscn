@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4laaxpwcmpkf"]
 
-[ext_resource type="Script" path="res://FrameSaverComponent.gd" id="1_isdp4"]
+[ext_resource type="Script" path="res://scenes/component/FrameSaverComponent.gd" id="1_isdp4"]
 
 [node name="FrameSaverComponent" type="Node"]
 script = ExtResource("1_isdp4")

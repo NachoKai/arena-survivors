@@ -166,8 +166,6 @@ vertical_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
-disabled = true
-button_pressed = true
 
 [node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer" instance=ExtResource("3_017jq")]
 unique_name_in_owner = true

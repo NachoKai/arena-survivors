@@ -8,6 +8,7 @@ var pause_menu_scene = preload("res://scenes/ui/pause_menu.tscn")
 
 func _ready():
 	player.health_component.died.connect(on_player_died)
+	crt_filter.visible = GameOptions.is_crt_filter_active
 
 
 func _unhandled_input(event):
