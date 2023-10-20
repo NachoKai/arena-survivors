@@ -24,7 +24,8 @@ func _ready():
 func set_defeat():
 	title_label.text = "Defeat"
 	description_label.text = "You lost!"
-	play_jingle(true)
+	var isDefeat = true
+	play_jingle(isDefeat)
 
 
 func play_jingle(is_defeat: bool = false):

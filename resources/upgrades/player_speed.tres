@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_dsnby")
 id = "pickup_area"
-max_quantity = 5
+max_quantity = 8
 name = "Pickup Area"
 image_path = "res://assets/abilities/player.png"
 description = "Increases player pickup area by 10%."

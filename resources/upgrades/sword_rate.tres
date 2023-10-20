@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_7g6h8")
 id = "sword_rate"
-max_quantity = 5
+max_quantity = 8
 name = "Sword Quickness"
 image_path = "res://scenes/ability/sword_ability/sword.png"
 description = "Increases sword attack rate by 10%."

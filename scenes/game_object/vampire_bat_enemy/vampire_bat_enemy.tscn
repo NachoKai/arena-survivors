@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cpbu7k5eh88bw"]
 
-[ext_resource type="Script" path="res://scenes/game_object/bat_enemy/bat_enemy.gd" id="1_0jrtu"]
+[ext_resource type="Script" path="res://scenes/game_object/vampire_bat_enemy/vampire_bat_enemy.gd" id="1_4t72b"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_a2krj"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_60ipc"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_jxao4"]
@@ -115,7 +115,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sa6oc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xarf0"]
 resource_local_to_scene = true
 shader = SubResource("Shader_hwlkt")
 shader_parameter/lerp_percent = 0.0
@@ -130,7 +130,7 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_0jrtu")
+script = ExtResource("1_4t72b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
@@ -142,19 +142,20 @@ libraries = {
 streams = Array[AudioStream]([ExtResource("3_60ipc"), ExtResource("4_jxao4"), ExtResource("5_r8053"), ExtResource("6_nmrnj"), ExtResource("7_pte7r")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_owpxd")]
+max_health = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_ukpeb")]
 drop_percent = 0.4
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("10_ccmd5")]
-max_speed = 100
-acceleration = 1.0
+max_speed = 120
+acceleration = 2.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_n0rbw")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_sa6oc")
+hit_flash_material = SubResource("ShaderMaterial_xarf0")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("12_h1jet")]
 healt_component = NodePath("../HealthComponent")

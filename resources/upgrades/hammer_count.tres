@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_81q54")
 id = "hammer_count"
-max_quantity = 3
+max_quantity = 4
 name = "Hammer Count"
 image_path = "res://scenes/ability/hammer_ability/hammer.png"
 description = "Adds one additional hammer."

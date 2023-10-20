@@ -28,8 +28,9 @@ func get_time_elapsed():
 
 
 func on_timer_timeout():
+	var isDefeat = false
 	var end_screen_instance = end_screen_scene.instantiate()
 	if not end_screen_instance: return
 	add_child(end_screen_instance)
-	end_screen_instance.play_jingle()
+	end_screen_instance.play_jingle(isDefeat)
 	MetaProgression.save_file()

@@ -115,7 +115,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lj00"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qoqsf"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -142,17 +142,19 @@ libraries = {
 streams = Array[AudioStream]([ExtResource("9_jbflw"), ExtResource("4_qsk7c"), ExtResource("5_heaq7"), ExtResource("6_bv5gc"), ExtResource("7_4t6an")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_mtfpe")]
-max_health = 6.0
+max_health = 12.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_opf5w")]
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_sgxvt")]
+max_speed = 60
+acceleration = 6.5
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_5lj00")
+hit_flash_material = SubResource("ShaderMaterial_qoqsf")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("4_qyjui")]
 healt_component = NodePath("../HealthComponent")

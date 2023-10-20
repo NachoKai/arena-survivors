@@ -52,6 +52,7 @@ func on_timer_timeout():
 
 	for i in enemies_to_spawn:
 		var enemy_scene = enemy_table.pick_item()
+		if not enemy_scene: return
 		var enemy = enemy_scene.instantiate() as Node2D
 		var entities = get_tree().get_first_node_in_group("entities")
 		var children_quantity = entities.get_children().size()
@@ -76,6 +77,18 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 		enemy_table.add_item(spider_enemy_scene, 10)
 	elif arena_difficulty == 30:
 		enemy_table.add_item(cyclops_enemy_scene, 4)
+	elif arena_difficulty == 36:
+		enemy_table.add_item(vampire_rat_enemy_scene, 6)
+	elif arena_difficulty == 42:
+		enemy_table.add_item(vampire_bat_enemy_scene, 4)
+	elif arena_difficulty == 48:
+		enemy_table.add_item(vampire_wizard_enemy_scene, 5)
+	elif arena_difficulty == 54:
+		enemy_table.add_item(vampire_ghost_enemy_scene, 5)
+	elif arena_difficulty == 60:
+		enemy_table.add_item(vampire_spider_enemy_scene, 2)
+	elif arena_difficulty == 66:
+		Enemy_table.add_item(vampire_cyclops_enemy_scene, 2)
 
 	if (arena_difficulty % 6) == 0:  # 30 seconds interval
 		enemies_to_spawn += 1
