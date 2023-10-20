@@ -88,7 +88,7 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	elif arena_difficulty == 60:
 		enemy_table.add_item(vampire_spider_enemy_scene, 2)
 	elif arena_difficulty == 66:
-		Enemy_table.add_item(vampire_cyclops_enemy_scene, 2)
+		enemy_table.add_item(vampire_cyclops_enemy_scene, 2)
 
 	if (arena_difficulty % 6) == 0:  # 30 seconds interval
 		enemies_to_spawn += 1
