@@ -79,3 +79,5 @@ color = Color(0.262745, 0.882353, 0.701961, 1)
 energy = 0.2
 texture = ExtResource("9_3bslp")
 texture_scale = 0.1
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
