@@ -17,7 +17,7 @@ extends Node
 @export var vampire_spider_enemy_scene: PackedScene
 @export var vampire_cyclops_enemy_scene: PackedScene
 
-const SPAWN_RADIUS: int = 330
+const SPAWN_RADIUS: int = 340
 var base_spawn_time: float = 0
 var enemies_to_spawn = 1
 var enemy_table = WeightedTable.new()

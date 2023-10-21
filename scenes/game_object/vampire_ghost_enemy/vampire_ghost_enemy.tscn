@@ -182,4 +182,4 @@ texture = ExtResource("14_t25sw")
 
 [node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -5)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
