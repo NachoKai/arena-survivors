@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://c22n8gi28ih28"]
+
+[ext_resource type="Script" path="res://scenes/game_object/wood_sign/wood_sign.gd" id="1_7rnr4"]
+[ext_resource type="Texture2D" uid="uid://bua1fc0o1ikf8" path="res://scenes/game_object/wood_sign/wood_sign.png" id="1_67kul"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cqq5"]
+radius = 9.0
+
+[node name="WoodSign" type="StaticBody2D"]
+collision_mask = 7
+script = ExtResource("1_7rnr4")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_0cqq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_67kul")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -91.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -35.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 2
+text = "Beware of Monsters at Night."
+autowrap_mode = 3
+
+[node name="SignButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = 3.0
+mouse_default_cursor_shape = 2
+
+[node name="MessageButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -91.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -34.0
