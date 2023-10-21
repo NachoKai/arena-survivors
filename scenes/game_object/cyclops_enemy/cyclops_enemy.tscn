@@ -183,3 +183,4 @@ texture = ExtResource("14_hdqw4")
 
 [node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -5)
+scale = Vector2(3, 3)

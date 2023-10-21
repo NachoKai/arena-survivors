@@ -182,3 +182,4 @@ texture = ExtResource("1_tfcpq")
 
 [node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -5)
+scale = Vector2(3, 3)
