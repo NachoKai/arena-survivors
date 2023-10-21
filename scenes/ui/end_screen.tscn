@@ -103,7 +103,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-custom_minimum_size = Vector2(180, 2.08165e-12)
+custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -128,7 +128,7 @@ theme_override_constants/line_spacing = 4
 theme_override_font_sizes/font_size = 24
 text = "Victory"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -139,11 +139,12 @@ theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 6
+theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 0
-theme_override_constants/line_spacing = 0
-text = "You won!"
-vertical_alignment = 1
+theme_override_constants/line_spacing = 2
+text = "Congratulations! You've proven yourself a true survivor. The desert town is safe thanks to your bravery and resourcefulness. Well done!"
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

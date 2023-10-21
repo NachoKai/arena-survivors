@@ -23,7 +23,7 @@ func _ready():
 
 func set_defeat():
 	title_label.text = "Defeat"
-	description_label.text = "You lost!"
+	description_label.text = "Uh-oh! It looks like the monsters got the best of you. Don't give up, survivor! Try again and use what you've learned to outsmart them next time."
 	var isDefeat = true
 	play_jingle(isDefeat)
 

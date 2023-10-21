@@ -116,7 +116,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_av47j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbcmo"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -149,11 +149,13 @@ max_health = 6.0
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_sgxvt")]
+max_speed = 50
+acceleration = 6.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_av47j")
+hit_flash_material = SubResource("ShaderMaterial_qbcmo")
 
 [node name="FrameSaverComponent" parent="." instance=ExtResource("12_2ho7b")]
 
