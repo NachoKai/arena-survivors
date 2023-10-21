@@ -116,7 +116,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2xtm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5cmfv"]
 resource_local_to_scene = true
 shader = SubResource("Shader_hwlkt")
 shader_parameter/lerp_percent = 0.0
@@ -155,7 +155,7 @@ acceleration = 3.5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_dvgfl")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_d2xtm")
+hit_flash_material = SubResource("ShaderMaterial_5cmfv")
 
 [node name="FrameSaverComponent" parent="." instance=ExtResource("12_perkt")]
 
@@ -180,6 +180,5 @@ shape = SubResource("CircleShape2D_vo8en")
 position = Vector2(0, -8)
 texture = ExtResource("14_t25sw")
 
-[node name="HideEnemyTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -5)

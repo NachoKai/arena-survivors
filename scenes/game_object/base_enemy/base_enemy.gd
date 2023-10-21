@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var hit_random_stream_player_component: AudioStreamPlayer2D = $HitRandomAudioPlayerComponent
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
-@onready var hide_enemy_timer: Timer = $HideEnemyTimer
 @onready var enemy_area: CollisionShape2D = $EnemyArea
 var screen_size
 
@@ -15,7 +14,6 @@ var screen_size
 func _ready():
 	hurtbox_component.hit.connect(on_hit)
 	screen_size = get_viewport_rect().size
-	hide_enemy_timer.timeout.connect(on_timer_timeout)
 
 
 func _physics_process(_delta):
@@ -28,15 +26,6 @@ func _physics_process(_delta):
 
 func on_hit():
 	hit_random_stream_player_component.play_random()
-
-
-func on_timer_timeout():
-	if not player || not global_position: return
-	var location_diff = global_position - player.global_position
-	if abs(location_diff.x) > (screen_size.x / 2) * 1.4 || abs(location_diff.y) > (screen_size.y / 2) * 1.4:
-		visible = false
-	else:
-		visible = true
 
 
 func frame_save(amount: int = 20):

@@ -68,4 +68,4 @@ func on_back_button_pressed():
 func on_filter_checkbox_pressed():
 	GameOptions.change_crt_filter_active()
 	filter_check_box.button_pressed = GameOptions.is_crt_filter_active
-		
+
