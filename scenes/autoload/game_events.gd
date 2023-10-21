@@ -4,7 +4,7 @@ signal experience_vial_collected(number: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged
 
-@export var game_version: String = "1.9.7"
+@export var game_version: String = "1.9.8"
 
 
 func emit_experience_vial_collected(number: float):
