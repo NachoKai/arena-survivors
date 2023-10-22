@@ -11,7 +11,7 @@ var pause_menu_scene = preload("res://scenes/ui/pause_menu.tscn")
 func _ready():
 	crt_filter.visible = GameOptions.is_crt_filter_active
 	player.health_component.died.connect(on_player_died)
-	castle_door_area.area_entered.connect(on_castle_entered)
+	castle_door_area.area_entered.connect(on_castle_exited)
 
 
 func _unhandled_input(event):
@@ -29,7 +29,8 @@ func on_player_died():
 	MetaProgression.save_file()
 
 
-func on_castle_entered(_other_body: Node2D):
+func on_castle_exited(_other_body: Node2D):
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
-	get_tree().change_scene_to_file("res://scenes/castle/castle.tscn")
+	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+#	player.set_position(Vector2(463, -358))

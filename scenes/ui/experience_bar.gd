@@ -6,7 +6,7 @@ extends CanvasLayer
 
 
 func _ready():
-	if not progress_bar: return
+	if not progress_bar or not experience_manager: return
 	progress_bar.value = 0
 	experience_manager.experience_updated.connect(on_experience_updated)
 
