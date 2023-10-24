@@ -109,6 +109,7 @@ pause={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="EnemyCollision"
 2d_physics/layer_5="PlayerPickup"
+2d_physics/layer_6="Objects"
 
 [rendering]
 

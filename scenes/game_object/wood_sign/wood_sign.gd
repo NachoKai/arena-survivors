@@ -26,8 +26,8 @@ func hide_message():
 
 func on_screen_exited():
 	hide_message()
-	
-	
+
+
 func on_sign_pressed():
 	if panel_container.visible == true:
 		hide_message()

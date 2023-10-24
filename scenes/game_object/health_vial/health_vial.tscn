@@ -1,0 +1,34 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkbjhdpghkw38"]
+
+[ext_resource type="Texture2D" uid="uid://ccwhwtja0j36l" path="res://scenes/game_object/health_vial/health_vial.png" id="1_gqjkp"]
+[ext_resource type="Script" path="res://scenes/game_object/health_vial/health_vial.gd" id="1_saodw"]
+[ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_b2s68"]
+[ext_resource type="AudioStream" uid="uid://c2qrkgjap5x6f" path="res://sounds/impactGeneric_light_000.ogg" id="3_mk3h8"]
+[ext_resource type="AudioStream" uid="uid://c5pb5ikf125nw" path="res://sounds/impactGeneric_light_001.ogg" id="4_olxbg"]
+[ext_resource type="AudioStream" uid="uid://bi356d2bic0t7" path="res://sounds/impactGeneric_light_002.ogg" id="5_5u6ka"]
+[ext_resource type="AudioStream" uid="uid://75expcrd2ct5" path="res://sounds/impactGeneric_light_003.ogg" id="6_15hh6"]
+[ext_resource type="AudioStream" uid="uid://c5qyp7c71cn6n" path="res://sounds/impactGeneric_light_004.ogg" id="7_yda8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jt6k3"]
+radius = 9.0
+
+[node name="HealthVial" type="Node2D"]
+script = ExtResource("1_saodw")
+
+[node name="RandomStreamPlayerComponent" parent="." instance=ExtResource("2_b2s68")]
+streams = Array[AudioStream]([ExtResource("3_mk3h8"), ExtResource("4_olxbg"), ExtResource("5_5u6ka"), ExtResource("6_15hh6"), ExtResource("7_yda8n")])
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="AreaShape" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_jt6k3")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_gqjkp")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bo7ps4d2hti"]
+
+[ext_resource type="Texture2D" uid="uid://q4elaxmptfc6" path="res://scenes/game_object/treasure_chest/chest_1.png" id="1_7cajg"]
+
+[node name="TreasureChest" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_7cajg")

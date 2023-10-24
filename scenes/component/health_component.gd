@@ -11,6 +11,7 @@ var current_health
 
 func _ready():
 	current_health = max_health
+	GameEvents.health_vial_collected.connect(on_health_vial_collected)
 
 
 func damage(damage_amount: float = 0):
@@ -21,7 +22,7 @@ func damage(damage_amount: float = 0):
 	check_death.call_deferred()
 
 
-func heal(heal_amount: int):
+func heal(heal_amount: float):
 	damage(-heal_amount)
 
 
@@ -34,3 +35,7 @@ func check_death():
 	if current_health == 0:
 		died.emit()
 		owner.queue_free()
+
+
+func on_health_vial_collected(number: float):
+	heal(number)
