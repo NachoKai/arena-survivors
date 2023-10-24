@@ -13,10 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bos10tm8mi6d4" path="res://scenes/manager/upgrade_manager.tscn" id="9_omo6q"]
 [ext_resource type="PackedScene" uid="uid://box0fwsdbta33" path="res://scenes/manager/mobile_controls.tscn" id="12_08wk4"]
 [ext_resource type="PackedScene" uid="uid://c22n8gi28ih28" path="res://scenes/game_object/wood_sign/wood_sign.tscn" id="12_plvmo"]
+[ext_resource type="PackedScene" uid="uid://b6bo7ps4d2hti" path="res://scenes/game_object/treasure_chest/treasure_chest.tscn" id="13_lrnfl"]
 [ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_nu1a0"]
 [ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="14_ow7mi"]
 [ext_resource type="PackedScene" uid="uid://cs0qhyyc3usk3" path="res://scenes/manager/day_night_cycle_manager.tscn" id="15_0whv5"]
-[ext_resource type="PackedScene" uid="uid://dkbjhdpghkw38" path="res://scenes/game_object/health_vial/health_vial.tscn" id="17_ej6n3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8m8o"]
 size = Vector2(22, 11)
@@ -67,6 +67,44 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 [node name="UpgradeManager" parent="Managers" node_paths=PackedStringArray("experience_manager") instance=ExtResource("9_omo6q")]
 experience_manager = NodePath("../ExperienceManager")
 
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="WoodSign" parent="Objects" instance=ExtResource("12_plvmo")]
+position = Vector2(302, 253)
+text = "Beware of Monsters at Night."
+
+[node name="WoodSign2" parent="Objects" instance=ExtResource("12_plvmo")]
+position = Vector2(-450, 396)
+text = "Welcome to Desert Tow. Stay vigilant."
+
+[node name="WoodSign3" parent="Objects" instance=ExtResource("12_plvmo")]
+position = Vector2(-217, -65)
+text = "Gather resources for your survival."
+
+[node name="WoodSign4" parent="Objects" instance=ExtResource("12_plvmo")]
+position = Vector2(-854, -30)
+text = "Good luck, brave survivor"
+
+[node name="TreasureChest" parent="Objects" instance=ExtResource("13_lrnfl")]
+position = Vector2(-789, -545)
+collision_mask = 6
+
+[node name="TreasureChest2" parent="Objects" instance=ExtResource("13_lrnfl")]
+position = Vector2(754, 460)
+collision_mask = 6
+
+[node name="TreasureChest4" parent="Objects" instance=ExtResource("13_lrnfl")]
+position = Vector2(716, -524)
+collision_mask = 6
+
+[node name="TreasureChest5" parent="Objects" instance=ExtResource("13_lrnfl")]
+position = Vector2(716, -524)
+collision_mask = 6
+
+[node name="TreasureChest3" parent="Objects" instance=ExtResource("13_lrnfl")]
+position = Vector2(-651, 545)
+collision_mask = 6
+
 [node name="Entities" type="Node2D" parent="." groups=["entities"]]
 y_sort_enabled = true
 
@@ -74,24 +112,9 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(180, 143)
 arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
+metadata/_edit_lock_ = true
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
-
-[node name="WoodSign" parent="Foreground" instance=ExtResource("12_plvmo")]
-position = Vector2(302, 253)
-text = "Beware of Monsters at Night."
-
-[node name="WoodSign2" parent="Foreground" instance=ExtResource("12_plvmo")]
-position = Vector2(-450, 396)
-text = "Welcome to Desert Tow. Stay vigilant."
-
-[node name="WoodSign3" parent="Foreground" instance=ExtResource("12_plvmo")]
-position = Vector2(-217, -65)
-text = "Gather resources for your survival."
-
-[node name="WoodSign4" parent="Foreground" instance=ExtResource("12_plvmo")]
-position = Vector2(-854, -30)
-text = "Good luck, brave survivor"
 
 [node name="DayNightCycleManager" parent="." instance=ExtResource("15_0whv5")]
 
@@ -110,6 +133,3 @@ collision_mask = 16
 [node name="CastleDoorCollisionShape" type="CollisionShape2D" parent="CastleDoorArea"]
 position = Vector2(463, -406.5)
 shape = SubResource("RectangleShape2D_f8m8o")
-
-[node name="HealthVial" parent="." instance=ExtResource("17_ej6n3")]
-position = Vector2(52, 108)

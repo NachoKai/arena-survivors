@@ -7,9 +7,14 @@ extends Node2D
 @onready var image: Sprite2D = $Image
 @onready var random_stream_player_component: AudioStreamPlayer2D = $RandomStreamPlayerComponent
 
+var direction: Vector2
+var distance: int = randi_range(25, 35)
 
 func _ready():
 	area.area_entered.connect(on_area_entered)
+	var target_position = position + direction * distance
+	var tween = create_tween()
+	tween.tween_property(self, "position", target_position, 0.4)
 
 
 func tween_collect(percent: float, start_position: Vector2):

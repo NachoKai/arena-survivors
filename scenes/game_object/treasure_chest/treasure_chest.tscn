@@ -1,11 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6bo7ps4d2hti"]
+[gd_scene load_steps=16 format=3 uid="uid://b6bo7ps4d2hti"]
 
 [ext_resource type="Texture2D" uid="uid://q4elaxmptfc6" path="res://scenes/game_object/treasure_chest/chest_1.png" id="1_7cajg"]
+[ext_resource type="Script" path="res://scenes/game_object/treasure_chest/treasure_chest.gd" id="1_fvud2"]
+[ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="2_08v2p"]
+[ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_fmu24"]
+[ext_resource type="Texture2D" uid="uid://bsh8qirh5sg3e" path="res://scenes/game_object/treasure_chest/chest_2.png" id="2_v1qn2"]
+[ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_q0mi1"]
+[ext_resource type="Texture2D" uid="uid://cw0p6edakfsdm" path="res://scenes/game_object/treasure_chest/chest_3.png" id="3_uw45m"]
+[ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_2qp34"]
+[ext_resource type="AudioStream" uid="uid://dffeo42bajgge" path="res://sounds/footstep_carpet_002.ogg" id="5_8g40h"]
+[ext_resource type="AudioStream" uid="uid://csppv05u2idya" path="res://sounds/footstep_carpet_003.ogg" id="6_g7loo"]
+[ext_resource type="AudioStream" uid="uid://dwniqoborrmvi" path="res://sounds/footstep_carpet_004.ogg" id="7_mmjh6"]
+[ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="8_ll1t7"]
 
-[node name="TreasureChest" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s28v5"]
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f866"]
+size = Vector2(16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5snq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7cajg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v1qn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uw45m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="TreasureChest" type="StaticBody2D" groups=["treasure_chest"]]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 15
+script = ExtResource("1_fvud2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_fmu24")]
+streams = Array[AudioStream]([ExtResource("3_q0mi1"), ExtResource("4_2qp34"), ExtResource("5_8g40h"), ExtResource("6_g7loo"), ExtResource("7_mmjh6")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_ll1t7")]
+max_health = 5000.0
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_08v2p")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_s28v5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_5f866")
+
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_7cajg")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_n5snq")
+frame_progress = 0.625119
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(0, -4)

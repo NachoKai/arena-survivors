@@ -249,6 +249,7 @@ border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
+collision_mask = 33
 motion_mode = 1
 script = ExtResource("1_56v20")
 

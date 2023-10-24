@@ -7,7 +7,8 @@
 radius = 9.0
 
 [node name="WoodSign" type="StaticBody2D"]
-collision_mask = 7
+collision_layer = 32
+collision_mask = 15
 script = ExtResource("1_7rnr4")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
