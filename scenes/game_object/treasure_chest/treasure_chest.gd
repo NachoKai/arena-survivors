@@ -7,6 +7,7 @@ signal open(position, direction)
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var hit_random_stream_player_component: AudioStreamPlayer2D = $HitRandomAudioPlayerComponent
 @onready var marker: Marker2D = $Marker
+var is_open: bool = false
 
 
 func _ready():
@@ -14,10 +15,12 @@ func _ready():
 
 
 func hit():
-	animated_sprite.play()
-	hit_random_stream_player_component.play_random()
-	var marker_position = marker.global_position
-	open.emit(marker_position, current_direction)
+	if not is_open:
+		animated_sprite.play()
+		hit_random_stream_player_component.play_random()
+		var marker_position = marker.global_position
+		open.emit(marker_position, current_direction)
+		is_open = true
 
 
 func on_hit():
