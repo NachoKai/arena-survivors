@@ -11,7 +11,7 @@ func _ready():
 	sprite.material = hit_flash_material
 
 
-func on_health_decreased():
+func on_health_decreased(_current_health):
 	if hit_flash_tween != null && hit_flash_tween.is_valid():
 		hit_flash_tween.kill()
 	var sprite_material = sprite.material as ShaderMaterial
