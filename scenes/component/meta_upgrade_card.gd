@@ -41,3 +41,4 @@ func on_learn_button_pressed():
 	MetaProgression.save_data.meta_upgrade_currency -= meta_upgrade.experience_cost
 	MetaProgression.save_file()
 	get_tree().call_group("meta_upgrade_card", "update_progress")
+	# SaveGame.save_file()

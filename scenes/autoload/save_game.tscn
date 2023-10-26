@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g8u2cjca11ew"]
+
+[ext_resource type="Script" path="res://scenes/autoload/save_game.gd" id="1_pf7li"]
+
+[node name="SaveGame" type="Node"]
+script = ExtResource("1_pf7li")
