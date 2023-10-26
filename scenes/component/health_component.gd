@@ -5,7 +5,7 @@ signal died
 signal health_changed(current_health: float)
 signal health_decreased
 
-@export var max_health: float = 10
+@export var max_health: float = 100
 var current_health
 
 
@@ -23,6 +23,7 @@ func damage(damage_amount: float = 0):
 
 
 func heal(heal_amount: float):
+	Globals.player_health += heal_amount
 	damage(-heal_amount)
 
 
