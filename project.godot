@@ -30,6 +30,7 @@ MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 GameOptions="*res://scenes/autoload/game_options.gd"
+Globals="*res://scenes/autoload/globals.gd"
 
 [debug]
 

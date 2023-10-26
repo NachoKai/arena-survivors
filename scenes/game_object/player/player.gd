@@ -51,7 +51,8 @@ func _physics_process(_delta):
 func check_deal_damage():
 	var isDamageTimerActive = ! damage_interval_timer.is_stopped()
 	if colliding_bodies_quantity == 0 || isDamageTimerActive: return
-	health_component.damage(1)
+	health_component.damage(10)
+	Globals.player_health -= 10
 	damage_interval_timer.start()
 
 
