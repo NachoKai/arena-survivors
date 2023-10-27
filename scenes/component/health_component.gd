@@ -22,7 +22,7 @@ func damage(damage_amount: float = 0):
 	check_death.call_deferred()
 
 
-func heal(heal_amount: float):
+func heal(heal_amount: int):
 	Globals.player_health += heal_amount
 	damage(-heal_amount)
 
@@ -38,5 +38,5 @@ func check_death():
 		owner.queue_free()
 
 
-func on_health_vial_collected(number: float):
+func on_health_vial_collected(number: int):
 	heal(number)

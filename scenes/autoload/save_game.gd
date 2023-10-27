@@ -35,14 +35,14 @@ func get_player_health(health: float):
 	if not health or health == 0: return 100
 	if save_data.player_health:
 		return save_data.player_health
-	
-	
+
+
 func get_player_level():
 	if save_data.player_level:
 		return save_data.player_level
 	else: return 1
-		
-		
+
+
 func get_player_experience():
 	if save_data.player_experience:
 		return save_data.player_experience
