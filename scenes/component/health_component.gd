@@ -23,7 +23,7 @@ func damage(damage_amount: float = 0):
 
 
 func heal(heal_amount: int):
-	Globals.player_health += heal_amount
+#	Globals.player_health += heal_amount
 	damage(-heal_amount)
 
 
