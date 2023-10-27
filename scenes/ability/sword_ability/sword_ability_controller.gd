@@ -39,7 +39,7 @@ func get_closest_enemy(player_node: Node2D, enemies: Array, sword_number: int) -
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		var a_distance = a.global_position.distance_squared_to(player_node.global_position)
 		var b_distance = b.global_position.distance_squared_to(player_node.global_position)
-		return a_distance < b_distance
+		return a_distance > b_distance
 	)
 	return enemies[sword_number - 1]
 
