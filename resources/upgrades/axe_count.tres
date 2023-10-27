@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6b5tc")
 id = "axe_count"
-max_quantity = 5
+max_quantity = 4
 name = "Axe Count"
 image_path = "res://scenes/ability/axe_ability/axe.png"
 description = "Adds one additional axe."
