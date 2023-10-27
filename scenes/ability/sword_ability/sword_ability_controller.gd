@@ -21,8 +21,8 @@ func on_timer_timeout():
 	if not player: return
 	var enemies = get_enemies_in_range(player)
 	if not enemies || enemies.size() == 0: return
-	var closest_enemy = get_closest_enemy(player, enemies)
-	for sword in sword_count:
+	for sword_number in sword_count:
+		var closest_enemy = get_closest_enemy(player, enemies, sword_number)
 		use_sword_ability(player, closest_enemy)
 
 
@@ -34,14 +34,14 @@ func get_enemies_in_range(player_node: Node2D) -> Array:
 	)
 
 
-func get_closest_enemy(player_node: Node2D, enemies: Array) -> Node2D:
+func get_closest_enemy(player_node: Node2D, enemies: Array, sword_number: int) -> Node2D:
 	if not enemies || enemies.size() == 0: return null
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		var a_distance = a.global_position.distance_squared_to(player_node.global_position)
 		var b_distance = b.global_position.distance_squared_to(player_node.global_position)
 		return a_distance < b_distance
 	)
-	return enemies[0]
+	return enemies[sword_number - 1]
 
 
 func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
@@ -63,5 +63,5 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		timer.start()
 	elif upgrade.id == "sword_damage":
 		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)
-	elif upgrade.id == "axe_count":
-		sword_count = current_upgrades.sword_count.quantity
+	elif upgrade.id == "sword_count":
+		sword_count = current_upgrades.sword_count.quantity + 1  # We already have 1 sword

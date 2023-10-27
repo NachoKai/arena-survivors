@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_83vbl")
 id = "sword_count"
-max_quantity = 5
+max_quantity = 4
 name = "Sword Count"
 image_path = "res://scenes/ability/sword_ability/sword.png"
 description = "Adds one additional sword."
