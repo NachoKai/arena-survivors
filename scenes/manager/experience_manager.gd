@@ -23,7 +23,6 @@ func increment_experience(number: float):
 		target_experience += EXPERIENCE_GROWTH_FACTOR
 		experience_updated.emit(current_experience, target_experience, current_level)
 		level_up.emit(current_level)
-		# SaveGame.save_file()
 
 	experience_updated.emit(min(current_experience, target_experience), target_experience, current_level)
 

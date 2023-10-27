@@ -27,11 +27,10 @@ func on_player_died():
 	add_child(end_screen_instance)
 	end_screen_instance.set_defeat()
 	MetaProgression.save_file()
-	# SaveGame.save_file()
 
 
 func on_castle_exited(_other_body: Node2D):
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
-#	player.set_position(Vector2(463, -358))
+	# Spawn character at the castle doors

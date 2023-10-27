@@ -32,7 +32,7 @@ func update_progress():
 	if is_max_quantity:
 		learn_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(meta_upgrade.experience_cost)
-	count_label.text = "x%d" % quantity  # Format string: x0
+	count_label.text = "x%d" % quantity
 
 
 func on_learn_button_pressed():
@@ -41,4 +41,3 @@ func on_learn_button_pressed():
 	MetaProgression.save_data.meta_upgrade_currency -= meta_upgrade.experience_cost
 	MetaProgression.save_file()
 	get_tree().call_group("meta_upgrade_card", "update_progress")
-	# SaveGame.save_file()

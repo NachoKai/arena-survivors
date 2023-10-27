@@ -8,6 +8,7 @@ extends Node
 const MAX_RANGE: int = 150
 var additional_damage_percent = 1
 var default_wait_time
+var sword_count: int = 1
 
 
 func _ready():
@@ -21,7 +22,8 @@ func on_timer_timeout():
 	var enemies = get_enemies_in_range(player)
 	if not enemies || enemies.size() == 0: return
 	var closest_enemy = get_closest_enemy(player, enemies)
-	use_sword_ability(player, closest_enemy)
+	for sword in sword_count:
+		use_sword_ability(player, closest_enemy)
 
 
 func get_enemies_in_range(player_node: Node2D) -> Array:
@@ -61,3 +63,5 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		timer.start()
 	elif upgrade.id == "sword_damage":
 		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)
+	elif upgrade.id == "axe_count":
+		sword_count = current_upgrades.sword_count.quantity
