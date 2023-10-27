@@ -142,7 +142,7 @@ libraries = {
 streams = Array[AudioStream]([ExtResource("3_c30ya"), ExtResource("4_bth1l"), ExtResource("5_17e3h"), ExtResource("6_ocev4"), ExtResource("7_tg6y7")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_2tv3c")]
-max_health = 16.0
+max_health = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_5ad60")]
 health_component = NodePath("../HealthComponent")
