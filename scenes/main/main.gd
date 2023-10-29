@@ -43,7 +43,7 @@ func on_player_died():
 #	await ScreenTransition.transition_halfway
 #	player_node.get_parent().remove_child(player_node)
 #	get_tree().change_scene_to_file("res://scenes/castle/castle.tscn")
-#	castle.add_child(player_node) 
+#	castle.add_child(player_node)
 
 
 func on_treasure_chest_opened(pos, dir):
@@ -56,4 +56,4 @@ func on_treasure_chest_opened(pos, dir):
 func on_remove_enemies_body_entered(body):
 	if body.is_in_group("enemy"):
 		body.queue_free()
-			
+

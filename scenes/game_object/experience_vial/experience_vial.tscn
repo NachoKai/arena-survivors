@@ -71,6 +71,7 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_tgre6")
 
 [node name="ExperienceVialImage" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("1_oir5b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

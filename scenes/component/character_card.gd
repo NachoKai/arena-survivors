@@ -15,7 +15,7 @@ func set_character(character: Character):
 		character_image.texture = load(character.image_path)
 	else:
 		character_image.visible = false
-	handle_use_button()	
+	handle_use_button()
 
 
 
