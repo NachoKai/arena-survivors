@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="5_t2mei"]
 [ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="6_d125a"]
 
+[sub_resource type="Resource" id="Resource_ibikn"]
+script = ExtResource("2_4fkr3")
+id = "warrior"
+name = "Darius"
+description = "Warrior"
+image_path = "res://assets/characters/warrior.png"
+
 [sub_resource type="Resource" id="Resource_rowhv"]
 script = ExtResource("2_4fkr3")
 id = "archer"
@@ -26,13 +33,6 @@ id = "monk"
 name = "Zenith"
 description = "Monk"
 image_path = "res://assets/characters/monk.png"
-
-[sub_resource type="Resource" id="Resource_ibikn"]
-script = ExtResource("2_4fkr3")
-id = "warrior"
-name = "Darius"
-description = "Warrior"
-image_path = "res://assets/characters/warrior.png"
 
 [sub_resource type="Resource" id="Resource_jd52p"]
 script = ExtResource("2_4fkr3")
@@ -548,7 +548,7 @@ sources/0 = SubResource("TileSetAtlasSource_5vepa")
 [node name="CharactersMenu" type="CanvasLayer"]
 layer = 3
 script = ExtResource("1_r74jx")
-characters = Array[ExtResource("2_4fkr3")]([SubResource("Resource_rowhv"), SubResource("Resource_i4shl"), SubResource("Resource_rpp1x"), SubResource("Resource_ibikn"), SubResource("Resource_jd52p"), SubResource("Resource_qpb8d")])
+characters = Array[ExtResource("2_4fkr3")]([SubResource("Resource_ibikn"), SubResource("Resource_rowhv"), SubResource("Resource_i4shl"), SubResource("Resource_rpp1x"), SubResource("Resource_jd52p"), SubResource("Resource_qpb8d")])
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_64sk4")

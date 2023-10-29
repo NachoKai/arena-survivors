@@ -216,4 +216,5 @@ fixed_fps = 0
 interpolate = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_kck7r")

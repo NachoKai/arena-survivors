@@ -118,6 +118,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(0, 4)
 texture = ExtResource("1_a2df1")
 offset = Vector2(2.08165e-12, -4)
