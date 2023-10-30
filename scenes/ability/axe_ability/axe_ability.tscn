@@ -9,7 +9,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AxeImage:rotation")
+tracks/0/path = NodePath("Image:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AxeImage:rotation")
+tracks/0/path = NodePath("Image:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,6 +58,7 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_jb33t")
 
-[node name="AxeImage" type="Sprite2D" parent="."]
+[node name="Image" type="Sprite2D" parent="."]
 z_index = 1
+texture_filter = 1
 texture = ExtResource("1_w3wnr")

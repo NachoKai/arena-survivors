@@ -59,10 +59,12 @@ position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_5f866")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("1_7cajg")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_n5snq")
 frame_progress = 0.625119
