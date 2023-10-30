@@ -116,7 +116,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyyrf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y56tq"]
 resource_local_to_scene = true
 shader = SubResource("Shader_ij8pg")
 shader_parameter/lerp_percent = 0.0
@@ -155,7 +155,7 @@ acceleration = 7.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_1fb0c")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_pyyrf")
+hit_flash_material = SubResource("ShaderMaterial_y56tq")
 
 [node name="FrameSaverComponent" parent="." instance=ExtResource("12_5o5si")]
 
@@ -174,12 +174,13 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_5gys3")
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="EnemyImage" type="Sprite2D" parent="Visuals"]
-position = Vector2(2.08165e-12, -4)
-texture = ExtResource("14_3tl8e")
-
 [node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -5)
 scale = Vector2(2, 2)
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="EnemyImage" type="Sprite2D" parent="Visuals"]
+texture_filter = 1
+position = Vector2(2.08165e-12, -4)
+texture = ExtResource("14_3tl8e")

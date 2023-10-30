@@ -337,6 +337,7 @@ show_percentage = false
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="PlayerImage" type="Sprite2D" parent="Visuals"]
+texture_filter = 1
 position = Vector2(2.34053e-11, -7.99736)
 rotation = 0.0268653
 texture = ExtResource("1_xn5b6")
