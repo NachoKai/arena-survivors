@@ -5,26 +5,41 @@ extends Node
 
 var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
-var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
-var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
-var upgrade_sword_count = preload("res://resources/upgrades/sword_count.tres")
-var upgrade_axe = preload("res://resources/upgrades/axe.tres")
-var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
 var upgrade_pickup_area = preload("res://resources/upgrades/pickup_area.tres")
-var upgrade_hammer = preload("res://resources/upgrades/hammer.tres")
+
+var upgrade_sword_count = preload("res://resources/upgrades/sword_count.tres")
+var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
+var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
+var upgrade_sword_size = preload("res://resources/upgrades/sword_size.tres")
+
+var upgrade_axe = preload("res://resources/upgrades/axe.tres")
 var upgrade_axe_count = preload("res://resources/upgrades/axe_count.tres")
+var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+var upgrade_axe_rate = preload("res://resources/upgrades/axe_rate.tres")
+var upgrade_axe_size = preload("res://resources/upgrades/axe_size.tres")
+
+var upgrade_hammer = preload("res://resources/upgrades/hammer.tres")
 var upgrade_hammer_count = preload("res://resources/upgrades/hammer_count.tres")
+var upgrade_hammer_damage = preload("res://resources/upgrades/hammer_damage.tres")
+var upgrade_hammer_rate = preload("res://resources/upgrades/hammer_rate.tres")
+var upgrade_hammer_size = preload("res://resources/upgrades/hammer_size.tres")
 
 
 func _ready():
-	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_sword_rate, 8)
-	upgrade_pool.add_item(upgrade_sword_damage, 8)
-	upgrade_pool.add_item(upgrade_sword_count, 5)
-	upgrade_pool.add_item(upgrade_hammer, 6)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	upgrade_pool.add_item(upgrade_pickup_area, 5)
+
+	upgrade_pool.add_item(upgrade_sword_count, 5)
+	upgrade_pool.add_item(upgrade_sword_damage, 8)
+	upgrade_pool.add_item(upgrade_sword_rate, 8)
+	upgrade_pool.add_item(upgrade_sword_size, 500)
+
+	upgrade_pool.add_item(upgrade_axe, 8)
+
+	upgrade_pool.add_item(upgrade_hammer, 6)
+
 	experience_manager.level_up.connect(on_levep_up)
 
 
@@ -49,10 +64,15 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if not chosen_upgrade: return
 	if chosen_upgrade.id == upgrade_axe.id:
-		upgrade_pool.add_item(upgrade_axe_damage, 8)
 		upgrade_pool.add_item(upgrade_axe_count, 5)
+		upgrade_pool.add_item(upgrade_axe_damage, 8)
+		upgrade_pool.add_item(upgrade_axe_rate, 8)
+		upgrade_pool.add_item(upgrade_axe_size, 5)
 	elif chosen_upgrade.id == upgrade_hammer.id:
 		upgrade_pool.add_item(upgrade_hammer_count, 5)
+		upgrade_pool.add_item(upgrade_hammer_damage, 8)
+		upgrade_pool.add_item(upgrade_hammer_rate, 8)
+		upgrade_pool.add_item(upgrade_hammer_size, 5)
 
 
 func pick_upgrades():

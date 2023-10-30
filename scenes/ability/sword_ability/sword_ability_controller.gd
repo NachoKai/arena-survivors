@@ -4,11 +4,12 @@ extends Node
 @onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
 @onready var timer: Timer = $Timer
 @export var sword_ability: PackedScene
-@export var base_damage = 5
-const MAX_RANGE: int = 150
-var additional_damage_percent = 1
+@export var base_damage: int = 5
 var default_wait_time
+var additional_damage_percent = 1
+var additional_size_percent = 1
 var sword_count: int = 1
+const MAX_RANGE: int = 150
 
 
 func _ready():
@@ -53,15 +54,18 @@ func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4  # TAU: 2 times PI, a full rotation
 	var enemy_direction = target_enemy.global_position - sword_instance.global_position
 	sword_instance.rotation = enemy_direction.angle()
+	sword_instance.scale = Vector2.ONE * additional_size_percent
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
-	if upgrade.id == "sword_rate":
+	if upgrade.id == "sword_count":
+		sword_count = current_upgrades.sword_count.quantity + 1  # We already have 1 sword
+	elif upgrade.id == "sword_damage":
+		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)
+	elif upgrade.id == "sword_rate":
 		var percent_reduction = current_upgrades.sword_rate.quantity * 0.1
 		timer.wait_time = default_wait_time * (1 - percent_reduction)
 		timer.start()
-	elif upgrade.id == "sword_damage":
-		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)
-	elif upgrade.id == "sword_count":
-		sword_count = current_upgrades.sword_count.quantity + 1  # We already have 1 sword
+	elif upgrade.id == "sword_size":
+		additional_size_percent = 1 + (current_upgrades.sword_size.quantity * 0.1)

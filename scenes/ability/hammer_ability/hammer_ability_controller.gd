@@ -5,11 +5,15 @@ extends Node
 @onready var timer: Timer = $Timer
 @export var hammer_ability_scene: PackedScene
 @export var base_damage: int = 15
-const BASE_RANGE: int = 100
+var default_wait_time
+var additional_damage_percent = 1
+var additional_size_percent = 1
 var hammer_count: int = 0
+const BASE_RANGE: int = 100
 
 
 func _ready():
+	default_wait_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
@@ -30,10 +34,19 @@ func on_timer_timeout():
 		var hammer_ability = hammer_ability_scene.instantiate() as Node2D
 		foreground.add_child(hammer_ability)
 		hammer_ability.global_position = spawn_position
-		hammer_ability.hitbox_component.damage = base_damage
+		hammer_ability.hitbox_component.damage = base_damage * additional_damage_percent
+		hammer_ability.scale = Vector2.ONE * additional_size_percent
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "hammer_count":
-		hammer_count = current_upgrades.hammer_count.quantity
+		hammer_count = current_upgrades.hammer_count.quantity + 1  # We already have 1 hammer
+	elif upgrade.id == "hammer_damage":
+		additional_damage_percent = 1 + (current_upgrades.hammer_damage.quantity * 0.15)
+	elif upgrade.id == "hammer_rate":
+		var percent_reduction = current_upgrades.hammer_rate.quantity * 0.1
+		timer.wait_time = default_wait_time * (1 - percent_reduction)
+		timer.start()
+	elif upgrade.id == "hammer_size":
+		additional_size_percent = 1 + (current_upgrades.hammer_size.quantity * 0.1)

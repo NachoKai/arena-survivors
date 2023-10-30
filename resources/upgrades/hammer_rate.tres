@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bmyn462u6e3ll"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_afrxi"]
+
+[resource]
+script = ExtResource("1_afrxi")
+id = "hammer_size"
+max_quantity = 4
+name = "Hammer Quickness"
+image_path = "res://scenes/ability/hammer_ability/hammer.png"
+description = "Increases hammer attack rate by 10%."

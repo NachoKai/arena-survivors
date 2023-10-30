@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://7tbucx61hu4p"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_ehl62"]
+
+[resource]
+script = ExtResource("1_ehl62")
+id = "axe_size"
+max_quantity = 4
+name = "Axe Size"
+image_path = "res://scenes/ability/axe_ability/axe.png"
+description = "Increases axe size by 10%."
