@@ -71,6 +71,7 @@ libraries = {
 }
 
 [node name="Background" type="ColorRect" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -79,6 +80,7 @@ grow_vertical = 2
 color = Color(0.607843, 0.298039, 0.639216, 0.392157)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,6 +93,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="CardContainer" type="HBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16

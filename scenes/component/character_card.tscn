@@ -27,6 +27,7 @@ script = ExtResource("1_7w6om")
 streams = Array[AudioStream]([ExtResource("3_w8dn7"), ExtResource("4_phy5v"), ExtResource("5_74s8l"), ExtResource("6_imr2j"), ExtResource("7_lmugw"), ExtResource("8_sbhhr"), ExtResource("9_k6vqd"), ExtResource("10_g1oe2"), ExtResource("11_010an"), ExtResource("12_u6y55")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -35,17 +36,20 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="PanelLabel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"AlternatePanelContainer"
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelLabel"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -63,6 +67,7 @@ vertical_alignment = 2
 autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(65, 59)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,12 +75,14 @@ size_flags_vertical = 3
 
 [node name="Image" type="Sprite2D" parent="MarginContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 position = Vector2(33.1811, 29)
 scale = Vector2(2.875, 2.875)
 texture = ExtResource("13_ft8ru")
 
 [node name="UseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("14_ocans")]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 disabled = true
 text = "Use"

@@ -34,6 +34,7 @@ end_screen_scene = ExtResource("2_regfd")
 [node name="GameCamera" parent="." instance=ExtResource("3_gmisb")]
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 tile_set = ExtResource("4_3e18s")
 format = 2
 layer_0/name = "layer0"

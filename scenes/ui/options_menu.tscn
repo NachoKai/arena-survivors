@@ -8,6 +8,7 @@ layer = 3
 script = ExtResource("1_p5c7x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,11 +16,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -27,12 +30,14 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="WrapperContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 24
 
 [node name="OptionsLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -47,15 +52,18 @@ text = "Options"
 horizontal_alignment = 1
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="VolumeContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="SfxVolumeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
@@ -69,12 +77,14 @@ vertical_alignment = 2
 
 [node name="SfxVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.5
 
 [node name="MusicVolumeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
@@ -88,17 +98,20 @@ vertical_alignment = 2
 
 [node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/VolumeContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.5
 
 [node name="WindowModeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
 theme_override_constants/separation = 66
 
 [node name="WindowModeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/WindowModeContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
@@ -112,18 +125,21 @@ vertical_alignment = 2
 
 [node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/WindowModeContainer" instance=ExtResource("3_017jq")]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(65, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Windowed"
 
 [node name="LanguageContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 100
 
 [node name="LanguageLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/LanguageContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
@@ -137,6 +153,7 @@ vertical_alignment = 2
 
 [node name="LanguageSelector" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/LanguageContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 mouse_default_cursor_shape = 2
 item_count = 1
@@ -145,12 +162,14 @@ popup/item_0/id = 0
 popup/item_0/disabled = true
 
 [node name="FilterContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 24)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 128
 
 [node name="FilterLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/FilterContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
@@ -164,6 +183,7 @@ vertical_alignment = 2
 
 [node name="FilterCheckBox" type="CheckBox" parent="MarginContainer/PanelContainer/MarginContainer/WrapperContainer/OptionsContainer/FilterContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
