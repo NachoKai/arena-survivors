@@ -66,6 +66,7 @@ offset_bottom = 3.0
 mouse_default_cursor_shape = 2
 
 [node name="MessageButton" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -91.0
 offset_top = -120.0

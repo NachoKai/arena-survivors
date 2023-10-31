@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ciqnog2cdxk6"]
 
 [ext_resource type="Script" path="res://scenes/ability/axe_ability/axe_ability_controller.gd" id="1_bs2ep"]
-[ext_resource type="PackedScene" uid="uid://bwyeurx6n3cwd" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="2_xuguq"]
+[ext_resource type="PackedScene" uid="uid://bwyeurx6n3cwd" path="res://scenes/ability/dagger_ability/dagger_ability.tscn" id="2_xuguq"]
 
 [node name="AxeAbilityController" type="Node"]
 script = ExtResource("1_bs2ep")

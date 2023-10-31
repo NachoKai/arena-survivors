@@ -16,12 +16,14 @@ func _ready():
 
 func show_message(message: String):
 	panel_container.visible = true
+	message_button.visible = true
 	label.text = message
 	label.visible = true
 
 
 func hide_message():
 	panel_container.visible = false
+	message_button.visible = false
 
 
 func on_screen_exited():
