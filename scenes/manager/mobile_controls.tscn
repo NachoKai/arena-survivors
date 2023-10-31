@@ -26,5 +26,5 @@ offset_top = -45.96
 offset_right = 151.04
 offset_bottom = 154.04
 scale = Vector2(0.5, 0.5)
-clampzone_size = 30.0
+clampzone_size = 50.0
 visibility_mode = 1
