@@ -40,7 +40,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_sword_count, 5)
 	upgrade_pool.add_item(upgrade_sword_damage, 8)
 	upgrade_pool.add_item(upgrade_sword_rate, 8)
-	upgrade_pool.add_item(upgrade_sword_size, 500)
+	upgrade_pool.add_item(upgrade_sword_size, 5)
 
 	upgrade_pool.add_item(upgrade_axe, 8)
 
