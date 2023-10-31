@@ -12,41 +12,38 @@ var dagger_count: int = 0
 
 
 func _ready():
-	print("ready")
 	default_wait_time = timer.wait_time
-	print("default_wait_time: ", default_wait_time)
 	timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 
 func on_timer_timeout():
-	print("timeout")
 	if not player or not foreground: return
 
 	for i in range(dagger_count + 1):
 		var direction = player.global_position.direction_to(player.global_position + player.velocity)
-		print("direction: ", direction)
 		var dagger_instance = dagger_ability_scene.instantiate() as DaggerAbility
 		if not dagger_instance: return
-
-		var angle = i * (360 / (dagger_count + 1))
-		print("angle: ", angle)
-		var offset = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle))) * 100
-		print("offset: ", offset)
-		foreground.add_child(dagger_instance)
-		dagger_instance.global_position = player.global_position + offset
-
-		dagger_instance.rotation_degrees = direction.angle() + 90
+		if not dagger_instance.hitbox_component: return
+		if not dagger_instance.hitbox_component.damage: return
 		dagger_instance.hitbox_component.damage = base_damage * additional_damage_percent
 		dagger_instance.scale = Vector2.ONE * additional_size_percent
 
-		var velocity = direction.normalized() * 500
-		print("velocity: ", velocity)
-#		dagger_instance.velocity = velocity
+		# Calculate the end position based on player's movement
+		var end_position = player.global_position + player.velocity * i * 0.1  # Adjust the multiplier for speed
+
+		# Create a Tween and interpolate the position
+		var tween = Tween.new()
+		add_child(tween)
+		tween.interpolate_property(dagger_instance, "global_position", dagger_instance.global_position, end_position, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+
+		# Add the dagger to the scene
+		foreground.add_child(dagger_instance)
+
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	print("on_ability_upgrade_added")
 	if not upgrade: return
 	if upgrade.id == "dagger_count":
 		dagger_count = current_upgrades.dagger_count.quantity + 1  # We already have 1 dagger

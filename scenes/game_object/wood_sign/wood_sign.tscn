@@ -33,6 +33,7 @@ offset_left = -91.0
 offset_top = -120.0
 offset_right = 90.0
 offset_bottom = -35.0
+mouse_default_cursor_shape = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -70,3 +71,4 @@ offset_left = -91.0
 offset_top = -120.0
 offset_right = 90.0
 offset_bottom = -34.0
+mouse_default_cursor_shape = 2
