@@ -31,7 +31,7 @@ func on_timer_timeout():
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if not result.is_empty():
 			spawn_position = result.position
-		var hammer_ability = hammer_ability_scene.instantiate() as Node2D
+		var hammer_ability = hammer_ability_scene.instantiate() as HammerAbility
 		foreground.add_child(hammer_ability)
 		hammer_ability.global_position = spawn_position
 		hammer_ability.hitbox_component.damage = base_damage * additional_damage_percent

@@ -38,6 +38,7 @@ func set_ability_upgrade(upgrade: AbilityUpgrade):
 	else:
 		upgrade_image.visible = false
 
+
 func select_card():
 	disabled = true
 	animation_player.play("selected")

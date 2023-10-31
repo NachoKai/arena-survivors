@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://d0yaqvs7cb4hr"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_ijcaj"]
+
+[resource]
+script = ExtResource("1_ijcaj")
+id = "dagger_damage"
+max_quantity = 8
+name = "Dagger Damage"
+image_path = "res://scenes/ability/dagger_ability/dagger.png"
+description = "Increases dagger damage by 10%."

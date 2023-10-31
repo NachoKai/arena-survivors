@@ -26,6 +26,12 @@ var upgrade_hammer_damage = preload("res://resources/upgrades/hammer_damage.tres
 var upgrade_hammer_rate = preload("res://resources/upgrades/hammer_rate.tres")
 var upgrade_hammer_size = preload("res://resources/upgrades/hammer_size.tres")
 
+var upgrade_dagger = preload("res://resources/upgrades/dagger.tres")
+var upgrade_dagger_count = preload("res://resources/upgrades/dagger_count.tres")
+var upgrade_dagger_damage = preload("res://resources/upgrades/dagger_damage.tres")
+var upgrade_dagger_rate = preload("res://resources/upgrades/dagger_rate.tres")
+var upgrade_dagger_size = preload("res://resources/upgrades/dagger_size.tres")
+
 
 func _ready():
 	upgrade_pool.add_item(upgrade_player_speed, 5)
@@ -39,6 +45,8 @@ func _ready():
 	upgrade_pool.add_item(upgrade_axe, 8)
 
 	upgrade_pool.add_item(upgrade_hammer, 6)
+
+	upgrade_pool.add_item(upgrade_dagger, 0)
 
 	experience_manager.level_up.connect(on_levep_up)
 
@@ -73,6 +81,11 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.add_item(upgrade_hammer_damage, 8)
 		upgrade_pool.add_item(upgrade_hammer_rate, 8)
 		upgrade_pool.add_item(upgrade_hammer_size, 5)
+	elif chosen_upgrade.id == upgrade_dagger.id:
+		upgrade_pool.add_item(upgrade_dagger_count, 5)
+		upgrade_pool.add_item(upgrade_dagger_damage, 8)
+		upgrade_pool.add_item(upgrade_dagger_rate, 8)
+		upgrade_pool.add_item(upgrade_dagger_size, 5)
 
 
 func pick_upgrades():

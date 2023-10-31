@@ -21,7 +21,7 @@ func on_timer_timeout():
 	if not player or not foreground: return
 
 	for i in range(axe_count + 1):
-		var axe_instance = axe_ability_scene.instantiate() as Node2D
+		var axe_instance = axe_ability_scene.instantiate() as AxeAbility
 		if not axe_instance: return
 		foreground.add_child(axe_instance)
 		var angle = i * (360 / (axe_count + 1))
