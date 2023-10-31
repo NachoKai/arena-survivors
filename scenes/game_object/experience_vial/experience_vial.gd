@@ -10,6 +10,8 @@ extends Node2D
 
 
 func _ready():
+	var random_rotation = randf_range(0, 360)
+	experience_vial_image.rotation_degrees = random_rotation
 	experience_vial_area.area_entered.connect(on_area_entered)
 #	night_light_animation.play("default") This needs to be handled differently, energy depends on global timer
 
