@@ -6,6 +6,7 @@ extends Node2D
 var base_rotation = Vector2.RIGHT
 const MAX_RADIUS: int = 100
 
+
 func _ready():
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var tween = create_tween()
