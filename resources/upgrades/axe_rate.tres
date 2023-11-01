@@ -8,4 +8,4 @@ id = "axe_rate"
 max_quantity = 4
 name = "Axe Quickness"
 image_path = "res://scenes/ability/axe_ability/axe.png"
-description = "Increases axe attack rate by 10%."
+description = "Increases axe attack rate by 15%."

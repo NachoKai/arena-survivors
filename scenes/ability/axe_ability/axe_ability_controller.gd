@@ -39,8 +39,8 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 	elif upgrade.id == "axe_damage":
 		additional_damage_percent = 1 + (current_upgrades.axe_damage.quantity * 0.15)
 	elif upgrade.id == "axe_rate":
-		var percent_reduction = current_upgrades.axe_rate.quantity * 0.1
+		var percent_reduction = current_upgrades.axe_rate.quantity * 0.15
 		timer.wait_time = default_wait_time * (1 - percent_reduction)
 		timer.start()
 	elif upgrade.id == "axe_size":
-		additional_size_percent = 1 + (current_upgrades.axe_size.quantity * 0.1)
+		additional_size_percent = 1 + (current_upgrades.axe_size.quantity * 0.15)

@@ -8,4 +8,4 @@ id = "axe_size"
 max_quantity = 4
 name = "Axe Size"
 image_path = "res://scenes/ability/axe_ability/axe.png"
-description = "Increases axe size by 10%."
+description = "Increases axe size by 15%."

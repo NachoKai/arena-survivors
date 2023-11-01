@@ -8,4 +8,4 @@ id = "hammer_size"
 max_quantity = 4
 name = "Hammer Size"
 image_path = "res://scenes/ability/hammer_ability/hammer.png"
-description = "Increases hammer size by 10%."
+description = "Increases hammer size by 15%."

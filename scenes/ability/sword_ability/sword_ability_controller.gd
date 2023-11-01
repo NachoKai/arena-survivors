@@ -64,8 +64,8 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 	elif upgrade.id == "sword_damage":
 		additional_damage_percent = 1 + (current_upgrades.sword_damage.quantity * 0.15)
 	elif upgrade.id == "sword_rate":
-		var percent_reduction = current_upgrades.sword_rate.quantity * 0.1
+		var percent_reduction = current_upgrades.sword_rate.quantity * 0.15
 		timer.wait_time = default_wait_time * (1 - percent_reduction)
 		timer.start()
 	elif upgrade.id == "sword_size":
-		additional_size_percent = 1 + (current_upgrades.sword_size.quantity * 0.1)
+		additional_size_percent = 1 + (current_upgrades.sword_size.quantity * 0.15)

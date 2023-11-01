@@ -8,4 +8,4 @@ id = "dagger_size"
 max_quantity = 4
 name = "Dagger Size"
 image_path = "res://scenes/ability/dagger_ability/dagger.png"
-description = "Increases dagger size by 10%."
+description = "Increases dagger size by 15%."
