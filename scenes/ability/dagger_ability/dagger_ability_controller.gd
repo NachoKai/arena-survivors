@@ -24,10 +24,13 @@ func on_timer_timeout():
 		var dagger_instance = dagger_ability_scene.instantiate() as DaggerAbility
 		if not dagger_instance: return
 		foreground.add_child(dagger_instance)
-		
+
+
+
 		dagger_instance.global_position = player.global_position
 		dagger_instance.hitbox_component.damage = base_damage * additional_damage_percent
 		dagger_instance.scale = Vector2.ONE * additional_size_percent
+
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
