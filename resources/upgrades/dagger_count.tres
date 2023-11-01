@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://ckt34h1xl3ah0"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_0w2hd"]
+
+[resource]
+script = ExtResource("1_0w2hd")
+id = "dagger_count"
+max_quantity = 4
+name = "Dagger Count"
+image_path = "res://scenes/ability/dagger_ability/dagger.png"
+description = "Adds one additional dagger."

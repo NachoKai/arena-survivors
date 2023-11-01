@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhjq4mi2te8gf"]
+
+[ext_resource type="Script" path="res://scenes/ability/dagger_ability/dagger_ability_controller.gd" id="1_qdh5d"]
+[ext_resource type="PackedScene" uid="uid://bakfx5xok0nv5" path="res://scenes/ability/dagger_ability/dagger_ability.tscn" id="2_mo6s7"]
+
+[node name="DaggerAbilityController" type="Node"]
+script = ExtResource("1_qdh5d")
+dagger_ability_scene = ExtResource("2_mo6s7")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

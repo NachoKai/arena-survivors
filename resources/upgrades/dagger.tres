@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bye17ovil67xn"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="1_adujj"]
+[ext_resource type="PackedScene" uid="uid://dhjq4mi2te8gf" path="res://scenes/ability/dagger_ability/dagger_ability_controller.tscn" id="1_lox64"]
+
+[resource]
+script = ExtResource("1_adujj")
+ability_controller_scene = ExtResource("1_lox64")
+id = "dagger"
+max_quantity = 1
+name = "Dagger"
+image_path = "res://scenes/ability/dagger_ability/dagger.png"
+description = "Periodically throws a dagger wherever you point."

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://3852sol3w2qx"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_vog87"]
+
+[resource]
+script = ExtResource("1_vog87")
+id = "dagger_rate"
+max_quantity = 4
+name = "Dagger Quickness"
+image_path = "res://scenes/ability/dagger_ability/dagger.png"
+description = "Increases dagger attack rate by 10%."
