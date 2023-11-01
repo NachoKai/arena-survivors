@@ -24,10 +24,8 @@ func on_timer_timeout():
 		var dagger_instance = dagger_ability_scene.instantiate() as DaggerAbility
 		if not dagger_instance: return
 		foreground.add_child(dagger_instance)
-		var angle = i * (360 / (dagger_count + 1))
-		var radius = 100
-		var offset = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle))) * radius
-		dagger_instance.global_position = player.global_position + offset
+		
+		dagger_instance.global_position = player.global_position
 		dagger_instance.hitbox_component.damage = base_damage * additional_damage_percent
 		dagger_instance.scale = Vector2.ONE * additional_size_percent
 
