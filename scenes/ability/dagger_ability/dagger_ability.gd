@@ -10,6 +10,7 @@ var direction
 
 func _ready():
 	hitbox_component.body_entered.connect(on_body_entered)
+	hitbox_component.area_entered.connect(on_body_entered)
 	visible_on_screen_notifier.screen_exited.connect(on_screen_exited)
 	if not player: return
 	var player_position = player.global_position + player.velocity
@@ -18,12 +19,14 @@ func _ready():
 
 
 func _process(delta):
-	if not player: return
-	var player_position = player.global_position + player.velocity
 	position += direction * SPEED * delta
 
 
 func on_body_entered(_other_body: Node2D):
+	queue_free()
+	
+	
+func on_area_entered(_other_body: Node2D):
 	queue_free()
 
 
