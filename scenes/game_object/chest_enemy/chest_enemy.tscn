@@ -207,5 +207,5 @@ texture = ExtResource("15_xvore")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_0y67a")
