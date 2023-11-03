@@ -9,6 +9,8 @@ extends Node2D
 
 
 func _ready():
+	if not step_back_particle: return
+	if not step_back_particle.texture: return
 	step_back_particle.texture = sprite.texture
 	healt_component.died.connect(on_died)
 

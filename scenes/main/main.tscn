@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rmg0g834qxnl"]
+[gd_scene load_steps=22 format=3 uid="uid://rmg0g834qxnl"]
 
 [ext_resource type="PackedScene" uid="uid://ff082s2cpd0g" path="res://scenes/game_object/player/player.tscn" id="1_b1865"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_wyw77"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://box0fwsdbta33" path="res://scenes/manager/mobile_controls.tscn" id="12_08wk4"]
 [ext_resource type="PackedScene" uid="uid://c22n8gi28ih28" path="res://scenes/game_object/wood_sign/wood_sign.tscn" id="12_plvmo"]
 [ext_resource type="PackedScene" uid="uid://b6bo7ps4d2hti" path="res://scenes/game_object/treasure_chest/treasure_chest.tscn" id="13_lrnfl"]
+[ext_resource type="PackedScene" uid="uid://brl73pc7i38pe" path="res://scenes/game_object/chest_enemy/chest_enemy.tscn" id="14_nestc"]
 [ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_nu1a0"]
 [ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="14_ow7mi"]
 [ext_resource type="PackedScene" uid="uid://cs0qhyyc3usk3" path="res://scenes/manager/day_night_cycle_manager.tscn" id="15_0whv5"]
@@ -104,10 +105,6 @@ collision_mask = 6
 position = Vector2(-1024, 846)
 collision_mask = 6
 
-[node name="TreasureChest2" parent="Objects" instance=ExtResource("13_lrnfl")]
-position = Vector2(754, 460)
-collision_mask = 6
-
 [node name="TreasureChest8" parent="Objects" instance=ExtResource("13_lrnfl")]
 position = Vector2(-276, -464)
 collision_mask = 6
@@ -132,6 +129,9 @@ unique_name_in_owner = true
 position = Vector2(180, 143)
 arena_time_manager = NodePath("../../Managers/ArenaTimeManager")
 metadata/_edit_lock_ = true
+
+[node name="ChestEnemy" parent="Entities" instance=ExtResource("14_nestc")]
+position = Vector2(625, 401)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
 

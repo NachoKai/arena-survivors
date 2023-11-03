@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready():
+	if not health_component: return
 	(health_component as HealthComponent).died.connect(on_died)
 
 

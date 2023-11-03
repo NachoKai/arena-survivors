@@ -7,6 +7,7 @@ var hit_flash_tween: Tween
 
 
 func _ready():
+	if not health_component: return
 	health_component.health_decreased.connect(on_health_decreased)
 	sprite.material = hit_flash_material
 

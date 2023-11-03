@@ -1,0 +1,211 @@
+[gd_scene load_steps=26 format=3 uid="uid://brl73pc7i38pe"]
+
+[ext_resource type="Script" path="res://scenes/game_object/chest_enemy/chest_enemy.gd" id="1_okw7a"]
+[ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_3dlge"]
+[ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_m0frf"]
+[ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_0dqug"]
+[ext_resource type="AudioStream" uid="uid://dffeo42bajgge" path="res://sounds/footstep_carpet_002.ogg" id="5_0ksut"]
+[ext_resource type="AudioStream" uid="uid://csppv05u2idya" path="res://sounds/footstep_carpet_003.ogg" id="6_svy0r"]
+[ext_resource type="AudioStream" uid="uid://dwniqoborrmvi" path="res://sounds/footstep_carpet_004.ogg" id="7_xll17"]
+[ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="8_vxevt"]
+[ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="9_683j2"]
+[ext_resource type="PackedScene" uid="uid://o1entvj4ufi4" path="res://scenes/component/velocity_component.tscn" id="10_50hdc"]
+[ext_resource type="PackedScene" uid="uid://ddjafc8cq5hf0" path="res://scenes/component/hit_flash_component.tscn" id="11_xolvb"]
+[ext_resource type="PackedScene" uid="uid://c4laaxpwcmpkf" path="res://scenes/component/frame_saver_component.tscn" id="12_g50yg"]
+[ext_resource type="PackedScene" uid="uid://dbhugqcc7h2mu" path="res://scenes/component/death_component.tscn" id="13_3a6mx"]
+[ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="14_buoox"]
+[ext_resource type="Texture2D" uid="uid://doet15widj8lm" path="res://scenes/game_object/chest_enemy/chest_enemy.png" id="15_xvore"]
+[ext_resource type="Texture2D" uid="uid://q4elaxmptfc6" path="res://scenes/game_object/treasure_chest/chest_1.png" id="16_ty157"]
+[ext_resource type="Texture2D" uid="uid://bsh8qirh5sg3e" path="res://scenes/game_object/treasure_chest/chest_2.png" id="17_virj8"]
+
+[sub_resource type="Animation" id="Animation_c4cfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/EnemyImage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/EnemyImage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.48787e-16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/EnemyImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g2qfk"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/EnemyImage:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(3.16422e-09, -3.41601), Vector2(4.39964e-08, -11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/EnemyImage:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.48787e-16, 3.48787e-16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/EnemyImage:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.8), Vector2(1, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_di2uf"]
+_data = {
+"RESET": SubResource("Animation_c4cfy"),
+"walk": SubResource("Animation_g2qfk")
+}
+
+[sub_resource type="Shader" id="Shader_ij8pg"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float lerp_percent: hint_range(0.0, 1.0);
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 final_color = mix(texture_color, vec4(1.0, 1.0, 1.0, texture_color.a), lerp_percent);
+	COLOR = final_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7if4t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ij8pg")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6204"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rwgg"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0y67a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ty157")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_virj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xvore")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="ChestEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_okw7a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_di2uf")
+}
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_3dlge")]
+streams = Array[AudioStream]([ExtResource("3_m0frf"), ExtResource("4_0dqug"), ExtResource("5_0ksut"), ExtResource("6_svy0r"), ExtResource("7_xll17")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_vxevt")]
+max_health = 50.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_683j2")]
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("10_50hdc")]
+max_speed = 60
+acceleration = 6.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_xolvb")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/EnemyImage")
+hit_flash_material = SubResource("ShaderMaterial_7if4t")
+
+[node name="FrameSaverComponent" parent="." instance=ExtResource("12_g50yg")]
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("13_3a6mx")]
+healt_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/EnemyImage")
+
+[node name="EnemyArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_y6204")
+
+[node name="VisibleOnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(4.76837e-07, -9)
+scale = Vector2(2, 2)
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("14_buoox")]
+light_mask = 0
+visibility_layer = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5rwgg")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="EnemyImage" type="Sprite2D" parent="Visuals"]
+texture_filter = 1
+position = Vector2(2.08165e-12, -8)
+texture = ExtResource("15_xvore")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_0y67a")

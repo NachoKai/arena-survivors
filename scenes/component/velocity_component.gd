@@ -23,6 +23,10 @@ func decelerate():
 	accelerate_in_direction(Vector2.ZERO)
 
 
+func stop():
+	max_speed = 0
+
+
 func move(character_body: CharacterBody2D):
 	character_body.velocity = velocity
 	character_body.move_and_slide()

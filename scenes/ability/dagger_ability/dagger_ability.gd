@@ -8,6 +8,7 @@ extends Node2D
 
 var direction
 
+
 func _ready():
 	hitbox_component.body_entered.connect(on_body_entered)
 	hitbox_component.area_entered.connect(on_body_entered)
@@ -24,8 +25,8 @@ func _process(delta):
 
 func on_body_entered(_other_body: Node2D):
 	queue_free()
-	
-	
+
+
 func on_area_entered(_other_body: Node2D):
 	queue_free()
 

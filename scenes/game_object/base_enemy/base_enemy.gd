@@ -8,12 +8,10 @@ extends CharacterBody2D
 @onready var hit_random_stream_player_component: AudioStreamPlayer2D = $HitRandomAudioPlayerComponent
 @onready var player = get_tree().get_first_node_in_group("player") as Node2D
 @onready var enemy_area: CollisionShape2D = $EnemyArea
-var screen_size
 
 
 func _ready():
 	hurtbox_component.hit.connect(on_hit)
-	screen_size = get_viewport_rect().size
 
 
 func _physics_process(_delta):
