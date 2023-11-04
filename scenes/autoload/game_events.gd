@@ -4,6 +4,7 @@ signal experience_vial_collected(number: float)
 signal health_vial_collected(number: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged(current_health: float)
+signal character_selected(character: String)
 
 @export var game_version: String = "2.2.8"
 
@@ -22,3 +23,7 @@ func emit_player_damaged(current_health):
 
 func emit_health_vial_collected(number: float):
 	health_vial_collected.emit(number)
+
+
+func emit_character_selected(character):
+	character_selected.emit(character)

@@ -7,6 +7,7 @@ extends Node
 const SAVE_FILE_PATH: String = "user://game_stats.save"
 
 var save_data: Dictionary = {
+	"selected_character": "warrior",
 	"player_health": 0,
 	"player_level": 1,
 	"player_experience": 0
@@ -17,6 +18,7 @@ func _ready():
 	GameEvents.player_damaged.connect(on_player_health_changed)
 	GameEvents.health_vial_collected.connect(on_player_health_changed)
 	GameEvents.experience_vial_collected.connect(on_player_experience_changed)
+	GameEvents.character_selected.connect(on_selected_character_changed)
 	load_file()
 
 
@@ -49,6 +51,12 @@ func get_player_experience():
 	else: return 0
 
 
+func get_selected_character():
+	if save_data.selected_character:
+		return save_data.selected_character
+	else: return "warrior"
+
+
 func on_player_health_changed(health: float):
 	if not health: return
 	save_data.player_health = health
@@ -62,3 +70,8 @@ func on_player_level_changed(level: int):
 func on_player_experience_changed(experience: float):
 	if not experience: return
 	save_data.player_experience = experience
+
+
+func on_selected_character_changed(character: String):
+	if not character: return
+	save_data.selected_character = character

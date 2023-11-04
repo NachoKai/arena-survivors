@@ -11,17 +11,17 @@ radius = 7.0
 script = ExtResource("1_c503j")
 
 [node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(1, 0)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_8a0xo")]
 collision_layer = 6
 collision_mask = 45
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -3)
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_t6g6y")
 
 [node name="Image" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(2, 0)
 rotation = 1.5708
 texture = ExtResource("3_n6fav")

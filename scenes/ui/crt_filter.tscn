@@ -5,19 +5,19 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsj5b"]
 shader = ExtResource("1_nl3vr")
 shader_parameter/screen_size = Vector2(640, 360)
-shader_parameter/show_curvature = true
-shader_parameter/curvature_x_amount = 10.0
-shader_parameter/curvature_y_amount = 8.0
+shader_parameter/show_curvature = false
+shader_parameter/curvature_x_amount = 8.0
+shader_parameter/curvature_y_amount = 6.0
 shader_parameter/corner_color = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 1)
 shader_parameter/show_vignette = true
-shader_parameter/vignette_opacity = 0.05
+shader_parameter/vignette_opacity = 0.06
 shader_parameter/show_horizontal_scan_lines = true
 shader_parameter/horizontal_scan_lines_amount = 180.0
-shader_parameter/horizontal_scan_lines_opacity = 0.05
+shader_parameter/horizontal_scan_lines_opacity = 0.04
 shader_parameter/show_vertical_scan_lines = true
-shader_parameter/vertical_scan_lines_amount = 180.0
-shader_parameter/vertical_scan_lines_opacity = 0.05
-shader_parameter/boost = 1.3
+shader_parameter/vertical_scan_lines_amount = 320.0
+shader_parameter/vertical_scan_lines_opacity = 0.04
+shader_parameter/boost = 1.2
 shader_parameter/aberration_amount = 0.3
 
 [node name="CrtFilter" type="CanvasLayer"]

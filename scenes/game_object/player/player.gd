@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var pickup_area_shape: CollisionShape2D = $PickupArea/PickupAreaShape
 @onready var night_light_animation = $NightLightAnimation
 @export var arena_time_manager: ArenaTimeManager
+@onready var image: Sprite2D = %Image
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0
@@ -20,6 +21,7 @@ var base_pickup_area = 30
 
 func _ready():
 	if not arena_time_manager: return
+#	image.texture = SaveGame.get_selected_character()
 	night_light_animation.play("default")
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
