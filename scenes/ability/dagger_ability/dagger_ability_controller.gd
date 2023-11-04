@@ -40,4 +40,4 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		timer.wait_time = default_wait_time * (1 - percent_reduction)
 		timer.start()
 	elif upgrade.id == "dagger_size":
-		additional_size_percent = 1 + (current_upgrades.dagger_size.quantity * 0.15)
+		additional_size_percent = 1 + (current_upgrades.dagger_size.quantity * 0.13)
