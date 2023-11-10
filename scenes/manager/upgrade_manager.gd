@@ -25,6 +25,7 @@ var upgrade_hammer_count = preload("res://resources/upgrades/hammer_count.tres")
 var upgrade_hammer_damage = preload("res://resources/upgrades/hammer_damage.tres")
 var upgrade_hammer_rate = preload("res://resources/upgrades/hammer_rate.tres")
 var upgrade_hammer_size = preload("res://resources/upgrades/hammer_size.tres")
+var upgrade_alistair = preload("res://resources/upgrades/alistair.tres")
 
 var upgrade_dagger = preload("res://resources/upgrades/dagger.tres")
 var upgrade_dagger_count = preload("res://resources/upgrades/dagger_count.tres")
@@ -47,6 +48,8 @@ func _ready():
 	upgrade_pool.add_item(upgrade_axe, 7)
 
 	upgrade_pool.add_item(upgrade_hammer, 6)
+	# add this ability only if hammer abilities sum are at least 10?
+	upgrade_pool.add_item(upgrade_alistair, 0)
 
 	experience_manager.level_up.connect(on_levep_up)
 
@@ -86,6 +89,13 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.add_item(upgrade_dagger_damage, 8)
 		upgrade_pool.add_item(upgrade_dagger_rate, 8)
 		upgrade_pool.add_item(upgrade_dagger_size, 5)
+	elif chosen_upgrade.id == upgrade_alistair.id:
+		current_upgrades.erase("hammer")
+		upgrade_pool.remove_item(upgrade_hammer)
+		upgrade_pool.remove_item(upgrade_hammer_count)
+		upgrade_pool.remove_item(upgrade_hammer_damage)
+		upgrade_pool.remove_item(upgrade_hammer_rate)
+		upgrade_pool.remove_item(upgrade_hammer_size)
 
 
 func pick_upgrades():

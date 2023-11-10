@@ -2,6 +2,8 @@ extends PanelContainer
 
 signal selected
 
+var default_card_color: Color = Color(1, 1, 1, 1)
+var evolution_card_color: Color = Color(Color.AQUAMARINE)
 @onready var name_label: Label = %NameLabel
 @onready var description_label: Label = %DescriptionLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -33,10 +35,16 @@ func set_ability_upgrade(upgrade: AbilityUpgrade):
 	description_label.text = upgrade.description
 #	quantity_label.text = "Level " + str(0)
 	quantity_label.text = ""
+
 	if upgrade.image_path:
 		upgrade_image.texture = load(upgrade.image_path)
-	else:
+	elif not upgrade.image_path:
 		upgrade_image.visible = false
+
+	if upgrade.is_evolution:
+		self_modulate = evolution_card_color
+	elif not upgrade.is_evolution:
+		self_modulate = default_card_color
 
 
 func select_card():

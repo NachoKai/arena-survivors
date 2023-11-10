@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0hkbfgwaoc7y"]
+
+[ext_resource type="Script" path="res://scenes/ability/alistair_ability/alistair_ability_controller.gd" id="1_h81vf"]
+[ext_resource type="PackedScene" uid="uid://ctfi1hw2fgnp2" path="res://scenes/ability/alistair_ability/alistair_ability.tscn" id="2_faeig"]
+
+[node name="AlistairAbilityController" type="Node"]
+script = ExtResource("1_h81vf")
+alistair_ability_scene = ExtResource("2_faeig")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

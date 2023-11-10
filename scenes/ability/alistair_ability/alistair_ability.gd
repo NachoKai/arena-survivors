@@ -1,0 +1,4 @@
+class_name AlistairAbility
+extends Node2D
+
+@onready var hitbox_component = $HitboxComponent

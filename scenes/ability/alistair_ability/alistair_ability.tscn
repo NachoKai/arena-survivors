@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc3tj3v4x30f6"]
+[gd_scene load_steps=14 format=3 uid="uid://ctfi1hw2fgnp2"]
 
-[ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="1_iqcid"]
-[ext_resource type="Texture2D" uid="uid://dlxx27m78mpjp" path="res://scenes/ability/hammer_ability/hammer.png" id="1_kck7r"]
-[ext_resource type="Script" path="res://scenes/ability/hammer_ability/hammer_ability.gd" id="1_tc5sm"]
-[ext_resource type="Texture2D" uid="uid://j4jg25wokan6" path="res://assets/particle.png" id="3_dn1hh"]
+[ext_resource type="Script" path="res://scenes/ability/alistair_ability/alistair_ability.gd" id="1_dw2bb"]
+[ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="1_kkklb"]
+[ext_resource type="Texture2D" uid="uid://fu585fykq7h1" path="res://scenes/ability/alistair_ability/alistair.png" id="2_36y5m"]
+[ext_resource type="Texture2D" uid="uid://bcttgeqihqh1e" path="res://assets/particle2.png" id="3_t8ir1"]
 
 [sub_resource type="Animation" id="Animation_3ndgx"]
 length = 0.001
@@ -153,25 +153,25 @@ _data = {
 "default": SubResource("Animation_7erkc")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_finwh"]
-radius = 30.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_50u2p"]
+radius = 40.0
 
-[sub_resource type="Gradient" id="Gradient_xr5ao"]
+[sub_resource type="Gradient" id="Gradient_16aof"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.186508, 0.388889, 0.690476)
-colors = PackedColorArray(0.359069, 0.359069, 0.359069, 1, 0.473976, 0.473976, 0.473975, 1, 0.74768, 0.74768, 0.74768, 1, 0.815389, 0.815389, 0.815389, 1)
+offsets = PackedFloat32Array(0, 0.146739, 0.32337, 0.5, 0.766304)
+colors = PackedColorArray(0, 0.6, 0.858824, 1, 0.458824, 0.890196, 1, 1, 0.473976, 0.473976, 0.473975, 1, 0.74768, 0.74768, 0.74768, 1, 0.815389, 0.815389, 0.815389, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_su0mv"]
-gradient = SubResource("Gradient_xr5ao")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xk0id"]
+gradient = SubResource("Gradient_16aof")
 
-[sub_resource type="Curve" id="Curve_4k1dm"]
+[sub_resource type="Curve" id="Curve_5vr3b"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.276284, 1), 0.0, 0.0, 0, 0, Vector2(0.944236, 0.791165), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_trc4x"]
-curve = SubResource("Curve_4k1dm")
+[sub_resource type="CurveTexture" id="CurveTexture_l6vo8"]
+curve = SubResource("Curve_5vr3b")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_21udq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gt1qy"]
 lifetime_randomness = 0.4
 emission_shape = 1
 emission_sphere_radius = 6.0
@@ -187,11 +187,11 @@ damping_max = 850.0
 angle_max = 360.0
 scale_min = 0.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_trc4x")
-color_ramp = SubResource("GradientTexture1D_su0mv")
+scale_curve = SubResource("CurveTexture_l6vo8")
+color_ramp = SubResource("GradientTexture1D_xk0id")
 
-[node name="HammerAbility" type="Node2D"]
-script = ExtResource("1_tc5sm")
+[node name="AlistairAbility" type="Node2D"]
+script = ExtResource("1_dw2bb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
@@ -199,23 +199,21 @@ libraries = {
 "": SubResource("AnimationLibrary_5hg5x")
 }
 
-[node name="HitboxComponent" parent="." instance=ExtResource("1_iqcid")]
+[node name="HitboxComponent" parent="." instance=ExtResource("1_kkklb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("CircleShape2D_finwh")
+shape = SubResource("CircleShape2D_50u2p")
 disabled = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_21udq")
-texture = ExtResource("3_dn1hh")
+process_material = SubResource("ParticleProcessMaterial_gt1qy")
+texture = ExtResource("3_t8ir1")
 one_shot = true
 explosiveness = 0.9
 fixed_fps = 0
 interpolate = false
 
 [node name="Image" type="Sprite2D" parent="."]
-z_index = 1
-texture_filter = 1
-texture = ExtResource("1_kck7r")
+texture = ExtResource("2_36y5m")
