@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_0w2hd")
 id = "dagger_count"
-max_quantity = 4
+max_quantity = 5
 name = "Dagger Count"
 image_path = "res://scenes/ability/dagger_ability/dagger.png"
+is_evolution = false
 description = "Adds one additional dagger."

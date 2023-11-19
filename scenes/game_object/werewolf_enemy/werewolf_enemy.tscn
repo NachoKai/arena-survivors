@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dccims4cml84v" path="res://scenes/game_object/werewolf_enemy/werewolf_3.png" id="17_lecjr"]
 [ext_resource type="Texture2D" uid="uid://dp3jkna1hynnw" path="res://scenes/game_object/werewolf_enemy/werewolf_2.png" id="17_ypb1t"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qrpv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t60e4"]
 resource_local_to_scene = true
 shader = ExtResource("12_yhjcu")
 shader_parameter/lerp_percent = null
@@ -70,13 +70,13 @@ drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("10_xtk03")]
-max_speed = 50
-acceleration = 50.0
+max_speed = 60
+acceleration = 60.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_1j4nh")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/EnemyImage")
-hit_flash_material = SubResource("ShaderMaterial_1qrpv")
+hit_flash_material = SubResource("ShaderMaterial_t60e4")
 
 [node name="FrameSaverComponent" parent="." instance=ExtResource("13_3lt58")]
 

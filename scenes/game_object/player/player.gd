@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var night_light_animation = $NightLightAnimation
 @export var arena_time_manager: ArenaTimeManager
 @onready var image: Sprite2D = %Image
+@onready var health_particles: GPUParticles2D = $Visuals/HealthParticles
 
 var colliding_bodies_quantity: int = 0
 var base_speed = 0
@@ -79,7 +80,9 @@ func on_health_decreased(current_health):
 	hit_random_stream_player.play_random()
 
 
-func on_health_changed(_current_health):
+func on_health_changed(_current_health, is_healing):
+	if is_healing and health_particles:
+		health_particles.emitting = true
 	update_health_display()
 
 
@@ -100,3 +103,5 @@ func on_arena_difficulty_increased(difficulty: int):
 		var is_thirty_second_interval = (difficulty % 6) == 0  # 30 seconds interval
 		if is_thirty_second_interval:
 			health_component.heal(health_regeneration_quantity)
+			if health_particles:
+				health_particles.emitting = true

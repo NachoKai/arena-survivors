@@ -15,8 +15,12 @@ func _ready():
 
 
 func damage(damage_amount: float = 0):
+	var is_healing = false
+	if damage_amount < 0:
+		is_healing = true
+		
 	current_health = clamp(current_health - damage_amount, 0, max_health)
-	health_changed.emit(current_health)
+	health_changed.emit(current_health, is_healing)
 	if damage_amount > 0:
 		health_decreased.emit(current_health)
 	check_death.call_deferred()

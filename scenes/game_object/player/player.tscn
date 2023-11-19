@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ff082s2cpd0g"]
+[gd_scene load_steps=27 format=3 uid="uid://ff082s2cpd0g"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
 [ext_resource type="Texture2D" uid="uid://cswu8tolryu6h" path="res://scenes/game_object/player/player.png" id="1_xn5b6"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://boik3hx7tlrh3" path="res://sounds/impactMining_003.ogg" id="6_6trcm"]
 [ext_resource type="AudioStream" uid="uid://cb75yn3tin1ih" path="res://sounds/impactMining_004.ogg" id="7_ncnc1"]
 [ext_resource type="Texture2D" uid="uid://cjaor0sh8iqpb" path="res://assets/light.png" id="11_8pr5u"]
+[ext_resource type="Texture2D" uid="uid://j4jg25wokan6" path="res://assets/particle.png" id="13_xao2c"]
 
 [sub_resource type="Animation" id="Animation_ao8i3"]
 length = 0.001
@@ -230,7 +231,7 @@ _data = {
 radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0a14d"]
-radius = 7.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2muc3"]
 radius = 30.0
@@ -246,6 +247,30 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwboj"]
+lifetime_randomness = 1.0
+emission_shape = 6
+emission_ring_axis = Vector3(2.08165e-12, 5, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 8.0
+emission_ring_inner_radius = 5.0
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 2.08165e-12)
+spread = 50.0
+gravity = Vector3(2.08165e-12, -40, 2.08165e-12)
+initial_velocity_max = 4.0
+angular_velocity_min = 2.0
+angular_velocity_max = 5.0
+orbit_velocity_min = 2.08167e-14
+orbit_velocity_max = 2.08167e-14
+damping_max = 5.0
+angle_max = 90.0
+scale_min = 0.1
+scale_max = 0.3
+hue_variation_min = 2.08167e-17
+hue_variation_max = 1.0
+anim_speed_max = 2.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
@@ -320,7 +345,7 @@ position = Vector2(2.08165e-12, -7)
 color = Color(0.968627, 0.968627, 0, 1)
 energy = 0.0
 texture = ExtResource("11_8pr5u")
-texture_scale = 0.04
+texture_scale = 0.05
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)
@@ -342,3 +367,12 @@ unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(2.08165e-12, -8)
 texture = ExtResource("1_xn5b6")
+
+[node name="HealthParticles" type="GPUParticles2D" parent="Visuals"]
+modulate = Color(0.262745, 0.882353, 0.701961, 1)
+self_modulate = Color(0.262745, 0.882353, 0.701961, 1)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_hwboj")
+texture = ExtResource("13_xao2c")
+one_shot = true
