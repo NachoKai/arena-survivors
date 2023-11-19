@@ -5,8 +5,8 @@ extends BaseEnemy
 
 func _ready():
 	hurtbox_component.hit.connect(on_hit)
-	
-	
+
+
 func on_hit():
 	hit_random_stream_player_component.play_random()
 	enemy_animation.play("attack")

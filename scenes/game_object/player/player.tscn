@@ -369,8 +369,8 @@ position = Vector2(2.08165e-12, -8)
 texture = ExtResource("1_xn5b6")
 
 [node name="HealthParticles" type="GPUParticles2D" parent="Visuals"]
-modulate = Color(0.262745, 0.882353, 0.701961, 1)
-self_modulate = Color(0.262745, 0.882353, 0.701961, 1)
+modulate = Color(0.909804, 0.270588, 0.215686, 1)
+self_modulate = Color(0.909804, 0.270588, 0.215686, 1)
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_hwboj")

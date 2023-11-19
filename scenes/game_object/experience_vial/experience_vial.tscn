@@ -19,21 +19,26 @@ script = ExtResource("1_qh0rq")
 [node name="RandomStreamPlayerComponent" parent="." instance=ExtResource("2_t1c86")]
 streams = Array[AudioStream]([ExtResource("3_0mp2n"), ExtResource("4_im4ku"), ExtResource("5_h8g0i"), ExtResource("6_hv4al"), ExtResource("7_7pcof")])
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="RandomStreamPlayerComponent"]
+enable_node_path = NodePath("../..")
+
 [node name="ExperienceVialArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
 [node name="ExperienceVialAreaShape" type="CollisionShape2D" parent="ExperienceVialArea"]
 shape = SubResource("CircleShape2D_tgre6")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="ExperienceVialImage" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("1_oir5b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+modulate = Color(0.262745, 0.882353, 0.701961, 1)
+self_modulate = Color(0.262745, 0.882353, 0.701961, 1)
+scale = Vector2(0.375, 0.375)
 color = Color(0.262745, 0.882353, 0.701961, 1)
-energy = 0.2
+energy = 0.4
 texture = ExtResource("9_3bslp")
 texture_scale = 0.1
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
