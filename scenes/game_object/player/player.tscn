@@ -249,7 +249,6 @@ border_width_bottom = 1
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwboj"]
-lifetime_randomness = 1.0
 emission_shape = 6
 emission_ring_axis = Vector3(2.08165e-12, 5, 1)
 emission_ring_height = 1.0
@@ -267,9 +266,10 @@ orbit_velocity_max = 2.08167e-14
 damping_max = 5.0
 angle_max = 90.0
 scale_min = 0.1
-scale_max = 0.3
-hue_variation_min = 2.08167e-17
-hue_variation_max = 1.0
+scale_max = 0.5
+color = Color(0.909804, 0.270588, 0.215686, 1)
+hue_variation_min = -0.2
+hue_variation_max = 0.2
 anim_speed_max = 2.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -372,7 +372,7 @@ texture = ExtResource("1_xn5b6")
 modulate = Color(0.909804, 0.270588, 0.215686, 1)
 self_modulate = Color(0.909804, 0.270588, 0.215686, 1)
 emitting = false
-amount = 10
+amount = 15
 process_material = SubResource("ParticleProcessMaterial_hwboj")
 texture = ExtResource("13_xao2c")
 one_shot = true
