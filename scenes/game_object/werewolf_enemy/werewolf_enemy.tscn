@@ -1,0 +1,110 @@
+[gd_scene load_steps=23 format=3 uid="uid://b53xvhan0rvkf"]
+
+[ext_resource type="Script" path="res://scenes/game_object/werewolf_enemy/werewolf_enemy.gd" id="1_37arm"]
+[ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_rnubx"]
+[ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_xsmi0"]
+[ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_feynf"]
+[ext_resource type="AudioStream" uid="uid://dffeo42bajgge" path="res://sounds/footstep_carpet_002.ogg" id="5_0ny5a"]
+[ext_resource type="AudioStream" uid="uid://csppv05u2idya" path="res://sounds/footstep_carpet_003.ogg" id="6_1lpop"]
+[ext_resource type="AudioStream" uid="uid://dwniqoborrmvi" path="res://sounds/footstep_carpet_004.ogg" id="7_84f3q"]
+[ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="8_881ou"]
+[ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="9_4yy8q"]
+[ext_resource type="PackedScene" uid="uid://o1entvj4ufi4" path="res://scenes/component/velocity_component.tscn" id="10_xtk03"]
+[ext_resource type="PackedScene" uid="uid://ddjafc8cq5hf0" path="res://scenes/component/hit_flash_component.tscn" id="11_1j4nh"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="12_yhjcu"]
+[ext_resource type="PackedScene" uid="uid://c4laaxpwcmpkf" path="res://scenes/component/frame_saver_component.tscn" id="13_3lt58"]
+[ext_resource type="PackedScene" uid="uid://dbhugqcc7h2mu" path="res://scenes/component/death_component.tscn" id="14_bw1ex"]
+[ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="15_ea8b6"]
+[ext_resource type="Texture2D" uid="uid://et5f5rvjokwu" path="res://scenes/game_object/werewolf_enemy/werewolf_1.png" id="16_s2jjh"]
+[ext_resource type="Texture2D" uid="uid://dccims4cml84v" path="res://scenes/game_object/werewolf_enemy/werewolf_3.png" id="17_lecjr"]
+[ext_resource type="Texture2D" uid="uid://dp3jkna1hynnw" path="res://scenes/game_object/werewolf_enemy/werewolf_2.png" id="17_ypb1t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mdll"]
+resource_local_to_scene = true
+shader = ExtResource("12_yhjcu")
+shader_parameter/lerp_percent = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wssir"]
+radius = 21.0238
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6ly4"]
+radius = 21.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmdpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_lecjr")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_s2jjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ypb1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WerewolfEnemy" type="CharacterBody2D" groups=["boss", "enemy"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_37arm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_rnubx")]
+streams = Array[AudioStream]([ExtResource("3_xsmi0"), ExtResource("4_feynf"), ExtResource("5_0ny5a"), ExtResource("6_1lpop"), ExtResource("7_84f3q")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_881ou")]
+max_health = 250.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_4yy8q")]
+drop_percent = 1.0
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("10_xtk03")]
+max_speed = 50
+acceleration = 50.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_1j4nh")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/EnemyImage")
+hit_flash_material = SubResource("ShaderMaterial_4mdll")
+
+[node name="FrameSaverComponent" parent="." instance=ExtResource("13_3lt58")]
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healt_component", "sprite") instance=ExtResource("14_bw1ex")]
+healt_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/EnemyImage")
+
+[node name="EnemyArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_wssir")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("15_ea8b6")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_q6ly4")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="EnemyImage" type="Sprite2D" parent="Visuals"]
+visible = false
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("16_s2jjh")
+
+[node name="EnemyAnimation" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rmdpi")
+autoplay = "default"

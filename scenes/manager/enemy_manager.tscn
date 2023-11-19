@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq3dr5flb4jss"]
+[gd_scene load_steps=15 format=3 uid="uid://bq3dr5flb4jss"]
 
 [ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_kd0vx"]
 [ext_resource type="PackedScene" uid="uid://cvcudmlg8r54d" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="2_28o1q"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bv7o0t2cfx0jb" path="res://scenes/game_object/vampire_ghost_enemy/vampire_ghost_enemy.tscn" id="11_k8e1h"]
 [ext_resource type="PackedScene" uid="uid://bc82pmjwqi3fq" path="res://scenes/game_object/vampire_spider_enemy/vampire_spider_enemy.tscn" id="12_l2fkl"]
 [ext_resource type="PackedScene" uid="uid://bm5cfhjc5jiu4" path="res://scenes/game_object/vampire_cyclops_enemy/vampire_cyclops_enemy.tscn" id="13_83mp5"]
+[ext_resource type="PackedScene" uid="uid://b53xvhan0rvkf" path="res://scenes/game_object/werewolf_enemy/werewolf_enemy.tscn" id="14_e0g7a"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_kd0vx")
@@ -28,6 +29,7 @@ vampire_bat_enemy_scene = ExtResource("10_gkg4k")
 vampire_ghost_enemy_scene = ExtResource("11_k8e1h")
 vampire_spider_enemy_scene = ExtResource("12_l2fkl")
 vampire_cyclops_enemy_scene = ExtResource("13_83mp5")
+werewolf_enemy_scene = ExtResource("14_e0g7a")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

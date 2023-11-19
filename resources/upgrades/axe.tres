@@ -10,4 +10,5 @@ id = "axe"
 max_quantity = 1
 name = "Axe"
 image_path = "res://scenes/ability/axe_ability/axe.png"
+is_evolution = false
 description = "Periodically sends out a spinning axe."

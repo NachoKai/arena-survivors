@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b28a0pvn2nh65"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="1_4v3y3"]
+
+[resource]
+script = ExtResource("1_4v3y3")
+id = "shadowmere"
+max_quantity = 0
+name = "Shadowmere"
+image_path = ""
+is_evolution = true
+description = "An obsidian-hued dagger, it moves with a deadly silence, swift and lethal in skilled hands."

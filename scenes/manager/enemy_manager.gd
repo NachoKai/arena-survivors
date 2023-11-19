@@ -16,6 +16,7 @@ extends Node
 @export var vampire_ghost_enemy_scene: PackedScene
 @export var vampire_spider_enemy_scene: PackedScene
 @export var vampire_cyclops_enemy_scene: PackedScene
+@export var werewolf_enemy_scene: PackedScene
 
 const SPAWN_RADIUS: int = 340
 var base_spawn_time: float = 0
@@ -37,7 +38,7 @@ func get_spawn_position():
 
 	for i in 4:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
-		var additional_check_offset = random_direction * 20  # 20px extra so that enemies dont get stuck if spawning over a wall
+		var additional_check_offset = random_direction * 25  # 25px extra so that enemies dont get stuck if spawning over a wall
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additional_check_offset, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if result.is_empty(): return spawn_position
@@ -64,31 +65,37 @@ func on_timer_timeout():
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_off = min((0.1 / 60 / 5) * arena_difficulty, 0.7)
+	var time_off = min((0.1 / 60 / 5) * arena_difficulty, 0.6)
 	timer.wait_time = base_spawn_time - time_off
 
-	if arena_difficulty == 6:
-		enemy_table.add_item(bat_enemy_scene, 12)
-	elif arena_difficulty == 12:
-		enemy_table.add_item(wizard_enemy_scene, 8)
-	elif arena_difficulty == 18:
-		enemy_table.add_item(ghost_enemy_scene, 10)
-	elif arena_difficulty == 24:
-		enemy_table.add_item(spider_enemy_scene, 10)
-	elif arena_difficulty == 30:
-		enemy_table.add_item(cyclops_enemy_scene, 4)
-	elif arena_difficulty == 36:
-		enemy_table.add_item(vampire_rat_enemy_scene, 6)
-	elif arena_difficulty == 42:
-		enemy_table.add_item(vampire_bat_enemy_scene, 4)
-	elif arena_difficulty == 48:
-		enemy_table.add_item(vampire_wizard_enemy_scene, 5)
-	elif arena_difficulty == 54:
-		enemy_table.add_item(vampire_ghost_enemy_scene, 5)
-	elif arena_difficulty == 60:
-		enemy_table.add_item(vampire_spider_enemy_scene, 2)
-	elif arena_difficulty == 66:
-		enemy_table.add_item(vampire_cyclops_enemy_scene, 2)
+	if arena_difficulty == 5:  # 30 seconds
+		enemy_table.add_item(werewolf_enemy_scene, 9999)
+	elif arena_difficulty == 15:  # 1 minute
+		enemy_table.add_item(wizard_enemy_scene, 15)
+	elif arena_difficulty == 20:
+		enemy_table.add_item(ghost_enemy_scene, 20)
+	elif arena_difficulty == 25:
+		enemy_table.add_item(spider_enemy_scene, 25)
+	elif arena_difficulty == 50:
+		enemy_table.add_item(cyclops_enemy_scene, 25)
+
+	# Vampires
+	elif arena_difficulty == 60:  # 5 minutes
+		enemy_table.add_item(vampire_rat_enemy_scene, 60)
+	elif arena_difficulty == 65:
+		enemy_table.add_item(vampire_bat_enemy_scene, 65)
+	elif arena_difficulty == 75:
+		enemy_table.add_item(vampire_wizard_enemy_scene, 75)
+	elif arena_difficulty == 85:
+		enemy_table.add_item(vampire_ghost_enemy_scene, 85)
+	elif arena_difficulty == 95:
+		enemy_table.add_item(vampire_spider_enemy_scene, 95)
+	elif arena_difficulty == 105:
+		enemy_table.add_item(vampire_cyclops_enemy_scene, 50)
+
+	# Boss
+	elif arena_difficulty == 115:
+		enemy_table.add_item(werewolf_enemy_scene, 9999)
 
 	if (arena_difficulty % 6) == 0:  # 30 seconds interval
 		enemies_to_spawn += 1
