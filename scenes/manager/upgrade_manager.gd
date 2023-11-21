@@ -43,7 +43,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_sword_rate, 8)
 	upgrade_pool.add_item(upgrade_sword_size, 5)
 
-	upgrade_pool.add_item(upgrade_dagger, 800)
+	upgrade_pool.add_item(upgrade_dagger, 8)
 
 	upgrade_pool.add_item(upgrade_axe, 7)
 
@@ -85,7 +85,7 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.add_item(upgrade_hammer_rate, 8)
 		upgrade_pool.add_item(upgrade_hammer_size, 5)
 	elif chosen_upgrade.id == upgrade_dagger.id:
-		upgrade_pool.add_item(upgrade_dagger_count, 500)
+		upgrade_pool.add_item(upgrade_dagger_count, 5)
 		upgrade_pool.add_item(upgrade_dagger_damage, 8)
 		upgrade_pool.add_item(upgrade_dagger_rate, 8)
 		upgrade_pool.add_item(upgrade_dagger_size, 5)
