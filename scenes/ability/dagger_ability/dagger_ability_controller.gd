@@ -4,11 +4,11 @@ extends Node
 @onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
 @onready var timer: Timer = $Timer
 @export var dagger_ability_scene: PackedScene
-@export var base_damage: int = 6
+@export var base_damage: int = 5
 var default_wait_time
 var additional_damage_percent = 1
 var additional_size_percent = 1
-var dagger_count: int = 0
+var dagger_count: int = 1
 
 
 func _ready():
@@ -20,7 +20,7 @@ func _ready():
 func on_timer_timeout():
 	if not player or not foreground: return
 
-	for i in range(dagger_count + 1):
+	for i in range(dagger_count):
 		var dagger_instance = dagger_ability_scene.instantiate() as DaggerAbility
 		if not dagger_instance: return
 		foreground.add_child(dagger_instance)

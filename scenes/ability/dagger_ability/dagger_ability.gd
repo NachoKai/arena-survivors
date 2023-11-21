@@ -15,7 +15,9 @@ func _ready():
 	visible_on_screen_notifier.screen_exited.connect(on_screen_exited)
 	if not player: return
 	var player_position = player.global_position + player.velocity
-	direction = player.global_position.direction_to(player_position)
+	var base_direction = player.global_position.direction_to(player_position)
+	var random_adjustment = Vector2(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
+	direction = (base_direction + random_adjustment).normalized()
 	rotation = direction.angle()
 
 
