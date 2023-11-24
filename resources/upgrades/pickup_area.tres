@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_3tpec")
 id = "player_speed"
-max_quantity = 8
+max_quantity = 4
 name = "Move Speed"
 image_path = "res://assets/abilities/player.png"
+is_evolution = false
 description = "Increases player movement speed by 10%."

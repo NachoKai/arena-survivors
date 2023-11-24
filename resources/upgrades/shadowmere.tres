@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_4v3y3")
 id = "shadowmere"
-max_quantity = 0
+max_quantity = 1
 name = "Shadowmere"
 image_path = "res://scenes/ability/shadowmere_ability/shadowmere.png"
 is_evolution = true

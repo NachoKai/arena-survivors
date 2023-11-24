@@ -48,8 +48,6 @@ func _ready():
 	upgrade_pool.add_item(upgrade_axe, 7)
 
 	upgrade_pool.add_item(upgrade_hammer, 6)
-	# add this ability only if hammer abilities sum are at least 10?
-	upgrade_pool.add_item(upgrade_alistair, 0)
 
 	experience_manager.level_up.connect(on_levep_up)
 
@@ -70,6 +68,16 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 
 	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+
+
+func check_ability_can_evolve(upgrades: Dictionary, ability: String) -> bool:
+	var totalQuantity = 0
+
+	for upgrade in upgrades.keys():
+		if upgrade.find(ability) == 0:
+			totalQuantity += upgrades[upgrade]["quantity"]
+
+	return totalQuantity >= 15
 
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
@@ -96,6 +104,23 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.remove_item(upgrade_hammer_damage)
 		upgrade_pool.remove_item(upgrade_hammer_rate)
 		upgrade_pool.remove_item(upgrade_hammer_size)
+
+	var sword_can_evolve = check_ability_can_evolve(current_upgrades, "sword")
+	var axe_can_evolve = check_ability_can_evolve(current_upgrades, "axe")
+	var dagger_can_evolve = check_ability_can_evolve(current_upgrades, "dagger")
+	var hammer_can_evolve = check_ability_can_evolve(current_upgrades, "hammer")
+
+	if sword_can_evolve:
+		#sword evolution
+		pass
+	if axe_can_evolve:
+		#axe evolution
+		pass
+	if dagger_can_evolve:
+		#dagger evolution
+		pass
+	if hammer_can_evolve:
+		upgrade_pool.add_item(upgrade_alistair, 1000)
 
 
 func pick_upgrades():

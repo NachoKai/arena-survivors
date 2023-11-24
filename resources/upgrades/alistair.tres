@@ -10,5 +10,5 @@ id = "alistair"
 max_quantity = 1
 name = "Alistair"
 image_path = "res://scenes/ability/alistair_ability/alistair.png"
-evolution = null
+is_evolution = true
 description = "This warhammer delivers echoing strikes, causing foes to lose their bearings in the chaos of battle."

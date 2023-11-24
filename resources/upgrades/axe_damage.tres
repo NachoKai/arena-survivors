@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_ijcaj")
 id = "axe_damage"
-max_quantity = 8
+max_quantity = 4
 name = "Axe Damage"
 image_path = "res://scenes/ability/axe_ability/axe.png"
+is_evolution = false
 description = "Increases axe damage by 10%."

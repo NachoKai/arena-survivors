@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_q3lqt")
 id = "sword_damage"
-max_quantity = 8
+max_quantity = 4
 name = "Sword Damage"
 image_path = "res://scenes/ability/sword_ability/sword.png"
+is_evolution = false
 description = "Increases sword damage by 15%."

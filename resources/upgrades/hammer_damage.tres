@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_68j8u")
 id = "hammer_damage"
-max_quantity = 8
+max_quantity = 4
 name = "Hammer Damage"
 image_path = "res://scenes/ability/hammer_ability/hammer.png"
+is_evolution = false
 description = "Increases hammer damage by 15%."
