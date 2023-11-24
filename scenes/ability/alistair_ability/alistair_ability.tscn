@@ -207,7 +207,7 @@ disabled = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 30
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_gt1qy")
 texture = ExtResource("3_t8ir1")
 one_shot = true

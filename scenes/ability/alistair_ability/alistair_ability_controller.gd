@@ -6,16 +6,18 @@ extends Node
 @export var alistair_ability_scene: PackedScene
 @export var base_damage: int = 35
 var default_wait_time
-var additional_damage_percent = 1
-var additional_size_percent = 1
+var additional_size_percent = 3
+var additional_rate_pecent = 1 + (3 * 0.15)
 var alistair_count: int = 0
-const BASE_RANGE: int = 130
+const BASE_RANGE: int = 140
 
 
 func _ready():
 	default_wait_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
-	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	var percent_reduction = 3 * 0.15
+	timer.wait_time = default_wait_time * (1 - percent_reduction)
+	timer.start()
 
 
 func on_timer_timeout():
@@ -34,19 +36,5 @@ func on_timer_timeout():
 		var alistair_ability = alistair_ability_scene.instantiate() as AlistairAbility
 		foreground.add_child(alistair_ability)
 		alistair_ability.global_position = spawn_position
-		alistair_ability.hitbox_component.damage = base_damage * additional_damage_percent
+		alistair_ability.hitbox_component.damage = base_damage
 		alistair_ability.scale = Vector2.ONE * additional_size_percent
-
-
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if not upgrade: return
-	if upgrade.id == "alistair_count":
-		alistair_count = current_upgrades.alistair_count.quantity + 1  # We already have 1 alistair
-	elif upgrade.id == "alistair_damage":
-		additional_damage_percent = 1 + (current_upgrades.alistair_damage.quantity * 0.15)
-	elif upgrade.id == "alistair_rate":
-		var percent_reduction = current_upgrades.alistair_rate.quantity * 0.15
-		timer.wait_time = default_wait_time * (1 - percent_reduction)
-		timer.start()
-	elif upgrade.id == "alistair_size":
-		additional_size_percent = 1 + (current_upgrades.alistair_size.quantity * 0.13)
