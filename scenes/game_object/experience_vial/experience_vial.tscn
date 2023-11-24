@@ -37,7 +37,7 @@ texture = ExtResource("1_oir5b")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 modulate = Color(0.262745, 0.882353, 0.701961, 1)
 self_modulate = Color(0.262745, 0.882353, 0.701961, 1)
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.525, 0.525)
 color = Color(0.262745, 0.882353, 0.701961, 1)
 energy = 0.4
 texture = ExtResource("9_3bslp")

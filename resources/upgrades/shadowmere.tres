@@ -7,6 +7,6 @@ script = ExtResource("1_4v3y3")
 id = "shadowmere"
 max_quantity = 0
 name = "Shadowmere"
-image_path = ""
+image_path = "res://scenes/ability/shadowmere_ability/shadowmere.png"
 is_evolution = true
 description = "An obsidian-hued dagger, it moves with a deadly silence, swift and lethal in skilled hands."
