@@ -35,7 +35,6 @@ var upgrade_dagger_size = preload("res://resources/upgrades/dagger_size.tres")
 
 
 func _ready():
-	upgrade_pool.add_item(upgrade_alistair, 1000)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	upgrade_pool.add_item(upgrade_pickup_area, 5)
 
