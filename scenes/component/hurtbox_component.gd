@@ -22,5 +22,5 @@ func on_area_entered(other_area: Area2D):
 	if not floating_text: return
 	foreground.add_child(floating_text)
 	floating_text.global_position = global_position + (Vector2.UP * 8)
-	floating_text.start(str(round(damage)))
+	floating_text.start(str(int(round(damage))))
 	hit.emit()

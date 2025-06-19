@@ -19,6 +19,7 @@ var colliding_bodies_quantity: int = 0
 var base_speed = 0
 var base_pickup_area = 30
 var damage_multiplier = 1.0
+var attack_rate_multiplier = 1.0
 
 var sword_ability = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
 var axe_ability = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
@@ -44,12 +45,13 @@ func _ready():
 	var selected_character = SaveGame.get_selected_character()
 	match selected_character:
 		"monk":
-			velocity_component.max_speed = base_speed * 1.2
+			velocity_component.max_speed = base_speed * 1.50
+			attack_rate_multiplier = 1.50
 		"barbarian":
-			velocity_component.max_speed = base_speed * 0.8
-			damage_multiplier = 1.2
+			velocity_component.max_speed = base_speed * 0.80
+			damage_multiplier = 1.50
 		"witch":
-			pickup_area_shape.shape.radius = base_pickup_area * 1.2
+			pickup_area_shape.shape.radius = base_pickup_area * 1.50
 
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
@@ -108,18 +110,25 @@ func give_starting_ability():
 
 	if ability_instance:
 		abilities.add_child(ability_instance)
-		apply_damage_multiplier_to_ability(ability_instance)
+		apply_character_modifiers_to_ability(ability_instance)
 
 
-func apply_damage_multiplier_to_ability(ability_instance):
-	if damage_multiplier == 1.0:
+func apply_character_modifiers_to_ability(ability_instance):
+	if damage_multiplier == 1.0 and attack_rate_multiplier == 1.0:
 		return
 
-	if ability_instance.has_method("set_base_damage"):
-		var current_damage = ability_instance.base_damage
-		ability_instance.base_damage = current_damage * damage_multiplier
-	elif "base_damage" in ability_instance:
-		ability_instance.base_damage *= damage_multiplier
+	if damage_multiplier != 1.0:
+		if ability_instance.has_method("set_base_damage"):
+			var current_damage = ability_instance.base_damage
+			ability_instance.base_damage = current_damage * damage_multiplier
+		elif "base_damage" in ability_instance:
+			ability_instance.base_damage *= damage_multiplier
+
+	if attack_rate_multiplier != 1.0:
+		if ability_instance.has_node("Timer"):
+			var timer = ability_instance.get_node("Timer")
+			if timer:
+				timer.wait_time = timer.wait_time / attack_rate_multiplier
 
 
 func _physics_process(_delta):
@@ -179,7 +188,7 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 		var ability = ability_upgrade as Ability
 		var ability_instance = ability.ability_controller_scene.instantiate()
 		abilities.add_child(ability_instance)
-		apply_damage_multiplier_to_ability(ability_instance)
+		apply_character_modifiers_to_ability(ability_instance)
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades.player_speed.quantity * 0.1)
 	elif ability_upgrade.id == "pickup_area":
