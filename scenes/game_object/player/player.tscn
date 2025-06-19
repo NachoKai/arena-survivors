@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://ff082s2cpd0g"]
 
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
+[ext_resource type="Script" uid="uid://ckjuvs0u55qv5" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
 [ext_resource type="Texture2D" uid="uid://cswu8tolryu6h" path="res://scenes/game_object/player/player.png" id="1_xn5b6"]
 [ext_resource type="PackedScene" uid="uid://6a38sh7pfjp3" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="2_14gh0"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_tumac"]
@@ -135,9 +135,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phns2"]
 _data = {
-"RESET": SubResource("Animation_ao8i3"),
-"idle": SubResource("Animation_mwqmi"),
-"walk": SubResource("Animation_6n1tv")
+&"RESET": SubResource("Animation_ao8i3"),
+&"idle": SubResource("Animation_mwqmi"),
+&"walk": SubResource("Animation_6n1tv")
 }
 
 [sub_resource type="Animation" id="Animation_f80as"]
@@ -223,8 +223,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ppnf"]
 _data = {
-"RESET": SubResource("Animation_f80as"),
-"default": SubResource("Animation_l307i")
+&"RESET": SubResource("Animation_f80as"),
+&"default": SubResource("Animation_l307i")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cc0k"]
@@ -249,22 +249,23 @@ border_width_bottom = 1
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwboj"]
+particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(2.08165e-12, 5, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 8.0
 emission_ring_inner_radius = 5.0
-particle_flag_disable_z = true
+emission_ring_cone_angle = 90.0
+angle_max = 90.0
 direction = Vector3(1, 1, 2.08165e-12)
 spread = 50.0
-gravity = Vector3(2.08165e-12, -40, 2.08165e-12)
 initial_velocity_max = 4.0
 angular_velocity_min = 2.0
 angular_velocity_max = 5.0
 orbit_velocity_min = 2.08167e-14
 orbit_velocity_max = 2.08167e-14
+gravity = Vector3(2.08165e-12, -40, 2.08165e-12)
 damping_max = 5.0
-angle_max = 90.0
 scale_min = 0.1
 scale_max = 0.5
 color = Color(0.909804, 0.270588, 0.215686, 1)

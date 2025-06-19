@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c22n8gi28ih28"]
 
-[ext_resource type="Script" path="res://scenes/game_object/wood_sign/wood_sign.gd" id="1_7rnr4"]
+[ext_resource type="Script" uid="uid://cys31xat266cp" path="res://scenes/game_object/wood_sign/wood_sign.gd" id="1_7rnr4"]
 [ext_resource type="Texture2D" uid="uid://bua1fc0o1ikf8" path="res://scenes/game_object/wood_sign/wood_sign.png" id="1_67kul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cqq5"]

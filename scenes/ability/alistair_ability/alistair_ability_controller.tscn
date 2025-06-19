@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0hkbfgwaoc7y"]
 
-[ext_resource type="Script" path="res://scenes/ability/alistair_ability/alistair_ability_controller.gd" id="1_h81vf"]
+[ext_resource type="Script" uid="uid://c4ckqerpaj26u" path="res://scenes/ability/alistair_ability/alistair_ability_controller.gd" id="1_h81vf"]
 [ext_resource type="PackedScene" uid="uid://ctfi1hw2fgnp2" path="res://scenes/ability/alistair_ability/alistair_ability.tscn" id="2_faeig"]
 
 [node name="AlistairAbilityController" type="Node"]

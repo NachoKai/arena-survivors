@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://nb00srel7bs8"]
 
 [ext_resource type="PackedScene" uid="uid://cui85jbe1kgwr" path="res://scenes/ability/hammer_ability/hammer_ability_controller.tscn" id="1_jjm6y"]
-[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_6n8a7"]
+[ext_resource type="Script" uid="uid://ibtp5j8lml0j" path="res://resources/upgrades/ability.gd" id="2_6n8a7"]
 
 [resource]
 script = ExtResource("2_6n8a7")
@@ -10,4 +10,5 @@ id = "hammer"
 max_quantity = 1
 name = "Hammer"
 image_path = "res://scenes/ability/hammer_ability/hammer.png"
+is_evolution = false
 description = "Drops hammers randomly from the sky."

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6x0qfkqv8fin"]
+
+[ext_resource type="Script" path="res://scenes/manager/spatial_manager.gd" id="1_m4p2r"]
+
+[node name="SpatialManager" type="Node"]
+script = ExtResource("1_m4p2r")

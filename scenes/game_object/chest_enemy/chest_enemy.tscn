@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://brl73pc7i38pe"]
 
-[ext_resource type="Script" path="res://scenes/game_object/chest_enemy/chest_enemy.gd" id="1_okw7a"]
+[ext_resource type="Script" uid="uid://g7vt1gpv21ha" path="res://scenes/game_object/chest_enemy/chest_enemy.gd" id="1_okw7a"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_3dlge"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_m0frf"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_0dqug"]
@@ -100,8 +100,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di2uf"]
 _data = {
-"RESET": SubResource("Animation_c4cfy"),
-"walk": SubResource("Animation_g2qfk")
+&"RESET": SubResource("Animation_c4cfy"),
+&"walk": SubResource("Animation_g2qfk")
 }
 
 [sub_resource type="Shader" id="Shader_ij8pg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2radpvlctdh1"]
 
 [ext_resource type="AudioStream" uid="uid://cgyhswaf1g83d" path="res://music/music.mp3" id="1_lhiqs"]
-[ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_sbuo8"]
+[ext_resource type="Script" uid="uid://dll5mae2gwryj" path="res://scenes/autoload/music_player.gd" id="2_sbuo8"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 process_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://b53xvhan0rvkf"]
 
-[ext_resource type="Script" path="res://scenes/game_object/werewolf_enemy/werewolf_enemy.gd" id="1_37arm"]
+[ext_resource type="Script" uid="uid://c6he56faapl8s" path="res://scenes/game_object/werewolf_enemy/werewolf_enemy.gd" id="1_37arm"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_rnubx"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_xsmi0"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_feynf"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="9_4yy8q"]
 [ext_resource type="PackedScene" uid="uid://o1entvj4ufi4" path="res://scenes/component/velocity_component.tscn" id="10_xtk03"]
 [ext_resource type="PackedScene" uid="uid://ddjafc8cq5hf0" path="res://scenes/component/hit_flash_component.tscn" id="11_1j4nh"]
-[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="12_yhjcu"]
+[ext_resource type="Shader" uid="uid://d02omst3fcexf" path="res://scenes/component/hit_flash_component.gdshader" id="12_yhjcu"]
 [ext_resource type="PackedScene" uid="uid://c4laaxpwcmpkf" path="res://scenes/component/frame_saver_component.tscn" id="13_3lt58"]
 [ext_resource type="PackedScene" uid="uid://dbhugqcc7h2mu" path="res://scenes/component/death_component.tscn" id="14_bw1ex"]
 [ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="15_ea8b6"]
@@ -22,7 +22,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t60e4"]
 resource_local_to_scene = true
 shader = ExtResource("12_yhjcu")
-shader_parameter/lerp_percent = null
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wssir"]
 radius = 21.0238

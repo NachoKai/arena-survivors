@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://nuerv6kkbohs"]
 
-[ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="1_3q0ra"]
+[ext_resource type="Script" uid="uid://b5n2iuhj4gyfp" path="res://scenes/ui/experience_bar.gd" id="1_3q0ra"]
 [ext_resource type="Texture2D" uid="uid://bu7t87i6678l3" path="res://scenes/game_object/experience_vial/experience_vial.png" id="2_k2l5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrkkq"]

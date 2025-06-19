@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://1sda07gcjv4x"]
 
-[ext_resource type="Script" path="res://scenes/game_object/rat_enemy/rat_enemy.gd" id="1_ycfmh"]
+[ext_resource type="Script" uid="uid://cn1fltqasqcxg" path="res://scenes/game_object/rat_enemy/rat_enemy.gd" id="1_ycfmh"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_5u0pl"]
 [ext_resource type="PackedScene" uid="uid://cyynh8uv4u4wp" path="res://scenes/component/health_component.tscn" id="2_mtfpe"]
 [ext_resource type="PackedScene" uid="uid://dt1xoesxq3ax6" path="res://scenes/component/vial_drop_component.tscn" id="3_opf5w"]
@@ -99,8 +99,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di2uf"]
 _data = {
-"RESET": SubResource("Animation_c4cfy"),
-"walk": SubResource("Animation_g2qfk")
+&"RESET": SubResource("Animation_c4cfy"),
+&"walk": SubResource("Animation_g2qfk")
 }
 
 [sub_resource type="Shader" id="Shader_ij8pg"]

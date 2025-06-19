@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://jy12028t7uyt"]
 
-[ext_resource type="Script" path="res://scenes/autoload/screen_transition.gd" id="1_b8kr3"]
-[ext_resource type="Shader" path="res://scenes/autoload/screen_transition.gdshader" id="1_rutnt"]
+[ext_resource type="Script" uid="uid://bmhw8okfucqlo" path="res://scenes/autoload/screen_transition.gd" id="1_b8kr3"]
+[ext_resource type="Shader" uid="uid://bqv4px4fw14bp" path="res://scenes/autoload/screen_transition.gdshader" id="1_rutnt"]
 [ext_resource type="Texture2D" uid="uid://ckb0f2wfd8b5k" path="res://assets/ui/screen_transition.png" id="2_ae5c8"]
 
 [sub_resource type="Animation" id="Animation_r62xw"]
@@ -38,15 +38,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5i0uu"]
 _data = {
-"RESET": SubResource("Animation_r62xw"),
-"default": SubResource("Animation_aahc2")
+&"RESET": SubResource("Animation_r62xw"),
+&"default": SubResource("Animation_aahc2")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s347m"]
 shader = ExtResource("1_rutnt")
 shader_parameter/transition_color = Color(0.14902, 0.168627, 0.266667, 1)
-shader_parameter/percent = 0.0
 shader_parameter/transition_texture = ExtResource("2_ae5c8")
+shader_parameter/percent = 0.0
 
 [node name="ScreenTransition" type="CanvasLayer"]
 process_mode = 3

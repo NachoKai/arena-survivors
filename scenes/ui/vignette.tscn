@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cd5jgadsa3l0q"]
 
-[ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="1_7uv4v"]
-[ext_resource type="Shader" path="res://scenes/ui/vignette.gdshader" id="1_nqemf"]
+[ext_resource type="Script" uid="uid://pqn3cix1r6df" path="res://scenes/ui/vignette.gd" id="1_7uv4v"]
+[ext_resource type="Shader" uid="uid://2hucosa4afx5" path="res://scenes/ui/vignette.gdshader" id="1_nqemf"]
 
 [sub_resource type="Animation" id="Animation_kif7i"]
 length = 0.001
@@ -61,8 +61,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2t6j"]
 _data = {
-"RESET": SubResource("Animation_kif7i"),
-"hit": SubResource("Animation_trkt8")
+&"RESET": SubResource("Animation_kif7i"),
+&"hit": SubResource("Animation_trkt8")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seyqt"]

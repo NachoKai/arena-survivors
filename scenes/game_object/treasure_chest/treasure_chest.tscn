@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b6bo7ps4d2hti"]
 
 [ext_resource type="Texture2D" uid="uid://q4elaxmptfc6" path="res://scenes/game_object/treasure_chest/chest_1.png" id="1_7cajg"]
-[ext_resource type="Script" path="res://scenes/game_object/treasure_chest/treasure_chest.gd" id="1_fvud2"]
+[ext_resource type="Script" uid="uid://bsg08fcrx86ol" path="res://scenes/game_object/treasure_chest/treasure_chest.gd" id="1_fvud2"]
 [ext_resource type="PackedScene" uid="uid://cor3ld4pjw6nd" path="res://scenes/component/hurtbox_component.tscn" id="2_08v2p"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_fmu24"]
 [ext_resource type="Texture2D" uid="uid://bsh8qirh5sg3e" path="res://scenes/game_object/treasure_chest/chest_2.png" id="2_v1qn2"]

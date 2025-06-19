@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="1_iqcid"]
 [ext_resource type="Texture2D" uid="uid://dlxx27m78mpjp" path="res://scenes/ability/hammer_ability/hammer.png" id="1_kck7r"]
-[ext_resource type="Script" path="res://scenes/ability/hammer_ability/hammer_ability.gd" id="1_tc5sm"]
+[ext_resource type="Script" uid="uid://c4111tjthbt1" path="res://scenes/ability/hammer_ability/hammer_ability.gd" id="1_tc5sm"]
 [ext_resource type="Texture2D" uid="uid://j4jg25wokan6" path="res://assets/particle.png" id="3_dn1hh"]
 
 [sub_resource type="Animation" id="Animation_3ndgx"]
@@ -149,8 +149,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5hg5x"]
 _data = {
-"RESET": SubResource("Animation_3ndgx"),
-"default": SubResource("Animation_7erkc")
+&"RESET": SubResource("Animation_3ndgx"),
+&"default": SubResource("Animation_7erkc")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_finwh"]
@@ -173,18 +173,16 @@ curve = SubResource("Curve_4k1dm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_21udq"]
 lifetime_randomness = 0.4
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 6.0
-particle_flag_disable_z = true
+angle_max = 360.0
 spread = 180.0
-gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 initial_velocity_min = 150.0
 initial_velocity_max = 250.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 damping_min = 750.0
 damping_max = 850.0
-angle_max = 360.0
 scale_min = 0.5
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_trc4x")

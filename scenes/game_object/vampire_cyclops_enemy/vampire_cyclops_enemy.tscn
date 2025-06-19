@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bm5cfhjc5jiu4"]
 
-[ext_resource type="Script" path="res://scenes/game_object/cyclops_enemy/cyclops_enemy.gd" id="1_6s8xx"]
+[ext_resource type="Script" uid="uid://cfe6e8pmljxde" path="res://scenes/game_object/cyclops_enemy/cyclops_enemy.gd" id="1_6s8xx"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_0eah4"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_e8uxk"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_onnj1"]
@@ -99,8 +99,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxhe0"]
 _data = {
-"RESET": SubResource("Animation_5y3ng"),
-"walk": SubResource("Animation_1mgic")
+&"RESET": SubResource("Animation_5y3ng"),
+&"walk": SubResource("Animation_1mgic")
 }
 
 [sub_resource type="Shader" id="Shader_hwlkt"]

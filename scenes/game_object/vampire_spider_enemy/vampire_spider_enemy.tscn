@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bc82pmjwqi3fq"]
 
-[ext_resource type="Script" path="res://scenes/game_object/spider_enemy/spider_enemy.gd" id="1_cr0b1"]
+[ext_resource type="Script" uid="uid://t3v32xpor5hm" path="res://scenes/game_object/spider_enemy/spider_enemy.gd" id="1_cr0b1"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_x3tbb"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_c30ya"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_bth1l"]
@@ -98,8 +98,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di2uf"]
 _data = {
-"RESET": SubResource("Animation_c4cfy"),
-"walk": SubResource("Animation_g2qfk")
+&"RESET": SubResource("Animation_c4cfy"),
+&"walk": SubResource("Animation_g2qfk")
 }
 
 [sub_resource type="Shader" id="Shader_ij8pg"]

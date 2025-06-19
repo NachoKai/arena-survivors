@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cpbu7k5eh88bw"]
 
-[ext_resource type="Script" path="res://scenes/game_object/vampire_bat_enemy/vampire_bat_enemy.gd" id="1_4t72b"]
+[ext_resource type="Script" uid="uid://cy6vvbyeuoeab" path="res://scenes/game_object/vampire_bat_enemy/vampire_bat_enemy.gd" id="1_4t72b"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_a2krj"]
 [ext_resource type="AudioStream" uid="uid://c0usk10hobiwh" path="res://sounds/footstep_carpet_000.ogg" id="3_60ipc"]
 [ext_resource type="AudioStream" uid="uid://4y5mn6m5ff47" path="res://sounds/footstep_carpet_001.ogg" id="4_jxao4"]
@@ -99,8 +99,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxhe0"]
 _data = {
-"RESET": SubResource("Animation_5y3ng"),
-"walk": SubResource("Animation_1mgic")
+&"RESET": SubResource("Animation_5y3ng"),
+&"walk": SubResource("Animation_1mgic")
 }
 
 [sub_resource type="Shader" id="Shader_hwlkt"]

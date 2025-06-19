@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs0qhyyc3usk3"]
 
-[ext_resource type="Script" path="res://scenes/manager/day_night_cycle_manager.gd" id="1_o82pe"]
+[ext_resource type="Script" uid="uid://b68xp8kj3l5ap" path="res://scenes/manager/day_night_cycle_manager.gd" id="1_o82pe"]
 
 [sub_resource type="Animation" id="Animation_qu2n5"]
 length = 0.001
@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwvfg"]
 _data = {
-"RESET": SubResource("Animation_qu2n5"),
-"default": SubResource("Animation_aijf8")
+&"RESET": SubResource("Animation_qu2n5"),
+&"default": SubResource("Animation_aijf8")
 }
 
 [node name="DayNightCycleManager" type="CanvasModulate"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dkbjhdpghkw38"]
 
 [ext_resource type="Texture2D" uid="uid://ccwhwtja0j36l" path="res://scenes/game_object/health_vial/health_vial.png" id="1_gqjkp"]
-[ext_resource type="Script" path="res://scenes/game_object/health_vial/health_vial.gd" id="1_saodw"]
+[ext_resource type="Script" uid="uid://c4sosxu53jnmp" path="res://scenes/game_object/health_vial/health_vial.gd" id="1_saodw"]
 [ext_resource type="PackedScene" uid="uid://btg1hgds4smuo" path="res://scenes/component/random_stream_player_component.tscn" id="2_b2s68"]
 [ext_resource type="AudioStream" uid="uid://c2qrkgjap5x6f" path="res://sounds/impactGeneric_light_000.ogg" id="3_mk3h8"]
 [ext_resource type="AudioStream" uid="uid://c5pb5ikf125nw" path="res://sounds/impactGeneric_light_001.ogg" id="4_olxbg"]

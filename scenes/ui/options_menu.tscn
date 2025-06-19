@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhi65mie6cuk5"]
 
-[ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_p5c7x"]
+[ext_resource type="Script" uid="uid://ubj7urdaxv7d" path="res://scenes/ui/options_menu.gd" id="1_p5c7x"]
 [ext_resource type="PackedScene" uid="uid://can05764pxj5s" path="res://scenes/ui/sound_button.tscn" id="3_017jq"]
 
 [node name="OptionsMenu" type="CanvasLayer"]

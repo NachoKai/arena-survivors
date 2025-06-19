@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://6e63boxx6wx4"]
 
-[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="1_3iy01"]
+[ext_resource type="Script" uid="uid://ibtp5j8lml0j" path="res://resources/upgrades/ability.gd" id="1_3iy01"]
 [ext_resource type="PackedScene" uid="uid://c0hkbfgwaoc7y" path="res://scenes/ability/alistair_ability/alistair_ability_controller.tscn" id="1_j4ypj"]
 
 [resource]

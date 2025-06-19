@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dv5won0ecybjm"]
 
-[ext_resource type="Shader" path="res://scenes/ui/crt_filter.gdshader" id="1_nl3vr"]
+[ext_resource type="Shader" uid="uid://y3x1aagyn3st" path="res://scenes/ui/crt_filter.gdshader" id="1_nl3vr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsj5b"]
 shader = ExtResource("1_nl3vr")
