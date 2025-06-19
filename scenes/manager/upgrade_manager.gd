@@ -9,6 +9,7 @@ var upgrade_pool: WeightedTable = WeightedTable.new()
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
 var upgrade_pickup_area = preload("res://resources/upgrades/pickup_area.tres")
 
+var upgrade_sword = preload("res://resources/upgrades/sword.tres")
 var upgrade_sword_count = preload("res://resources/upgrades/sword_count.tres")
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
@@ -40,11 +41,6 @@ func _ready():
 
 	add_starting_ability_upgrades()
 
-	upgrade_pool.add_item(upgrade_sword_count, 5)
-	upgrade_pool.add_item(upgrade_sword_damage, 8)
-	upgrade_pool.add_item(upgrade_sword_rate, 8)
-	upgrade_pool.add_item(upgrade_sword_size, 5)
-
 	upgrade_pool.add_item(upgrade_dagger, 8)
 
 	upgrade_pool.add_item(upgrade_axe, 7)
@@ -59,7 +55,10 @@ func add_starting_ability_upgrades():
 
 	match selected_character:
 		"warrior":
-			pass
+			upgrade_pool.add_item(upgrade_sword_count, 5)
+			upgrade_pool.add_item(upgrade_sword_damage, 8)
+			upgrade_pool.add_item(upgrade_sword_rate, 8)
+			upgrade_pool.add_item(upgrade_sword_size, 5)
 		"barbarian":
 			upgrade_pool.add_item(upgrade_axe_count, 5)
 			upgrade_pool.add_item(upgrade_axe_damage, 8)
@@ -112,7 +111,12 @@ func check_ability_can_evolve(upgrades: Dictionary, ability: String) -> bool:
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if not chosen_upgrade: return
-	if chosen_upgrade.id == upgrade_axe.id:
+	if chosen_upgrade.id == upgrade_sword.id:
+		upgrade_pool.add_item(upgrade_sword_count, 5)
+		upgrade_pool.add_item(upgrade_sword_damage, 8)
+		upgrade_pool.add_item(upgrade_sword_rate, 8)
+		upgrade_pool.add_item(upgrade_sword_size, 5)
+	elif chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_count, 5)
 		upgrade_pool.add_item(upgrade_axe_damage, 8)
 		upgrade_pool.add_item(upgrade_axe_rate, 8)
@@ -141,13 +145,10 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	var hammer_can_evolve = check_ability_can_evolve(current_upgrades, "hammer")
 
 	if sword_can_evolve:
-		#sword evolution
 		pass
 	if axe_can_evolve:
-		#axe evolution
 		pass
 	if dagger_can_evolve:
-		#dagger evolution
 		pass
 	if hammer_can_evolve:
 		upgrade_pool.add_item(upgrade_alistair, 1000)

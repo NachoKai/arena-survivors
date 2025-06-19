@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bqx8y2n3m4k5l"]
+
+[ext_resource type="PackedScene" uid="uid://6a38sh7pfjp3" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="1_sword"]
+[ext_resource type="Script" uid="uid://ibtp5j8lml0j" path="res://resources/upgrades/ability.gd" id="1_ability"]
+
+[resource]
+script = ExtResource("1_ability")
+ability_controller_scene = ExtResource("1_sword")
+id = "sword"
+max_quantity = 1
+name = "Sword"
+image_path = "res://scenes/ability/sword_ability/sword.png"
+is_evolution = false
+description = "Periodically sends out a sword attack."
