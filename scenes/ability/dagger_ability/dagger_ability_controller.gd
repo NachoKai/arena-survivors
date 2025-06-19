@@ -32,7 +32,7 @@ func on_timer_timeout():
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "dagger_count":
-		dagger_count = current_upgrades.dagger_count.quantity + 1  # We already have 1 dagger
+		dagger_count = current_upgrades.dagger_count.quantity + 1
 	elif upgrade.id == "dagger_damage":
 		additional_damage_percent = 1 + (current_upgrades.dagger_damage.quantity * 0.15)
 	elif upgrade.id == "dagger_rate":

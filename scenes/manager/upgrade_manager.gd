@@ -27,6 +27,7 @@ var upgrade_hammer_damage = preload("res://resources/upgrades/hammer_damage.tres
 var upgrade_hammer_rate = preload("res://resources/upgrades/hammer_rate.tres")
 var upgrade_hammer_size = preload("res://resources/upgrades/hammer_size.tres")
 var upgrade_alistair = preload("res://resources/upgrades/alistair.tres")
+var upgrade_shadowmere = preload("res://resources/upgrades/shadowmere.tres")
 
 var upgrade_dagger = preload("res://resources/upgrades/dagger.tres")
 var upgrade_dagger_count = preload("res://resources/upgrades/dagger_count.tres")
@@ -39,13 +40,11 @@ func _ready():
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	upgrade_pool.add_item(upgrade_pickup_area, 5)
 
-	add_starting_ability_upgrades()
-
 	upgrade_pool.add_item(upgrade_dagger, 8)
-
 	upgrade_pool.add_item(upgrade_axe, 7)
-
 	upgrade_pool.add_item(upgrade_hammer, 6)
+
+	add_starting_ability_upgrades()
 
 	experience_manager.level_up.connect(on_levep_up)
 
@@ -55,23 +54,40 @@ func add_starting_ability_upgrades():
 
 	match selected_character:
 		"warrior":
+			current_upgrades["sword"] = {
+				"resource" = upgrade_sword,
+				"quantity" = 1
+			}
+			upgrade_pool.add_item(upgrade_sword, 7)
 			upgrade_pool.add_item(upgrade_sword_count, 5)
 			upgrade_pool.add_item(upgrade_sword_damage, 8)
 			upgrade_pool.add_item(upgrade_sword_rate, 8)
 			upgrade_pool.add_item(upgrade_sword_size, 5)
 		"barbarian":
+			current_upgrades["axe"] = {
+				"resource" = upgrade_axe,
+				"quantity" = 1
+			}
 			upgrade_pool.add_item(upgrade_axe_count, 5)
 			upgrade_pool.add_item(upgrade_axe_damage, 8)
 			upgrade_pool.add_item(upgrade_axe_rate, 8)
 			upgrade_pool.add_item(upgrade_axe_size, 5)
 			upgrade_pool.remove_item(upgrade_axe)
 		"monk":
+			current_upgrades["dagger"] = {
+				"resource" = upgrade_dagger,
+				"quantity" = 1
+			}
 			upgrade_pool.add_item(upgrade_dagger_count, 5)
 			upgrade_pool.add_item(upgrade_dagger_damage, 8)
 			upgrade_pool.add_item(upgrade_dagger_rate, 8)
 			upgrade_pool.add_item(upgrade_dagger_size, 5)
 			upgrade_pool.remove_item(upgrade_dagger)
 		"witch":
+			current_upgrades["hammer"] = {
+				"resource" = upgrade_hammer,
+				"quantity" = 1
+			}
 			upgrade_pool.add_item(upgrade_hammer_count, 5)
 			upgrade_pool.add_item(upgrade_hammer_damage, 8)
 			upgrade_pool.add_item(upgrade_hammer_rate, 8)
@@ -149,7 +165,7 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if axe_can_evolve:
 		pass
 	if dagger_can_evolve:
-		pass
+		upgrade_pool.add_item(upgrade_shadowmere, 1000)
 	if hammer_can_evolve:
 		upgrade_pool.add_item(upgrade_alistair, 1000)
 

@@ -41,7 +41,7 @@ func on_timer_timeout():
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "hammer_count":
-		hammer_count = current_upgrades.hammer_count.quantity + 1  # We already have 1 hammer
+		hammer_count = current_upgrades.hammer_count.quantity
 	elif upgrade.id == "hammer_damage":
 		additional_damage_percent = 1 + (current_upgrades.hammer_damage.quantity * 0.15)
 	elif upgrade.id == "hammer_rate":

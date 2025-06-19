@@ -35,7 +35,7 @@ func on_timer_timeout():
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade: return
 	if upgrade.id == "axe_count":
-		axe_count = current_upgrades.axe_count.quantity + 1  # We already have 1 axe
+		axe_count = current_upgrades.axe_count.quantity
 	elif upgrade.id == "axe_damage":
 		additional_damage_percent = 1 + (current_upgrades.axe_damage.quantity * 0.15)
 	elif upgrade.id == "axe_rate":

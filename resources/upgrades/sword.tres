@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bqx8y2n3m4k5l"]
 
-[ext_resource type="PackedScene" uid="uid://6a38sh7pfjp3" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="1_sword"]
 [ext_resource type="Script" uid="uid://ibtp5j8lml0j" path="res://resources/upgrades/ability.gd" id="1_ability"]
+[ext_resource type="PackedScene" uid="uid://6a38sh7pfjp3" path="res://scenes/ability/sword_ability/sword_ability_controller.tscn" id="1_sword"]
 
 [resource]
 script = ExtResource("1_ability")
