@@ -104,7 +104,7 @@ _data = {
 &"walk": SubResource("Animation_g2qfk")
 }
 
-[sub_resource type="Shader" id="Shader_ij8pg"]
+[sub_resource type="Shader" id="Shader_s53j2"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -119,7 +119,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7if4t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ij8pg")
+shader = SubResource("Shader_s53j2")
 shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6204"]
@@ -151,10 +151,10 @@ collision_mask = 9
 script = ExtResource("1_okw7a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
-"": SubResource("AnimationLibrary_di2uf")
+&"": SubResource("AnimationLibrary_di2uf")
 }
+autoplay = "walk"
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_3dlge")]
 streams = Array[AudioStream]([ExtResource("3_m0frf"), ExtResource("4_0dqug"), ExtResource("5_0ksut"), ExtResource("6_svy0r"), ExtResource("7_xll17")])
@@ -201,7 +201,7 @@ shape = SubResource("RectangleShape2D_5rwgg")
 
 [node name="EnemyImage" type="Sprite2D" parent="Visuals"]
 texture_filter = 1
-position = Vector2(2.08165e-12, -8)
+position = Vector2(2.08165e-12, -4)
 texture = ExtResource("15_xvore")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]

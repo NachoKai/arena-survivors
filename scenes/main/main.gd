@@ -56,4 +56,3 @@ func on_treasure_chest_opened(pos, dir):
 func on_remove_enemies_body_entered(body):
 	if body.is_in_group("enemy"):
 		body.queue_free()
-

@@ -95,4 +95,3 @@ func reset_enemy():
 func _exit_tree():
 	if spatial_manager:
 		spatial_manager.unregister_entity(self)
-

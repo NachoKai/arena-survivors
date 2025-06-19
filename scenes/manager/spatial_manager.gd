@@ -8,14 +8,14 @@ var grid = {}  # Dictionary to store entities in grid cells
 var player: Node2D = null
 
 func _ready():
-	player = get_tree().get_first_node_in_group("player")
-	if not player:
-		push_warning("Spatial manager: Player not found")
+	pass
 
 
 func _physics_process(_delta):
 	if not player:
-		return
+		player = get_tree().get_first_node_in_group("player")
+		if not player:
+			return
 	update_entity_states()
 
 

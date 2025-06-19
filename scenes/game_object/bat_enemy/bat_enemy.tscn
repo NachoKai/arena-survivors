@@ -103,7 +103,7 @@ _data = {
 &"walk": SubResource("Animation_1mgic")
 }
 
-[sub_resource type="Shader" id="Shader_hwlkt"]
+[sub_resource type="Shader" id="Shader_8rl44"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -118,7 +118,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6g1lu"]
 resource_local_to_scene = true
-shader = SubResource("Shader_hwlkt")
+shader = SubResource("Shader_8rl44")
 shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ue8cj"]
@@ -134,10 +134,10 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_0jrtu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
-"": SubResource("AnimationLibrary_fxhe0")
+&"": SubResource("AnimationLibrary_fxhe0")
 }
+autoplay = "walk"
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_a2krj")]
 streams = Array[AudioStream]([ExtResource("3_60ipc"), ExtResource("4_jxao4"), ExtResource("5_r8053"), ExtResource("6_nmrnj"), ExtResource("7_pte7r")])

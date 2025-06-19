@@ -32,6 +32,7 @@ MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 GameOptions="*res://scenes/autoload/game_options.gd"
 Globals="*res://scenes/autoload/globals.gd"
 SaveGame="*res://scenes/autoload/save_game.gd"
+SpatialManager="*res://scenes/manager/spatial_manager.tscn"
 
 [debug]
 
