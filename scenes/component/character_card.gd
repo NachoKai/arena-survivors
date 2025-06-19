@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var use_button: Button = %UseButton
 
 var character_id: String
+var implemented_characters = ["Darius", "Elara", "Kael", "Zenith", "Seraphina", "Orion"]
 
 func _ready():
 	use_button.pressed.connect(on_use_button_pressed)
@@ -23,7 +24,7 @@ func set_character(character: Character):
 
 
 func handle_use_button():
-	if name_label.text == "Darius":
+	if name_label.text in implemented_characters:
 		use_button.disabled = false
 
 

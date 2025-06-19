@@ -22,7 +22,7 @@ var base_pickup_area = 30
 
 func _ready():
 	if not arena_time_manager: return
-#	image.texture = SaveGame.get_selected_character()
+	load_character_sprite()
 	night_light_animation.play("default")
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
@@ -33,6 +33,30 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
+
+
+func load_character_sprite():
+	var selected_character = SaveGame.get_selected_character()
+	var character_texture_path = ""
+
+	match selected_character:
+		"warrior":
+			character_texture_path = "res://assets/characters/warrior.png"
+		"archer":
+			character_texture_path = "res://assets/characters/archer.png"
+		"barbarian":
+			character_texture_path = "res://assets/characters/barbarian.png"
+		"monk":
+			character_texture_path = "res://assets/characters/monk.png"
+		"witch":
+			character_texture_path = "res://assets/characters/witch.png"
+		"wizard":
+			character_texture_path = "res://assets/characters/wizard.png"
+		_:
+			character_texture_path = "res://assets/characters/warrior.png"  # Default fallback
+
+	if character_texture_path and FileAccess.file_exists(character_texture_path):
+		image.texture = load(character_texture_path)
 
 
 func _physics_process(_delta):
