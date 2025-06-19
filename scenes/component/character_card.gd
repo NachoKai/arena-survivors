@@ -5,7 +5,7 @@ extends PanelContainer
 @onready var use_button: Button = %UseButton
 
 var character_id: String
-var implemented_characters = ["Darius", "Elara", "Kael", "Zenith", "Seraphina", "Orion"]
+var implemented_characters = ["Darius", "Kael", "Zenith", "Seraphina"]
 
 func _ready():
 	use_button.pressed.connect(on_use_button_pressed)

@@ -19,10 +19,16 @@ var colliding_bodies_quantity: int = 0
 var base_speed = 0
 var base_pickup_area = 30
 
+var sword_ability = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
+var axe_ability = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
+var dagger_ability = preload("res://scenes/ability/dagger_ability/dagger_ability_controller.tscn")
+var hammer_ability = preload("res://scenes/ability/hammer_ability/hammer_ability_controller.tscn")
+
 
 func _ready():
 	if not arena_time_manager: return
 	load_character_sprite()
+	give_starting_ability()
 	night_light_animation.play("default")
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
@@ -57,6 +63,25 @@ func load_character_sprite():
 
 	if character_texture_path and FileAccess.file_exists(character_texture_path):
 		image.texture = load(character_texture_path)
+
+
+func give_starting_ability():
+	var selected_character = SaveGame.get_selected_character()
+
+	for child in abilities.get_children():
+		child.queue_free()
+
+	match selected_character:
+		"warrior":
+			abilities.add_child(sword_ability.instantiate())
+		"barbarian":
+			abilities.add_child(axe_ability.instantiate())
+		"monk":
+			abilities.add_child(dagger_ability.instantiate())
+		"witch":
+			abilities.add_child(hammer_ability.instantiate())
+		_:
+			abilities.add_child(sword_ability.instantiate())
 
 
 func _physics_process(_delta):

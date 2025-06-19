@@ -38,6 +38,8 @@ func _ready():
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	upgrade_pool.add_item(upgrade_pickup_area, 5)
 
+	add_starting_ability_upgrades()
+
 	upgrade_pool.add_item(upgrade_sword_count, 5)
 	upgrade_pool.add_item(upgrade_sword_damage, 8)
 	upgrade_pool.add_item(upgrade_sword_rate, 8)
@@ -50,6 +52,34 @@ func _ready():
 	upgrade_pool.add_item(upgrade_hammer, 6)
 
 	experience_manager.level_up.connect(on_levep_up)
+
+
+func add_starting_ability_upgrades():
+	var selected_character = SaveGame.get_selected_character()
+
+	match selected_character:
+		"warrior":
+			pass
+		"barbarian":
+			upgrade_pool.add_item(upgrade_axe_count, 5)
+			upgrade_pool.add_item(upgrade_axe_damage, 8)
+			upgrade_pool.add_item(upgrade_axe_rate, 8)
+			upgrade_pool.add_item(upgrade_axe_size, 5)
+			upgrade_pool.remove_item(upgrade_axe)
+		"monk":
+			upgrade_pool.add_item(upgrade_dagger_count, 5)
+			upgrade_pool.add_item(upgrade_dagger_damage, 8)
+			upgrade_pool.add_item(upgrade_dagger_rate, 8)
+			upgrade_pool.add_item(upgrade_dagger_size, 5)
+			upgrade_pool.remove_item(upgrade_dagger)
+		"witch":
+			upgrade_pool.add_item(upgrade_hammer_count, 5)
+			upgrade_pool.add_item(upgrade_hammer_damage, 8)
+			upgrade_pool.add_item(upgrade_hammer_rate, 8)
+			upgrade_pool.add_item(upgrade_hammer_size, 5)
+			upgrade_pool.remove_item(upgrade_hammer)
+		_:
+			pass
 
 
 func apply_upgrade(upgrade: AbilityUpgrade):
