@@ -371,3 +371,4 @@ assets/.DS_Store
 resources/.DS_Store
 .DS_Store
 addons/coi_serviceworker/coi_export_plugin.gd
+export_presets.cfg
