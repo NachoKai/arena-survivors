@@ -23,7 +23,8 @@ func _ready():
 
 
 func load_file():
-	if not FileAccess.file_exists(SAVE_FILE_PATH): return
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
+		return
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
 
@@ -75,3 +76,5 @@ func on_player_experience_changed(experience: float):
 func on_selected_character_changed(character: String):
 	if not character: return
 	save_data.selected_character = character
+	await get_tree().process_frame
+	save_file()

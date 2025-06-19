@@ -24,9 +24,16 @@ var axe_ability = preload("res://scenes/ability/axe_ability/axe_ability_controll
 var dagger_ability = preload("res://scenes/ability/dagger_ability/dagger_ability_controller.tscn")
 var hammer_ability = preload("res://scenes/ability/hammer_ability/hammer_ability_controller.tscn")
 
+var warrior_texture = preload("res://assets/characters/warrior.png")
+var archer_texture = preload("res://assets/characters/archer.png")
+var barbarian_texture = preload("res://assets/characters/barbarian.png")
+var monk_texture = preload("res://assets/characters/monk.png")
+var witch_texture = preload("res://assets/characters/witch.png")
+var wizard_texture = preload("res://assets/characters/wizard.png")
 
 func _ready():
-	if not arena_time_manager: return
+	if not arena_time_manager:
+		return
 	load_character_sprite()
 	give_starting_ability()
 	night_light_animation.play("default")
@@ -43,26 +50,29 @@ func _ready():
 
 func load_character_sprite():
 	var selected_character = SaveGame.get_selected_character()
-	var character_texture_path = ""
 
+	image.texture = null
+
+	var texture = null
 	match selected_character:
 		"warrior":
-			character_texture_path = "res://assets/characters/warrior.png"
+			texture = warrior_texture
 		"archer":
-			character_texture_path = "res://assets/characters/archer.png"
+			texture = archer_texture
 		"barbarian":
-			character_texture_path = "res://assets/characters/barbarian.png"
+			texture = barbarian_texture
 		"monk":
-			character_texture_path = "res://assets/characters/monk.png"
+			texture = monk_texture
 		"witch":
-			character_texture_path = "res://assets/characters/witch.png"
+			texture = witch_texture
 		"wizard":
-			character_texture_path = "res://assets/characters/wizard.png"
+			texture = wizard_texture
 		_:
-			character_texture_path = "res://assets/characters/warrior.png"  # Default fallback
+			texture = warrior_texture
 
-	if character_texture_path and FileAccess.file_exists(character_texture_path):
-		image.texture = load(character_texture_path)
+	if texture:
+		image.texture = texture
+		await get_tree().process_frame
 
 
 func give_starting_ability():
