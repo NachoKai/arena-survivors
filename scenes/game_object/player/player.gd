@@ -20,6 +20,14 @@ var base_speed = 0
 var base_pickup_area = 30
 var damage_multiplier = 1.0
 var attack_rate_multiplier = 1.0
+var is_dashing = false
+var dash_speed = 200.0
+var dash_duration = 0.2
+var dash_cooldown = 0.5
+var dash_timer = 0.0
+var dash_cooldown_timer = 0.0
+var dash_direction = Vector2.ZERO
+var dash_sound: AudioStreamPlayer2D
 
 var sword_ability = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
 var axe_ability = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
@@ -41,6 +49,8 @@ func _ready():
 	night_light_animation.play("default")
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
+
+	setup_dash_sound()
 
 	var selected_character = SaveGame.get_selected_character()
 	match selected_character:
@@ -131,10 +141,26 @@ func apply_character_modifiers_to_ability(ability_instance):
 				timer.wait_time = timer.wait_time / attack_rate_multiplier
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity_component.accelerate_in_direction(direction)
-	velocity_component.move(self)
+
+	if Input.is_action_just_pressed("dash") and not is_dashing and dash_cooldown_timer <= 0.0 and direction != Vector2.ZERO:
+		start_dash(direction)
+
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0.0:
+			end_dash()
+
+	if dash_cooldown_timer > 0.0:
+		dash_cooldown_timer -= delta
+
+	if is_dashing:
+		velocity_component.velocity = dash_direction * dash_speed
+		velocity_component.move(self)
+	else:
+		velocity_component.accelerate_in_direction(direction)
+		velocity_component.move(self)
 
 	if direction.x != 0 || direction.y != 0:
 		animation_player.play("walk")
@@ -145,6 +171,22 @@ func _physics_process(_delta):
 		visuals.scale.x = -1
 	elif direction.x > 0:
 		visuals.scale.x = 1
+
+
+func start_dash(direction: Vector2):
+	is_dashing = true
+	dash_timer = dash_duration
+	dash_direction = direction.normalized()
+	dash_cooldown_timer = dash_cooldown
+
+	if dash_sound:
+		dash_sound.play()
+
+
+func end_dash():
+	is_dashing = false
+	dash_timer = 0.0
+	velocity_component.velocity = Vector2.ZERO
 
 
 func check_deal_damage():
@@ -203,3 +245,9 @@ func on_arena_difficulty_increased(difficulty: int):
 			health_component.heal(health_regeneration_quantity)
 			if health_particles:
 				health_particles.emitting = true
+
+
+func setup_dash_sound():
+	dash_sound = AudioStreamPlayer2D.new()
+	dash_sound.stream = load("res://sounds/dash.ogg")
+	add_child(dash_sound)
