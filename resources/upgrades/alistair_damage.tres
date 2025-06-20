@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://alistair_damage"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://ubwwn1bj3xnm"]
 
-[ext_resource type="Script" uid="uid://ability_upgrade_script" path="res://resources/upgrades/ability_upgrade.gd" id="1_upgrade"]
+[ext_resource type="Script" uid="uid://druj5jlu33bhy" path="res://resources/upgrades/ability_upgrade.gd" id="1_upgrade"]
 
 [resource]
 script = ExtResource("1_upgrade")
@@ -8,4 +8,5 @@ id = "alistair_damage"
 max_quantity = 5
 name = "Alistair Damage"
 image_path = "res://scenes/ability/alistair_ability/alistair.png"
+is_evolution = false
 description = "Increases the damage of alistair hammers."
