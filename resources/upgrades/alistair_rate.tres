@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://alistair_rate"]
+
+[ext_resource type="Script" uid="uid://ability_upgrade_script" path="res://resources/upgrades/ability_upgrade.gd" id="1_upgrade"]
+
+[resource]
+script = ExtResource("1_upgrade")
+id = "alistair_rate"
+max_quantity = 5
+name = "Alistair Rate"
+image_path = "res://scenes/ability/alistair_ability/alistair.png"
+description = "Increases the attack rate of alistair hammers."

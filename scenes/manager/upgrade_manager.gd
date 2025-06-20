@@ -40,6 +40,11 @@ var upgrade_shadowmere_damage = preload("res://resources/upgrades/shadowmere_dam
 var upgrade_shadowmere_rate = preload("res://resources/upgrades/shadowmere_rate.tres")
 var upgrade_shadowmere_size = preload("res://resources/upgrades/shadowmere_size.tres")
 
+var upgrade_alistair_count = preload("res://resources/upgrades/alistair_count.tres")
+var upgrade_alistair_damage = preload("res://resources/upgrades/alistair_damage.tres")
+var upgrade_alistair_rate = preload("res://resources/upgrades/alistair_rate.tres")
+var upgrade_alistair_size = preload("res://resources/upgrades/alistair_size.tres")
+
 
 func _ready():
 	upgrade_pool.add_item(upgrade_player_speed, 5)
@@ -159,6 +164,24 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.remove_item(upgrade_hammer_damage)
 		upgrade_pool.remove_item(upgrade_hammer_rate)
 		upgrade_pool.remove_item(upgrade_hammer_size)
+
+		if current_upgrades.has("hammer_count"):
+			current_upgrades["alistair_count"] = current_upgrades["hammer_count"]
+			current_upgrades.erase("hammer_count")
+		if current_upgrades.has("hammer_damage"):
+			current_upgrades["alistair_damage"] = current_upgrades["hammer_damage"]
+			current_upgrades.erase("hammer_damage")
+		if current_upgrades.has("hammer_rate"):
+			current_upgrades["alistair_rate"] = current_upgrades["hammer_rate"]
+			current_upgrades.erase("hammer_rate")
+		if current_upgrades.has("hammer_size"):
+			current_upgrades["alistair_size"] = current_upgrades["hammer_size"]
+			current_upgrades.erase("hammer_size")
+
+		upgrade_pool.add_item(upgrade_alistair_count, 5)
+		upgrade_pool.add_item(upgrade_alistair_damage, 8)
+		upgrade_pool.add_item(upgrade_alistair_rate, 8)
+		upgrade_pool.add_item(upgrade_alistair_size, 5)
 	elif chosen_upgrade.id == upgrade_shadowmere.id:
 		current_upgrades.erase("dagger")
 		upgrade_pool.remove_item(upgrade_dagger)

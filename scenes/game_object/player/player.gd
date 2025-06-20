@@ -234,6 +234,11 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 				if child.name.contains("DaggerAbilityController"):
 					child.queue_free()
 
+		if ability.id == "alistair":
+			for child in abilities.get_children():
+				if child.name.contains("HammerAbilityController"):
+					child.queue_free()
+
 		var ability_instance = ability.ability_controller_scene.instantiate()
 		abilities.add_child(ability_instance)
 		apply_character_modifiers_to_ability(ability_instance)
