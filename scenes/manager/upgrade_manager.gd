@@ -213,13 +213,15 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	var dagger_can_evolve = check_ability_can_evolve(current_upgrades, "dagger")
 	var hammer_can_evolve = check_ability_can_evolve(current_upgrades, "hammer")
 
+	var selected_character = SaveGame.get_selected_character()
+
 	if sword_can_evolve:
 		pass
 	if axe_can_evolve:
 		pass
-	if dagger_can_evolve:
+	if dagger_can_evolve and selected_character == "monk":
 		upgrade_pool.add_item(upgrade_shadowmere, 1000)
-	if hammer_can_evolve:
+	if hammer_can_evolve and selected_character == "witch":
 		upgrade_pool.add_item(upgrade_alistair, 1000)
 
 
