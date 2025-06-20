@@ -35,6 +35,11 @@ var upgrade_dagger_damage = preload("res://resources/upgrades/dagger_damage.tres
 var upgrade_dagger_rate = preload("res://resources/upgrades/dagger_rate.tres")
 var upgrade_dagger_size = preload("res://resources/upgrades/dagger_size.tres")
 
+var upgrade_shadowmere_count = preload("res://resources/upgrades/shadowmere_count.tres")
+var upgrade_shadowmere_damage = preload("res://resources/upgrades/shadowmere_damage.tres")
+var upgrade_shadowmere_rate = preload("res://resources/upgrades/shadowmere_rate.tres")
+var upgrade_shadowmere_size = preload("res://resources/upgrades/shadowmere_size.tres")
+
 
 func _ready():
 	upgrade_pool.add_item(upgrade_player_speed, 5)
@@ -154,6 +159,31 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_pool.remove_item(upgrade_hammer_damage)
 		upgrade_pool.remove_item(upgrade_hammer_rate)
 		upgrade_pool.remove_item(upgrade_hammer_size)
+	elif chosen_upgrade.id == upgrade_shadowmere.id:
+		current_upgrades.erase("dagger")
+		upgrade_pool.remove_item(upgrade_dagger)
+		upgrade_pool.remove_item(upgrade_dagger_count)
+		upgrade_pool.remove_item(upgrade_dagger_damage)
+		upgrade_pool.remove_item(upgrade_dagger_rate)
+		upgrade_pool.remove_item(upgrade_dagger_size)
+
+		if current_upgrades.has("dagger_count"):
+			current_upgrades["shadowmere_count"] = current_upgrades["dagger_count"]
+			current_upgrades.erase("dagger_count")
+		if current_upgrades.has("dagger_damage"):
+			current_upgrades["shadowmere_damage"] = current_upgrades["dagger_damage"]
+			current_upgrades.erase("dagger_damage")
+		if current_upgrades.has("dagger_rate"):
+			current_upgrades["shadowmere_rate"] = current_upgrades["dagger_rate"]
+			current_upgrades.erase("dagger_rate")
+		if current_upgrades.has("dagger_size"):
+			current_upgrades["shadowmere_size"] = current_upgrades["dagger_size"]
+			current_upgrades.erase("dagger_size")
+
+		upgrade_pool.add_item(upgrade_shadowmere_count, 5)
+		upgrade_pool.add_item(upgrade_shadowmere_damage, 8)
+		upgrade_pool.add_item(upgrade_shadowmere_rate, 8)
+		upgrade_pool.add_item(upgrade_shadowmere_size, 5)
 
 	var sword_can_evolve = check_ability_can_evolve(current_upgrades, "sword")
 	var axe_can_evolve = check_ability_can_evolve(current_upgrades, "axe")

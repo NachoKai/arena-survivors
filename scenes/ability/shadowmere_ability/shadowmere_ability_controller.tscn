@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://shadowmere_controller"]
+
+[ext_resource type="Script" uid="uid://shadowmere_controller_script" path="res://scenes/ability/shadowmere_ability/shadowmere_ability_controller.gd" id="1_shadowmere_controller"]
+[ext_resource type="PackedScene" uid="uid://shadowmere_ability" path="res://scenes/ability/shadowmere_ability/shadowmere_ability.tscn" id="2_shadowmere_ability"]
+
+[node name="ShadowmereAbilityController" type="Node"]
+script = ExtResource("1_shadowmere_controller")
+shadowmere_ability_scene = ExtResource("2_shadowmere_ability")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

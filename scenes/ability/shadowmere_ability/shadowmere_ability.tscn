@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdsn4vsb81hao"]
+
+[ext_resource type="Script" path="res://scenes/ability/shadowmere_ability/shadowmere_ability.gd" id="1_shadowmere"]
+[ext_resource type="PackedScene" uid="uid://c62i6y0dxibt0" path="res://scenes/component/hitbox_component.tscn" id="2_hitbox"]
+[ext_resource type="Texture2D" uid="uid://dri8b526bc6v0" path="res://scenes/ability/shadowmere_ability/shadowmere.png" id="3_shadowmere_img"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shadowmere"]
+radius = 7.0
+
+[node name="ShadowmereAbility" type="Node2D"]
+script = ExtResource("1_shadowmere")
+
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_hitbox")]
+collision_layer = 6
+collision_mask = 41
+
+[node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_shadowmere")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+rotation = 1.5708
+texture = ExtResource("3_shadowmere_img")

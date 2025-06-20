@@ -228,6 +228,12 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 	if not ability_upgrade: return
 	if ability_upgrade is Ability:
 		var ability = ability_upgrade as Ability
+
+		if ability.id == "shadowmere":
+			for child in abilities.get_children():
+				if child.name.contains("DaggerAbilityController"):
+					child.queue_free()
+
 		var ability_instance = ability.ability_controller_scene.instantiate()
 		abilities.add_child(ability_instance)
 		apply_character_modifiers_to_ability(ability_instance)

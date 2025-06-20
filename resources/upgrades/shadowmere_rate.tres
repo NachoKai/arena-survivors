@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://shadowmere_rate"]
+
+[ext_resource type="Script" uid="uid://ability_upgrade_script" path="res://resources/upgrades/ability_upgrade.gd" id="1_upgrade"]
+
+[resource]
+script = ExtResource("1_upgrade")
+id = "shadowmere_rate"
+max_quantity = 5
+name = "Shadowmere Rate"
+image_path = "res://scenes/ability/shadowmere_ability/shadowmere.png"
+description = "Increases the attack rate of shadowmere daggers."
