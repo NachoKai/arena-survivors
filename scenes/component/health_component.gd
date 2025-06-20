@@ -7,6 +7,7 @@ signal health_decreased
 
 @export var max_health: float = 100
 var current_health
+@onready var potion_splash_player: AudioStreamPlayer = $PotionSplashPlayer
 
 
 func _ready():
@@ -18,6 +19,8 @@ func damage(damage_amount: float = 0):
 	var is_healing = false
 	if damage_amount < 0:
 		is_healing = true
+		if potion_splash_player:
+			potion_splash_player.play_random()
 
 	current_health = clamp(current_health - damage_amount, 0, max_health)
 	health_changed.emit(current_health, is_healing)

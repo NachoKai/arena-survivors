@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyynh8uv4u4wp"]
+[gd_scene load_steps=4 format=3 uid="uid://cyynh8uv4u4wp"]
 
 [ext_resource type="Script" uid="uid://ddm7avle31day" path="res://scenes/component/health_component.gd" id="1_lwqad"]
+[ext_resource type="PackedScene" uid="uid://berykcpudlkdw" path="res://scenes/component/random_audio_stream_player_component.tscn" id="2_b2s68"]
+[ext_resource type="AudioStream" uid="uid://elqg1duqbb7u" path="res://sounds/potion-splash.ogg" id="3_potion"]
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_lwqad")
+
+[node name="PotionSplashPlayer" parent="." instance=ExtResource("2_b2s68")]
+volume_db = -10.0
+streams = Array[AudioStream]([ExtResource("3_potion")])
