@@ -6,6 +6,7 @@ signal health_changed(current_health: float, is_healing: bool)
 signal health_decreased(current_health: float)
 
 @export var max_health: float = 100.0
+@export var destroy_on_death: bool = true
 var current_health: float = 0.0
 @onready var potion_splash_player: AudioStreamPlayer = $PotionSplashPlayer
 
@@ -42,7 +43,8 @@ func get_health_percent() -> float:
 func check_death() -> void:
 	if is_equal_approx(current_health, 0.0):
 		died.emit()
-		owner.queue_free()
+		if destroy_on_death:
+			owner.queue_free()
 
 
 func on_health_vial_collected(number: int) -> void:

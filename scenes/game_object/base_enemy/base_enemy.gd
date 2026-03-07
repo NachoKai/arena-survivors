@@ -14,16 +14,20 @@ var is_active: bool = true
 var update_interval: float = 1.0 / 60.0  # Default to 60 fps
 var time_since_last_update: float = 0.0
 var player: Node2D = null
+var pool_key: String = ""
+var health_component: HealthComponent
+
 
 func _ready() -> void:
 	hurtbox_component.hit.connect(on_hit)
 	player = get_tree().get_first_node_in_group("player")
 
-	# Register with spatial manager
-	if spatial_manager:
-		spatial_manager.register_entity(self)
-
-	old_position = global_position
+	# Prepare health component for pooling
+	if has_node("HealthComponent"):
+		health_component = get_node("HealthComponent")
+		if health_component:
+			health_component.destroy_on_death = false
+			health_component.died.connect(on_died)
 
 
 func _physics_process(delta: float) -> void:
@@ -54,6 +58,12 @@ func on_hit(_hitbox: HitboxComponent, _damage: float) -> void:
 		hit_random_stream_player_component.play_random()
 
 
+func on_died() -> void:
+	# Release back to pool instead of destroying
+	if not pool_key.is_empty():
+		ObjectPoolManager.release_object(self, pool_key)
+
+
 func frame_save(amount: int = 20) -> void:
 	var rand_disable := randi() % 100
 	if rand_disable < amount:
@@ -80,16 +90,28 @@ func set_semi_active() -> void:
 	animation_player.stop()
 
 
-func reset_enemy() -> void:
-	# Reset enemy state when reused from object pool
+func on_spawn() -> void:
+	# Initialize/Reset enemy state when spawned/reused from object pool
 	velocity = Vector2.ZERO
 	is_active = true
 	update_interval = 1.0 / 60.0
 	time_since_last_update = 0.0
+	old_position = global_position
+
 	if animation_player:
 		animation_player.play()
 	if enemy_area:
 		enemy_area.disabled = false
+	if health_component:
+		health_component.current_health = health_component.max_health # Reset health
+
+	if spatial_manager:
+		spatial_manager.register_entity(self)
+
+
+func on_despawn() -> void:
+	if spatial_manager:
+		spatial_manager.unregister_entity(self)
 
 
 func _exit_tree() -> void:

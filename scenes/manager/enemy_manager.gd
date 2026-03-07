@@ -63,14 +63,33 @@ func on_timer_timeout() -> void:
 		var enemy_scene: PackedScene = enemy_table.pick_item()
 		if not enemy_scene:
 			return
-		var enemy := enemy_scene.instantiate() as Node2D
-		var entities := get_tree().get_first_node_in_group("entities")
-		var children_quantity: int = entities.get_children().size()
 
-		if children_quantity <= enemies_cap:
-			entities.add_child(enemy)
-			var spawn_position: Vector2 = get_spawn_position()
-			enemy.global_position = spawn_position
+		# Derive pool key dynamically from filename
+		var pool_key: String = enemy_scene.resource_path.get_file().get_basename()
+
+		var enemy := ObjectPoolManager.get_object(pool_key, enemy_scene.resource_path) as Node2D
+		if not enemy:
+			# ObjectPool initialization hit a snag
+			return
+
+		var entities := get_tree().get_first_node_in_group("entities")
+
+		# The object might already be in the tree if it's being reused, so only add if it has no parent
+		if not enemy.get_parent():
+			var children_quantity: int = entities.get_children().size()
+			if children_quantity <= enemies_cap:
+				entities.add_child(enemy)
+			else:
+				# Push back if we hit hard cap and it wasn't already in tree
+				ObjectPoolManager.release_object(enemy, pool_key)
+				continue
+
+		# Assign pool_key so it knows how to release itself
+		if "pool_key" in enemy:
+			enemy.pool_key = pool_key
+
+		var spawn_position: Vector2 = get_spawn_position()
+		enemy.global_position = spawn_position
 
 
 func on_arena_difficulty_increased(arena_difficulty: int) -> void:
