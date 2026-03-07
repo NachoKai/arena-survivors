@@ -2,19 +2,20 @@ extends Node
 
 # Dictionary to store pools for different object types
 var pools: Dictionary = {}
-const POOL_SIZES = {
+const POOL_SIZES: Dictionary = {
 	"enemy": 100,
 	"projectile": 200,
 	"experience_vial": 100,
-	"effect": 50
+	"effect": 50,
 }
 
-func _ready():
+
+func _ready() -> void:
 	initialize_pools()
 
 
-func initialize_pools():
-	for object_type in POOL_SIZES:
+func initialize_pools() -> void:
+	for object_type in POOL_SIZES.keys():
 		pools[object_type] = []
 
 
@@ -24,35 +25,36 @@ func get_object(object_type: String, scene_path: String) -> Node:
 		return null
 
 	# Try to find an inactive object in the pool
-	var pool = pools[object_type]
+	var pool: Array = pools[object_type]
 	for obj in pool:
 		if not is_instance_valid(obj) or not obj.visible:
 			obj.visible = true
 			return obj
 
 	# If no inactive object found and pool not full, create new one
-	if pool.size() < POOL_SIZES[object_type]:
-		var new_obj = load(scene_path).instantiate()
+	if pool.size() < int(POOL_SIZES[object_type]):
+		var new_obj := load(scene_path).instantiate()
 		add_child(new_obj)
 		pool.append(new_obj)
 		return new_obj
 
 	# If pool is full, reuse the oldest object
-	var oldest_obj = pool[0]
+	var oldest_obj := pool[0]
 	pool.pop_front()
 	pool.push_back(oldest_obj)
 	oldest_obj.visible = true
 	return oldest_obj
 
 
-func release_object(object: Node, object_type: String):
+func release_object(object: Node, object_type: String) -> void:
 	if not pools.has(object_type):
 		return
 
 	object.visible = false
 	# Reset object position far away to prevent any unintended interactions
 	if object is Node2D:
-		object.global_position = Vector2(-1000, -1000)
+		var node2d := object as Node2D
+		node2d.global_position = Vector2(-1000, -1000)
 
 	# Optional: Reset any specific properties based on object type
 	match object_type:

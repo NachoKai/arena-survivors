@@ -1,4 +1,4 @@
 class_name HitboxComponent
 extends Area2D
 
-var damage = 0
+var damage: float = 0.0

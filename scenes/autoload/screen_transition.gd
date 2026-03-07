@@ -5,7 +5,8 @@ signal transition_halfway
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var color_rect: ColorRect = $ColorRect
 
-func transition():
+
+func transition() -> void:
 	color_rect.visible = true
 	animation_player.play("default")
 	await animation_player.animation_finished

@@ -14,7 +14,7 @@ var save_data: Dictionary = {
 }
 
 
-func _ready():
+func _ready() -> void:
 	GameEvents.player_damaged.connect(on_player_health_changed)
 	GameEvents.health_vial_collected.connect(on_player_health_changed)
 	GameEvents.experience_vial_collected.connect(on_player_experience_changed)
@@ -22,59 +22,64 @@ func _ready():
 	load_file()
 
 
-func load_file():
+func load_file() -> void:
 	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
 
 
-func save_file():
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+func save_file() -> void:
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_var(save_data)
 
 
-func get_player_health(health: float):
-	if not health or health == 0: return 100
+func get_player_health(health: float) -> float:
+	if is_equal_approx(health, 0.0):
+		return 100.0
 	if save_data.player_health:
 		return save_data.player_health
 
 
-func get_player_level():
+func get_player_level() -> int:
 	if save_data.player_level:
 		return save_data.player_level
-	else: return 1
+	return 1
 
 
-func get_player_experience():
+func get_player_experience() -> float:
 	if save_data.player_experience:
 		return save_data.player_experience
-	else: return 0
+	return 0.0
 
 
-func get_selected_character():
+func get_selected_character() -> String:
 	if save_data.selected_character:
 		return save_data.selected_character
-	else: return "warrior"
+	return "warrior"
 
 
-func on_player_health_changed(health: float):
-	if not health: return
+func on_player_health_changed(health: float) -> void:
+	if is_equal_approx(health, 0.0):
+		return
 	save_data.player_health = health
 
 
-func on_player_level_changed(level: int):
-	if not level: return
+func on_player_level_changed(level: int) -> void:
+	if level == 0:
+		return
 	save_data.player_level = level
 
 
-func on_player_experience_changed(experience: float):
-	if not experience: return
+func on_player_experience_changed(experience: float) -> void:
+	if is_equal_approx(experience, 0.0):
+		return
 	save_data.player_experience = experience
 
 
-func on_selected_character_changed(character: String):
-	if not character: return
+func on_selected_character_changed(character: String) -> void:
+	if character.is_empty():
+		return
 	save_data.selected_character = character
 	await get_tree().process_frame
 	save_file()

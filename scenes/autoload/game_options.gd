@@ -3,5 +3,5 @@ extends Node
 var is_crt_filter_active: bool = true
 
 
-func change_crt_filter_active():
+func change_crt_filter_active() -> void:
 	is_crt_filter_active = not is_crt_filter_active

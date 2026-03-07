@@ -4,44 +4,45 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var collision_area: Area2D = $CollisionArea
-@onready var abilities = $Abilities
+@onready var abilities: Node = $Abilities
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: Node2D = $Visuals
-@onready var velocity_component: Node = $VelocityComponent
+@onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var hit_random_stream_player: AudioStreamPlayer2D = $HitRandomStreamPlayer
 @onready var pickup_area_shape: CollisionShape2D = $PickupArea/PickupAreaShape
-@onready var night_light_animation = $NightLightAnimation
+@onready var night_light_animation: AnimationPlayer = $NightLightAnimation
 @export var arena_time_manager: ArenaTimeManager
 @onready var image: Sprite2D = %Image
 @onready var health_particles: GPUParticles2D = $Visuals/HealthParticles
 
 var colliding_bodies_quantity: int = 0
-var base_speed = 0
-var base_pickup_area = 30
-var damage_multiplier = 1.0
-var attack_rate_multiplier = 1.0
-var is_dashing = false
-var dash_speed = 200.0
-var dash_duration = 0.2
-var dash_cooldown = 0.5
-var dash_timer = 0.0
-var dash_cooldown_timer = 0.0
-var dash_direction = Vector2.ZERO
+var base_speed: float = 0.0
+var base_pickup_area: float = 30.0
+var damage_multiplier: float = 1.0
+var attack_rate_multiplier: float = 1.0
+var is_dashing: bool = false
+var dash_speed: float = 200.0
+var dash_duration: float = 0.2
+var dash_cooldown: float = 0.5
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+var dash_direction: Vector2 = Vector2.ZERO
 var dash_sound: AudioStreamPlayer2D
 
-var sword_ability = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
-var axe_ability = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
-var dagger_ability = preload("res://scenes/ability/dagger_ability/dagger_ability_controller.tscn")
-var hammer_ability = preload("res://scenes/ability/hammer_ability/hammer_ability_controller.tscn")
+var sword_ability: PackedScene = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
+var axe_ability: PackedScene = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
+var dagger_ability: PackedScene = preload("res://scenes/ability/dagger_ability/dagger_ability_controller.tscn")
+var hammer_ability: PackedScene = preload("res://scenes/ability/hammer_ability/hammer_ability_controller.tscn")
 
-var warrior_texture = preload("res://assets/characters/warrior.png")
-var archer_texture = preload("res://assets/characters/archer.png")
-var barbarian_texture = preload("res://assets/characters/barbarian.png")
-var monk_texture = preload("res://assets/characters/monk.png")
-var witch_texture = preload("res://assets/characters/witch.png")
-var wizard_texture = preload("res://assets/characters/wizard.png")
+var warrior_texture: Texture2D = preload("res://assets/characters/warrior.png")
+var archer_texture: Texture2D = preload("res://assets/characters/archer.png")
+var barbarian_texture: Texture2D = preload("res://assets/characters/barbarian.png")
+var monk_texture: Texture2D = preload("res://assets/characters/monk.png")
+var witch_texture: Texture2D = preload("res://assets/characters/witch.png")
+var wizard_texture: Texture2D = preload("res://assets/characters/wizard.png")
 
-func _ready():
+
+func _ready() -> void:
 	if not arena_time_manager:
 		return
 	load_character_sprite()
@@ -72,12 +73,12 @@ func _ready():
 	update_health_display()
 
 
-func load_character_sprite():
+func load_character_sprite() -> void:
 	var selected_character = SaveGame.get_selected_character()
 
 	image.texture = null
 
-	var texture = null
+	var texture: Texture2D = warrior_texture
 	match selected_character:
 		"warrior":
 			texture = warrior_texture
@@ -94,18 +95,17 @@ func load_character_sprite():
 		_:
 			texture = warrior_texture
 
-	if texture:
-		image.texture = texture
-		await get_tree().process_frame
+	image.texture = texture
+	await get_tree().process_frame
 
 
-func give_starting_ability():
+func give_starting_ability() -> void:
 	var selected_character = SaveGame.get_selected_character()
 
 	for child in abilities.get_children():
 		child.queue_free()
 
-	var ability_instance = null
+	var ability_instance: Node = null
 	match selected_character:
 		"warrior":
 			ability_instance = sword_ability.instantiate()
@@ -123,7 +123,7 @@ func give_starting_ability():
 		apply_character_modifiers_to_ability(ability_instance)
 
 
-func apply_character_modifiers_to_ability(ability_instance):
+func apply_character_modifiers_to_ability(ability_instance: Node) -> void:
 	if damage_multiplier == 1.0 and attack_rate_multiplier == 1.0:
 		return
 
@@ -141,8 +141,8 @@ func apply_character_modifiers_to_ability(ability_instance):
 				timer.wait_time = timer.wait_time / attack_rate_multiplier
 
 
-func _physics_process(delta):
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+func _physics_process(delta: float) -> void:
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if Input.is_action_just_pressed("dash") and not is_dashing and dash_cooldown_timer <= 0.0 and direction != Vector2.ZERO:
 		start_dash(direction)
@@ -173,7 +173,7 @@ func _physics_process(delta):
 		visuals.scale.x = 1
 
 
-func start_dash(direction: Vector2):
+func start_dash(direction: Vector2) -> void:
 	is_dashing = true
 	dash_timer = dash_duration
 	dash_direction = direction.normalized()
@@ -183,51 +183,52 @@ func start_dash(direction: Vector2):
 		dash_sound.play()
 
 
-func end_dash():
+func end_dash() -> void:
 	is_dashing = false
 	dash_timer = 0.0
 	velocity_component.velocity = Vector2.ZERO
 
 
-func check_deal_damage():
-	var isDamageTimerActive = ! damage_interval_timer.is_stopped()
-	if colliding_bodies_quantity == 0 || isDamageTimerActive: return
+func check_deal_damage() -> void:
+	var is_damage_timer_active := not damage_interval_timer.is_stopped()
+	if colliding_bodies_quantity == 0 or is_damage_timer_active:
+		return
 	health_component.damage(10)
 	damage_interval_timer.start()
 
 
-func update_health_display():
+func update_health_display() -> void:
 	health_bar.value = health_component.get_health_percent()
 
 
-func on_body_entered(_other_body: Node2D):
+func on_body_entered(_other_body: Node2D) -> void:
 	colliding_bodies_quantity += 1
 	check_deal_damage()
 
 
-func on_body_exited(_other_body: Node2D):
+func on_body_exited(_other_body: Node2D) -> void:
 	colliding_bodies_quantity -= 1
 
 
-func on_damage_interval_timer_timeout():
+func on_damage_interval_timer_timeout() -> void:
 	check_deal_damage()
 
 
-func on_health_decreased(current_health):
+func on_health_decreased(current_health: float) -> void:
 	GameEvents.emit_player_damaged(current_health)
 	hit_random_stream_player.play_random()
 
 
-func on_health_changed(_current_health, is_healing):
+func on_health_changed(_current_health: float, is_healing: bool) -> void:
 	if is_healing and health_particles:
 		health_particles.emitting = true
 	update_health_display()
 
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if not ability_upgrade: return
 	if ability_upgrade is Ability:
-		var ability = ability_upgrade as Ability
+		var ability := ability_upgrade as Ability
 
 		if ability.id == "shadowmere":
 			for child in abilities.get_children():
@@ -248,7 +249,7 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 		pickup_area_shape.shape.radius = base_pickup_area + (current_upgrades.pickup_area.quantity * 6)
 
 
-func on_arena_difficulty_increased(difficulty: int):
+func on_arena_difficulty_increased(difficulty: int) -> void:
 	var health_regeneration_quantity = MetaProgression.get_upgrade_count("health_regeneration")
 	if health_regeneration_quantity > 0:
 		var is_thirty_second_interval = (difficulty % 6) == 0  # 30 seconds interval
@@ -258,7 +259,7 @@ func on_arena_difficulty_increased(difficulty: int):
 				health_particles.emitting = true
 
 
-func setup_dash_sound():
+func setup_dash_sound() -> void:
 	dash_sound = AudioStreamPlayer2D.new()
 	dash_sound.stream = load("res://sounds/dash.ogg")
 	add_child(dash_sound)

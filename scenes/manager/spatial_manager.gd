@@ -1,17 +1,19 @@
+class_name SpatialManager
 extends Node
 
-const CELL_SIZE = 100  # Size of each grid cell
-const ACTIVE_DISTANCE = 800  # Distance at which entities are fully active
-const SEMI_ACTIVE_DISTANCE = 1200  # Distance at which entities are partially active
+const CELL_SIZE: float = 100.0  # Size of each grid cell
+const ACTIVE_DISTANCE: float = 800.0  # Distance at which entities are fully active
+const SEMI_ACTIVE_DISTANCE: float = 1200.0  # Distance at which entities are partially active
 
-var grid = {}  # Dictionary to store entities in grid cells
+var grid: Dictionary = {}  # Dictionary to store entities in grid cells
 var player: Node2D = null
 
-func _ready():
+
+func _ready() -> void:
 	pass
 
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("player")
 		if not player:
@@ -19,24 +21,24 @@ func _physics_process(_delta):
 	update_entity_states()
 
 
-func register_entity(entity: Node2D):
-	var cell = get_cell_coords(entity.global_position)
+func register_entity(entity: Node2D) -> void:
+	var cell := get_cell_coords(entity.global_position)
 	if not grid.has(cell):
 		grid[cell] = []
 	grid[cell].append(entity)
 
 
-func unregister_entity(entity: Node2D):
-	var cell = get_cell_coords(entity.global_position)
+func unregister_entity(entity: Node2D) -> void:
+	var cell := get_cell_coords(entity.global_position)
 	if grid.has(cell):
 		grid[cell].erase(entity)
 		if grid[cell].is_empty():
 			grid.erase(cell)
 
 
-func update_entity_position(entity: Node2D, old_pos: Vector2, new_pos: Vector2):
-	var old_cell = get_cell_coords(old_pos)
-	var new_cell = get_cell_coords(new_pos)
+func update_entity_position(entity: Node2D, old_pos: Vector2, new_pos: Vector2) -> void:
+	var old_cell := get_cell_coords(old_pos)
+	var new_cell := get_cell_coords(new_pos)
 
 	if old_cell != new_cell:
 		if grid.has(old_cell):
@@ -54,13 +56,13 @@ func get_cell_coords(pos: Vector2) -> Vector2i:
 
 
 func get_nearby_entities(pos: Vector2, radius: float) -> Array:
-	var nearby = []
-	var cell_radius = ceili(radius / CELL_SIZE)
-	var center_cell = get_cell_coords(pos)
+	var nearby: Array = []
+	var cell_radius := ceili(radius / CELL_SIZE)
+	var center_cell := get_cell_coords(pos)
 
 	for x in range(-cell_radius, cell_radius + 1):
 		for y in range(-cell_radius, cell_radius + 1):
-			var check_cell = Vector2i(center_cell.x + x, center_cell.y + y)
+			var check_cell := Vector2i(center_cell.x + x, center_cell.y + y)
 			if grid.has(check_cell):
 				for entity in grid[check_cell]:
 					if entity.global_position.distance_to(pos) <= radius:
@@ -69,16 +71,16 @@ func get_nearby_entities(pos: Vector2, radius: float) -> Array:
 	return nearby
 
 
-func update_entity_states():
-	var player_cell = get_cell_coords(player.global_position)
-	var cells_to_check = get_cells_in_range(player_cell, ceili(SEMI_ACTIVE_DISTANCE / CELL_SIZE))
+func update_entity_states() -> void:
+	var player_cell := get_cell_coords(player.global_position)
+	var cells_to_check := get_cells_in_range(player_cell, ceili(SEMI_ACTIVE_DISTANCE / CELL_SIZE))
 
 	for cell in cells_to_check:
 		if not grid.has(cell):
 			continue
 
 		for entity in grid[cell]:
-			var distance = entity.global_position.distance_to(player.global_position)
+			var distance := entity.global_position.distance_to(player.global_position)
 
 			if distance <= ACTIVE_DISTANCE:
 				set_entity_active_state(entity, true)
@@ -89,14 +91,14 @@ func update_entity_states():
 
 
 func get_cells_in_range(center: Vector2i, radius: int) -> Array:
-	var cells = []
+	var cells: Array = []
 	for x in range(-radius, radius + 1):
 		for y in range(-radius, radius + 1):
 			cells.append(Vector2i(center.x + x, center.y + y))
 	return cells
 
 
-func set_entity_active_state(entity: Node2D, active: bool):
+func set_entity_active_state(entity: Node2D, active: bool) -> void:
 	if not is_instance_valid(entity):
 		return
 
@@ -109,10 +111,11 @@ func set_entity_active_state(entity: Node2D, active: bool):
 
 	# Keep collision enabled but reduce physics update frequency
 	if entity.has_node("HurtboxComponent"):
-		entity.get_node("HurtboxComponent").monitoring = active
+		var hurtbox := entity.get_node("HurtboxComponent") as Area2D
+		hurtbox.monitoring = active
 
 
-func set_entity_semi_active_state(entity: Node2D):
+func set_entity_semi_active_state(entity: Node2D) -> void:
 	if not is_instance_valid(entity):
 		return
 
@@ -125,4 +128,5 @@ func set_entity_semi_active_state(entity: Node2D):
 
 	# Keep collision enabled but reduce physics update frequency
 	if entity.has_node("HurtboxComponent"):
-		entity.get_node("HurtboxComponent").monitoring = true
+		var hurtbox := entity.get_node("HurtboxComponent") as Area2D
+		hurtbox.monitoring = true

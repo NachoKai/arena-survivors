@@ -1,7 +1,7 @@
 extends Node
 
 @export var enemies_cap: int = 600
-@onready var player = get_tree().get_first_node_in_group("player") as Node2D
+@onready var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 @onready var timer: Timer = $Timer
 @export var arena_time_manager: ArenaTimeManager
 @export var rat_enemy_scene: PackedScene
@@ -18,54 +18,63 @@ extends Node
 @export var vampire_cyclops_enemy_scene: PackedScene
 @export var werewolf_enemy_scene: PackedScene
 
-const SPAWN_RADIUS: int = 340
-var base_spawn_time: float = 0
-var enemies_to_spawn = 1
-var enemy_table = WeightedTable.new()
+const SPAWN_RADIUS: float = 340.0
+var base_spawn_time: float = 0.0
+var enemies_to_spawn: int = 1
+var enemy_table: WeightedTable = WeightedTable.new()
 
 
-func _ready():
+func _ready() -> void:
 	enemy_table.add_item(rat_enemy_scene, 10)
 	base_spawn_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 
 
-func get_spawn_position():
-	if not player: return Vector2.ZERO
-	var spawn_position = Vector2.ZERO
-	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))  # TAU: 2 times PI, a full rotation
+func get_spawn_position() -> Vector2:
+	if not player:
+		return Vector2.ZERO
+	var spawn_position: Vector2 = Vector2.ZERO
+	var random_direction: Vector2 = Vector2.RIGHT.rotated(randf_range(0.0, TAU))  # TAU: full rotation
 
 	for i in 4:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
-		var additional_check_offset = random_direction * 25  # 25px extra so that enemies dont get stuck if spawning over a wall
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additional_check_offset, 1)
-		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
-		if result.is_empty(): return spawn_position
-		else: random_direction = random_direction.rotated(deg_to_rad(90))
+		var additional_check_offset: Vector2 = random_direction * 25.0  # extra so enemies don't spawn in walls
+		var query_parameters := PhysicsRayQueryParameters2D.create(
+			player.global_position,
+			spawn_position + additional_check_offset,
+			1
+		)
+		var result := get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
+		if result.is_empty():
+			return spawn_position
+		else:
+			random_direction = random_direction.rotated(deg_to_rad(90.0))
 
 	return spawn_position
 
 
-func on_timer_timeout():
+func on_timer_timeout() -> void:
 	timer.start()
-	if not player: return
+	if not player:
+		return
 
 	for i in enemies_to_spawn:
-		var enemy_scene = enemy_table.pick_item()
-		if not enemy_scene: return
-		var enemy = enemy_scene.instantiate() as Node2D
-		var entities = get_tree().get_first_node_in_group("entities")
-		var children_quantity = entities.get_children().size()
+		var enemy_scene: PackedScene = enemy_table.pick_item()
+		if not enemy_scene:
+			return
+		var enemy := enemy_scene.instantiate() as Node2D
+		var entities := get_tree().get_first_node_in_group("entities")
+		var children_quantity: int = entities.get_children().size()
 
 		if children_quantity <= enemies_cap:
 			entities.add_child(enemy)
-			var spawn_position = get_spawn_position()
+			var spawn_position: Vector2 = get_spawn_position()
 			enemy.global_position = spawn_position
 
 
-func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_off = min((0.1 / 60 / 5) * arena_difficulty, 0.6)
+func on_arena_difficulty_increased(arena_difficulty: int) -> void:
+	var time_off := minf((0.1 / 60.0 / 5.0) * arena_difficulty, 0.6)
 	timer.wait_time = base_spawn_time - time_off
 
 	if arena_difficulty == 5:  # 30 seconds
