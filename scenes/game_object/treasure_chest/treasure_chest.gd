@@ -14,7 +14,7 @@ func _ready():
 	hurtbox_component.hit.connect(on_hit)
 
 
-func hit():
+func hit() -> void:
 	if not is_open:
 		animated_sprite.play()
 		hit_random_stream_player_component.play_random()
@@ -23,5 +23,5 @@ func hit():
 		is_open = true
 
 
-func on_hit():
+func on_hit(_hitbox: HitboxComponent, _damage: float) -> void:
 	hit()

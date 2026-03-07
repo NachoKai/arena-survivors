@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			visuals.scale = Vector2(move_sign, 1)
 
 
-func on_hit() -> void:
+func on_hit(_hitbox: HitboxComponent, _damage: float) -> void:
 	if hit_random_stream_player_component:
 		hit_random_stream_player_component.play_random()
 

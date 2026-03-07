@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cim4wjjwsr3v4"]
+[gd_scene load_steps=25 format=3 uid="uid://cim4wjjwsr3v4"]
 
 [ext_resource type="Script" uid="uid://cvvpt46umq0sy" path="res://scenes/castle/castle.gd" id="1_rlsj2"]
 [ext_resource type="PackedScene" uid="uid://c386ccqei70wc" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_h84qn"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cd5jgadsa3l0q" path="res://scenes/ui/vignette.tscn" id="14_bhpuq"]
 [ext_resource type="PackedScene" uid="uid://box0fwsdbta33" path="res://scenes/manager/mobile_controls.tscn" id="15_u3e3v"]
 [ext_resource type="PackedScene" uid="uid://dv5won0ecybjm" path="res://scenes/ui/crt_filter.tscn" id="16_i78vk"]
+[ext_resource type="Script" path="res://scenes/ui/damage_number_spawner.gd" id="17_m3p2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wybfp"]
 texture = ExtResource("4_8tg8f")
@@ -110,6 +111,9 @@ unique_name_in_owner = true
 position = Vector2(304, 384)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
+
+[node name="DamageNumberSpawner" type="Node2D" parent="Foreground"]
+script = ExtResource("17_m3p2d")
 
 [node name="Vignette" parent="." instance=ExtResource("14_bhpuq")]
 layer = 2

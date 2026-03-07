@@ -5,6 +5,7 @@ signal health_vial_collected(amount: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged(current_health: float)
 signal character_selected(character: String)
+signal damage_number_requested(position: Vector2, amount: int)
 
 @export var game_version: String = "3.5.0"
 
@@ -27,3 +28,7 @@ func emit_health_vial_collected(amount: float) -> void:
 
 func emit_character_selected(character: String) -> void:
 	character_selected.emit(character)
+
+
+func emit_damage_number(position: Vector2, amount: int) -> void:
+	damage_number_requested.emit(position, amount)

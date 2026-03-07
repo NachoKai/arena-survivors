@@ -23,5 +23,5 @@ func hit():
 		velocity_component.accelerate_to_player()
 
 
-func on_hit():
+func on_hit(_hitbox: HitboxComponent, _damage: float) -> void:
 	hit()
