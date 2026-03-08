@@ -1,24 +1,11 @@
-extends Node
+extends AbilityController
 
-@onready var player = get_tree().get_first_node_in_group("player") as Node2D
-@onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
-@onready var timer: Timer = $Timer
-@export var sword_ability: PackedScene
-@export var base_damage: int = 5
-var default_wait_time
-var additional_damage_percent = 1
-var additional_size_percent = 1
+var additional_damage_percent = 1.0
+var additional_size_percent = 1.0
 var sword_count: int = 1
 const MAX_RANGE: int = 150
 
-
-func _ready():
-	default_wait_time = timer.wait_time
-	timer.timeout.connect(on_timer_timeout)
-	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-
-
-func on_timer_timeout():
+func use_ability() -> void:
 	if not player: return
 	var enemies = get_enemies_in_range(player)
 	if not enemies || enemies.size() == 0: return
@@ -45,8 +32,8 @@ func get_closest_enemy(player_node: Node2D, enemies: Array, sword_number: int) -
 	return enemies[sword_number - 1]
 
 
-func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
-	var sword_instance = sword_ability.instantiate() as SwordAbility
+func use_sword_ability(_player_node: Node2D, target_enemy: Node2D) -> void:
+	var sword_instance = ability_scene.instantiate() as SwordAbility
 	if not sword_instance or not foreground: return
 	foreground.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
@@ -57,7 +44,7 @@ func use_sword_ability(_player_node: Node2D, target_enemy: Node2D):
 	sword_instance.scale = Vector2.ONE * additional_size_percent
 
 
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if not upgrade: return
 	if upgrade.id == "sword_count":
 		sword_count = current_upgrades.sword_count.quantity + 1  # We already have 1 sword

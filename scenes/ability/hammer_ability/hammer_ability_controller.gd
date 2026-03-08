@@ -1,24 +1,12 @@
-extends Node
+extends AbilityController
 
-@onready var player = get_tree().get_first_node_in_group("player") as Node2D
-@onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
-@onready var timer: Timer = $Timer
-@export var hammer_ability_scene: PackedScene
-@export var base_damage: int = 15
-var default_wait_time
-var additional_damage_percent = 1
-var additional_size_percent = 1
+var additional_damage_percent = 1.0
+var additional_size_percent = 1.0
 var hammer_count: int = 0
 const BASE_RANGE: int = 100
 
 
-func _ready():
-	default_wait_time = timer.wait_time
-	timer.timeout.connect(on_timer_timeout)
-	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-
-
-func on_timer_timeout():
+func use_ability() -> void:
 	if not player or not foreground: return
 	var direction = Vector2.RIGHT.rotated(randf_range(0, TAU))  # TAU: 2 times PI, a full rotation
 	var additional_rotation_degrees = 360.0 / (hammer_count + 1)
@@ -31,14 +19,14 @@ func on_timer_timeout():
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if not result.is_empty():
 			spawn_position = result.position
-		var hammer_ability = hammer_ability_scene.instantiate() as HammerAbility
+		var hammer_ability = ability_scene.instantiate() as HammerAbility
 		foreground.add_child(hammer_ability)
 		hammer_ability.global_position = spawn_position
 		hammer_ability.hitbox_component.damage = base_damage * additional_damage_percent
 		hammer_ability.scale = Vector2.ONE * additional_size_percent
 
 
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if not upgrade: return
 	if upgrade.id == "hammer_count":
 		hammer_count = current_upgrades.hammer_count.quantity

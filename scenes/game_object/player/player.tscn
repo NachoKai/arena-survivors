@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ff082s2cpd0g"]
+[gd_scene load_steps=31 format=3 uid="uid://ff082s2cpd0g"]
 
 [ext_resource type="Script" uid="uid://ckjuvs0u55qv5" path="res://scenes/game_object/player/player.gd" id="1_56v20"]
 [ext_resource type="Texture2D" uid="uid://cswu8tolryu6h" path="res://scenes/game_object/player/player.png" id="1_xn5b6"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://cb75yn3tin1ih" path="res://sounds/impactMining_004.ogg" id="7_ncnc1"]
 [ext_resource type="Texture2D" uid="uid://cjaor0sh8iqpb" path="res://assets/light.png" id="11_8pr5u"]
 [ext_resource type="Texture2D" uid="uid://j4jg25wokan6" path="res://assets/particle.png" id="13_xao2c"]
+[ext_resource type="Script" path="res://scenes/component/state_machine.gd" id="SM_1"]
+[ext_resource type="Script" path="res://scenes/game_object/player/states/player_idle.gd" id="S_IDLE"]
+[ext_resource type="Script" path="res://scenes/game_object/player/states/player_move.gd" id="S_MOVE"]
+[ext_resource type="Script" path="res://scenes/game_object/player/states/player_dash.gd" id="S_DASH"]
 
 [sub_resource type="Animation" id="Animation_ao8i3"]
 length = 0.001
@@ -375,3 +379,23 @@ amount = 15
 process_material = SubResource("ParticleProcessMaterial_hwboj")
 texture = ExtResource("13_xao2c")
 one_shot = true
+[ n o d e   n a m e = \ 
+ 
+ S t a t e M a c h i n e \   t y p e = \ N o d e \   n o d e _ p a t h s = P a c k e d S t r i n g A r r a y ( \ i n i t i a l _ s t a t e \ )   p a r e n t = \ . \ ] 
+ s c r i p t   =   E x t R e s o u r c e ( \ S M _ 1 \ ) 
+ i n i t i a l _ s t a t e   =   N o d e P a t h ( \ I d l e \ ) 
+ 
+ [ n o d e   n a m e = \ I d l e \   t y p e = \ N o d e \   n o d e _ p a t h s = P a c k e d S t r i n g A r r a y ( \ p l a y e r \ )   p a r e n t = \ S t a t e M a c h i n e \ ] 
+ s c r i p t   =   E x t R e s o u r c e ( \ S _ I D L E \ ) 
+ p l a y e r   =   N o d e P a t h ( \ . . / . . \ ) 
+ 
+ [ n o d e   n a m e = \ M o v e \   t y p e = \ N o d e \   n o d e _ p a t h s = P a c k e d S t r i n g A r r a y ( \ p l a y e r \ )   p a r e n t = \ S t a t e M a c h i n e \ ] 
+ s c r i p t   =   E x t R e s o u r c e ( \ S _ M O V E \ ) 
+ p l a y e r   =   N o d e P a t h ( \ . . / . . \ ) 
+ 
+ [ n o d e   n a m e = \ D a s h \   t y p e = \ N o d e \   n o d e _ p a t h s = P a c k e d S t r i n g A r r a y ( \ p l a y e r \ )   p a r e n t = \ S t a t e M a c h i n e \ ] 
+ s c r i p t   =   E x t R e s o u r c e ( \ S _ D A S H \ ) 
+ p l a y e r   =   N o d e P a t h ( \ . . / . . \ ) 
+ 
+ 
+ 

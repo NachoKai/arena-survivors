@@ -20,14 +20,8 @@ var base_speed: float = 0.0
 var base_pickup_area: float = 30.0
 var damage_multiplier: float = 1.0
 var attack_rate_multiplier: float = 1.0
-var is_dashing: bool = false
-var dash_speed: float = 200.0
-var dash_duration: float = 0.2
 var dash_cooldown: float = 0.5
-var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
-var dash_direction: Vector2 = Vector2.ZERO
-var dash_sound: AudioStreamPlayer2D
 
 var sword_ability: PackedScene = preload("res://scenes/ability/sword_ability/sword_ability_controller.tscn")
 var axe_ability: PackedScene = preload("res://scenes/ability/axe_ability/axe_ability_controller.tscn")
@@ -142,51 +136,14 @@ func apply_character_modifiers_to_ability(ability_instance: Node) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
-	if Input.is_action_just_pressed("dash") and not is_dashing and dash_cooldown_timer <= 0.0 and direction != Vector2.ZERO:
-		start_dash(direction)
-
-	if is_dashing:
-		dash_timer -= delta
-		if dash_timer <= 0.0:
-			end_dash()
-
 	if dash_cooldown_timer > 0.0:
 		dash_cooldown_timer -= delta
-
-	if is_dashing:
-		velocity_component.velocity = dash_direction * dash_speed
-		velocity_component.move(self)
-	else:
-		velocity_component.accelerate_in_direction(direction)
-		velocity_component.move(self)
-
-	if direction.x != 0 || direction.y != 0:
-		animation_player.play("walk")
-	else:
-		animation_player.play("idle")
-
+		
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.x < 0:
 		visuals.scale.x = -1
 	elif direction.x > 0:
 		visuals.scale.x = 1
-
-
-func start_dash(direction: Vector2) -> void:
-	is_dashing = true
-	dash_timer = dash_duration
-	dash_direction = direction.normalized()
-	dash_cooldown_timer = dash_cooldown
-
-	if dash_sound:
-		dash_sound.play()
-
-
-func end_dash() -> void:
-	is_dashing = false
-	dash_timer = 0.0
-	velocity_component.velocity = Vector2.ZERO
 
 
 func check_deal_damage() -> void:
@@ -260,6 +217,7 @@ func on_arena_difficulty_increased(difficulty: int) -> void:
 
 
 func setup_dash_sound() -> void:
-	dash_sound = AudioStreamPlayer2D.new()
-	dash_sound.stream = load("res://sounds/dash.ogg")
-	add_child(dash_sound)
+	var dash_audio := AudioStreamPlayer2D.new()
+	dash_audio.name = "DashSound"
+	dash_audio.stream = load("res://sounds/dash.ogg")
+	add_child(dash_audio)

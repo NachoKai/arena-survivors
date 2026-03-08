@@ -1,27 +1,15 @@
-extends Node
+extends AbilityController
 
-@onready var player = get_tree().get_first_node_in_group("player") as CharacterBody2D
-@onready var foreground = get_tree().get_first_node_in_group("foreground") as Node2D
-@onready var timer: Timer = $Timer
-@export var dagger_ability_scene: PackedScene
-@export var base_damage: int = 5
-var default_wait_time
-var additional_damage_percent = 1
-var additional_size_percent = 1
+var additional_damage_percent = 1.0
+var additional_size_percent = 1.0
 var dagger_count: int = 1
 
 
-func _ready():
-	default_wait_time = timer.wait_time
-	timer.timeout.connect(on_timer_timeout)
-	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-
-
-func on_timer_timeout():
+func use_ability() -> void:
 	if not player or not foreground: return
 
 	for i in range(dagger_count):
-		var dagger_instance = dagger_ability_scene.instantiate() as DaggerAbility
+		var dagger_instance = ability_scene.instantiate() as DaggerAbility
 		if not dagger_instance: return
 		foreground.add_child(dagger_instance)
 		dagger_instance.global_position = player.global_position
@@ -29,7 +17,7 @@ func on_timer_timeout():
 		dagger_instance.scale = Vector2.ONE * additional_size_percent
 
 
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if not upgrade: return
 	if upgrade.id == "dagger_count":
 		dagger_count = current_upgrades.dagger_count.quantity + 1
