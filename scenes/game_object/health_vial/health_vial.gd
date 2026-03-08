@@ -8,13 +8,23 @@ extends Node2D
 @onready var random_stream_player_component: AudioStreamPlayer2D = $RandomStreamPlayerComponent
 
 var direction: Vector2
-var distance: int = randi_range(25, 35)
+var distance: int
 
 func _ready():
 	area.area_entered.connect(on_area_entered)
+
+
+func on_spawn():
+	image.scale = Vector2.ONE
+	area_shape.disabled = false
+	distance = randi_range(25, 35)
 	var target_position = position + direction * distance
 	var tween = create_tween()
 	tween.tween_property(self, "position", target_position, 0.4)
+
+
+func on_despawn():
+	pass
 
 
 func tween_collect(percent: float, start_position: Vector2):
@@ -27,7 +37,7 @@ func tween_collect(percent: float, start_position: Vector2):
 
 func collect():
 	GameEvents.emit_health_vial_collected(health_quantity_per_vial)
-	queue_free()
+	ObjectPoolManager.release_object(self, "health_vial")
 
 
 func disable_collision():

@@ -9,9 +9,10 @@ func use_ability() -> void:
 	if not player or not foreground: return
 
 	for i in range(dagger_count):
-		var dagger_instance = ability_scene.instantiate() as DaggerAbility
+		var dagger_instance = ObjectPoolManager.get_object("dagger_ability", ability_scene.resource_path) as DaggerAbility
 		if not dagger_instance: return
-		foreground.add_child(dagger_instance)
+		if dagger_instance.get_parent() == null:
+			foreground.add_child(dagger_instance)
 		dagger_instance.global_position = player.global_position
 		dagger_instance.hitbox_component.damage = base_damage * additional_damage_percent
 		dagger_instance.scale = Vector2.ONE * additional_size_percent

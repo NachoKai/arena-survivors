@@ -8,6 +8,9 @@ var dash_duration: float = 0.2
 var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
 
+var velocity_component: Node
+var dash_sound: Node
+
 func enter(msg: Dictionary = {}) -> void:
     dash_timer = dash_duration
     if msg.has("direction"):
@@ -19,17 +22,22 @@ func enter(msg: Dictionary = {}) -> void:
     if player and "dash_cooldown" in player:
         player.dash_cooldown_timer = player.dash_cooldown
 
-    if player and player.has_node("DashSound"):
-        player.get_node("DashSound").play()
+    if player:
+        if not dash_sound:
+            dash_sound = player.get_node_or_null("DashSound")
+        if dash_sound:
+            dash_sound.play()
+            
+        if not velocity_component:
+            velocity_component = player.get_node_or_null("VelocityComponent")
 
 func physics_update(delta: float) -> void:
-    if not player or not player.has_node("VelocityComponent"):
+    if not player or not velocity_component:
         state_machine.transition_to("Idle")
         return
         
     dash_timer -= delta
     
-    var velocity_component = player.get_node("VelocityComponent")
     velocity_component.velocity = dash_direction * dash_speed
     velocity_component.move(player)
 

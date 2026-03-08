@@ -3,9 +3,16 @@ extends State
 
 @export var player: CharacterBody2D
 
+var animation_player: AnimationPlayer
+var dash_sound: AudioStreamPlayer2D
+
 func enter(_msg: Dictionary = {}) -> void:
-    if player and player.has_node("AnimationPlayer"):
-        player.get_node("AnimationPlayer").play("idle")
+    if player:
+        if not animation_player:
+            animation_player = player.get_node_or_null("AnimationPlayer")
+        
+        if animation_player:
+            animation_player.play("idle")
 
 func physics_update(_delta: float) -> void:
     if not player:

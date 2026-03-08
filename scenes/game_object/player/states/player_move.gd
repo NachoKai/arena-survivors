@@ -3,9 +3,21 @@ extends State
 
 @export var player: CharacterBody2D
 
+var animation_player: AnimationPlayer
+var velocity_component: Node
+var visuals: Node
+
 func enter(_msg: Dictionary = {}) -> void:
-    if player and player.has_node("AnimationPlayer"):
-        player.get_node("AnimationPlayer").play("walk")
+    if player:
+        if not animation_player:
+            animation_player = player.get_node_or_null("AnimationPlayer")
+        if not velocity_component:
+            velocity_component = player.get_node_or_null("VelocityComponent")
+        if not visuals:
+            visuals = player.get_node_or_null("Visuals")
+            
+        if animation_player:
+            animation_player.play("walk")
 
 func physics_update(_delta: float) -> void:
     if not player:
@@ -24,14 +36,12 @@ func physics_update(_delta: float) -> void:
         return
         
     # Process movement
-    if player.has_node("VelocityComponent"):
-        var velocity_component = player.get_node("VelocityComponent")
+    if velocity_component:
         velocity_component.accelerate_in_direction(direction)
         velocity_component.move(player)
 
     # Orientation and animation
-    if player.has_node("Visuals"):
-        var visuals = player.get_node("Visuals")
+    if visuals:
         if direction.x < 0:
             visuals.scale.x = -1
         elif direction.x > 0:

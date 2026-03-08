@@ -8,10 +8,16 @@ const MAX_RADIUS: int = 100
 
 
 func _ready():
+	pass
+
+func on_spawn():
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var tween = create_tween()
 	tween.tween_method(tween_method, 0.0, 2.0, 2.8)
-	tween.tween_callback(queue_free)
+	tween.tween_callback(func(): ObjectPoolManager.release_object(self, "axe_ability"))
+
+func on_despawn():
+	pass
 
 
 func tween_method(rotations: float):

@@ -13,12 +13,17 @@ func _ready():
 	hitbox_component.body_entered.connect(on_body_entered)
 	hitbox_component.area_entered.connect(on_body_entered)
 	visible_on_screen_notifier.screen_exited.connect(on_screen_exited)
+
+func on_spawn():
 	if not player: return
 	var player_position = player.global_position + player.velocity
 	var base_direction = player.global_position.direction_to(player_position)
 	var random_adjustment = Vector2(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
 	direction = (base_direction + random_adjustment).normalized()
 	rotation = direction.angle()
+	
+func on_despawn():
+	direction = Vector2.ZERO
 
 
 func _process(delta):
@@ -26,12 +31,12 @@ func _process(delta):
 
 
 func on_body_entered(_other_body: Node2D):
-	queue_free()
+	ObjectPoolManager.release_object(self, "dagger_ability")
 
 
 func on_area_entered(_other_body: Node2D):
-	queue_free()
+	ObjectPoolManager.release_object(self, "dagger_ability")
 
 
 func on_screen_exited():
-	queue_free()
+	ObjectPoolManager.release_object(self, "dagger_ability")

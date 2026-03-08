@@ -9,9 +9,18 @@ extends Node2D
 
 
 func _ready():
+	experience_vial_area.area_entered.connect(on_area_entered)
+
+
+func on_spawn():
 	var random_rotation = randf_range(0, 360)
 	experience_vial_image.rotation_degrees = random_rotation
-	experience_vial_area.area_entered.connect(on_area_entered)
+	experience_vial_image.scale = Vector2.ONE
+	experience_vial_area_shape.disabled = false
+
+
+func on_despawn():
+	pass
 
 
 func tween_collect(percent: float, start_position: Vector2):
@@ -24,7 +33,7 @@ func tween_collect(percent: float, start_position: Vector2):
 
 func collect():
 	GameEvents.emit_experience_vial_collected(experience_quantity_per_vial)
-	queue_free()
+	ObjectPoolManager.release_object(self, "experience_vial")
 
 
 func disable_collision():

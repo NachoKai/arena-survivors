@@ -8,9 +8,10 @@ func use_ability() -> void:
 	if not player or not foreground: return
 
 	for i in range(axe_count + 1):
-		var axe_instance = ability_scene.instantiate() as AxeAbility
+		var axe_instance = ObjectPoolManager.get_object("axe_ability", ability_scene.resource_path) as AxeAbility
 		if not axe_instance: return
-		foreground.add_child(axe_instance)
+		if axe_instance.get_parent() == null:
+			foreground.add_child(axe_instance)
 		var angle = i * (360 / (axe_count + 1))
 		var radius = 100
 		var offset = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle))) * radius
