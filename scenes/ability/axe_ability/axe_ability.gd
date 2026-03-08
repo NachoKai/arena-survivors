@@ -7,24 +7,24 @@ var base_rotation = Vector2.RIGHT
 const MAX_RADIUS: int = 100
 
 
-func _ready():
+func _ready() -> void:
 	pass
 
-func on_spawn():
-	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var tween = create_tween()
+func on_spawn() -> void:
+	base_rotation = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
+	var tween := create_tween()
 	tween.tween_method(tween_method, 0.0, 2.0, 2.8)
-	tween.tween_callback(func(): ObjectPoolManager.release_object(self, "axe_ability"))
+	tween.tween_callback(func() -> void: ObjectPoolManager.release_object(self, "axe_ability"))
 
-func on_despawn():
+func on_despawn() -> void:
 	pass
 
 
-func tween_method(rotations: float):
+func tween_method(rotations: float) -> void:
 	if not rotations: return
-	var percent = rotations / 2
-	var current_direction = base_rotation.rotated(rotations * TAU)
-	var current_radius = percent * MAX_RADIUS
+	var percent := rotations / 2.0
+	var current_direction := base_rotation.rotated(rotations * TAU)
+	var current_radius := percent * MAX_RADIUS
 	if not player: return
 	global_position = player.global_position + (current_direction * current_radius)
 
