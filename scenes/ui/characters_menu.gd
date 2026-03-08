@@ -24,12 +24,10 @@ func refresh_character_cards():
 
 
 func on_character_selected(_character_id: String):
-	SaveGame.save_file()
+	SaveManager.save_game()
 	refresh_character_cards()
 
 
 func on_back_button_pressed():
-	SaveGame.save_file()
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	SaveManager.save_game()
+	SceneManager.change_scene("res://scenes/ui/main_menu.tscn")

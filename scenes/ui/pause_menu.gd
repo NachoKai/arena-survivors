@@ -52,10 +52,8 @@ func on_options_pressed():
 
 
 func on_menu_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	SceneManager.change_scene("res://scenes/ui/main_menu.tscn")
 
 
 func on_options_back_pressed(options_menu: Node):

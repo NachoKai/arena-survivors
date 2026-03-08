@@ -22,22 +22,16 @@ func _ready():
 
 
 func on_play_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
 	crt_filter.visible = GameOptions.is_crt_filter_active
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	SceneManager.change_scene("res://scenes/main/main.tscn")
 
 
 func on_upgrades_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
-	get_tree().change_scene_to_file("res://scenes/ui/meta_menu.tscn")
+	SceneManager.change_scene("res://scenes/ui/meta_menu.tscn")
 
 
 func on_characters_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
-	get_tree().change_scene_to_file("res://scenes/ui/characters_menu.tscn")
+	SceneManager.change_scene("res://scenes/ui/characters_menu.tscn")
 
 
 func on_options_pressed():
